@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOUR•IA | نورية — Boutique Officielle Cosmétiques Naturels Maroc</title>
+  <title>NOUR•IA | نورية — Cosmétiques Naturels de Kelaat M'gouna</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <script>
@@ -29,40 +29,54 @@
   </script>
   <style>
     body { background-color: #FFFFFF; color: #1F1216; }
-    .product-card { transition: all 0.25s ease; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -10px rgba(92, 22, 46, 0.14); }
+    .product-card { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px -12px rgba(92, 22, 46, 0.16); }
     .no-scrollbar::-webkit-scrollbar { display: none; }
-    @keyframes pulse-soft {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.015); }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
     }
-    .btn-pulse { animation: pulse-soft 2.2s infinite; }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+    @keyframes pulse-btn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .btn-pulse { animation: pulse-btn 2s infinite; }
   </style>
 </head>
 <body class="font-sans antialiased">
 
-  <!-- TOP BAR (STYLE ORINEEDS) -->
-  <div class="bg-bordeaux text-white text-xs py-2.5 px-4 text-center font-medium tracking-wide">
-    🇲🇦 Livraison Express 24h–48h Partout au Maroc • Paiement à la Livraison (COD) • <span class="text-amber-200 font-bold">Gratuite dès 249 DH</span>
+  <!-- TOP BAR PROMO + COMPTEUR -->
+  <div class="bg-bordeauxDark text-white text-xs py-2.5 px-4 text-center font-medium tracking-wide flex flex-wrap items-center justify-center gap-2">
+    <span>🇲🇦 Livraison Express Partout au Maroc • Paiement à la Livraison (COD) •</span>
+    <span class="bg-akerFassi text-white px-2.5 py-0.5 rounded-full font-bold text-[11px]">Offre se termine dans : <span id="promo-timer">04:59:59</span></span>
   </div>
 
-  <!-- HEADER CLEAN & STICKY -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
+  <!-- HEADER LUXE & CLEAN -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-roseSoft/70">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-      <button onclick="showHomeView()" class="flex items-center gap-2 text-left">
-        <span class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-bordeaux">NOUR•IA</span>
-        <span class="font-arabic text-base sm:text-lg text-akerFassi font-bold">نورية</span>
+      <button onclick="showHomeView()" class="flex items-center gap-2.5 text-left group">
+        <div class="w-9 h-9 rounded-full bg-bordeaux text-white flex items-center justify-center font-serif font-bold text-lg shadow-sm group-hover:bg-akerFassi transition">N</div>
+        <div>
+          <span class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-bordeaux">NOUR•IA</span>
+          <span class="font-arabic text-base text-akerFassi font-bold mr-1">نورية</span>
+        </div>
       </button>
 
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
         <button onclick="showHomeView()" class="hover:text-akerFassi transition">Accueil</button>
-        <a href="#categories-section" onclick="showHomeView()" class="hover:text-akerFassi transition">Catégories</a>
-        <a href="#packs-section" onclick="showHomeView()" class="hover:text-akerFassi transition">Coffrets Promo</a>
+        <a href="#categories-section" onclick="showHomeView()" class="hover:text-akerFassi transition">Nos Univers</a>
+        <a href="#packs-section" onclick="showHomeView()" class="hover:text-akerFassi transition">Coffrets & Packs</a>
         <a href="#catalogue-section" onclick="showHomeView()" class="hover:text-akerFassi transition">Catalogue (53)</a>
+        <a href="#avis-section" onclick="showHomeView()" class="hover:text-akerFassi transition">Avis Clientes</a>
       </nav>
 
       <div class="flex items-center gap-3">
-        <button onclick="toggleCart()" class="relative bg-rosePoudre hover:bg-roseSoft text-bordeaux border border-roseSoft px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition">
+        <button onclick="toggleCart()" class="relative bg-rosePoudre hover:bg-roseSoft text-bordeaux border border-roseSoft px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 transition shadow-2xs">
           <svg class="w-4 h-4 text-akerFassi" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           <span class="hidden sm:inline">Panier</span>
           <span id="cart-count" class="bg-akerFassi text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
@@ -72,108 +86,146 @@
   </header>
 
   <!-- ===================================================================== -->
-  <!-- VUE 1 : PAGE D'ACCUEIL (STRUCTURE STYLE ORINEEDS)                     -->
+  <!-- VUE 1 : PAGE D'ACCUEIL "WAW" (STYLE PALMAROSA + COULEURS NOUR•IA)     -->
   <!-- ===================================================================== -->
   <main id="home-view">
 
-    <!-- HERO BANNER -->
-    <section class="bg-rosePoudre border-b border-roseSoft">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 grid lg:grid-cols-2 gap-10 items-center">
-        <div class="space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-roseSoft shadow-2xs">
-            <span class="w-2 h-2 rounded-full bg-akerFassi"></span>
+    <!-- HERO SECTION IMMERSIF & LUXE -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-rosePoudre via-white to-roseSoft/60 border-b border-roseSoft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-roseSoft shadow-xs">
+            <span class="text-akerFassi">✦</span>
             <span class="text-xs font-bold uppercase tracking-widest text-bordeaux">Coopérative Beauty Rose • Kelaat M'gouna</span>
           </div>
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-bordeaux leading-[1.12]">
-            La Pureté de la Vallée des Roses dans Votre Routine
+
+          <h1 class="font-serif text-4xl sm:text-6xl lg:text-[64px] font-bold text-bordeaux leading-[1.06]">
+            Révélez Votre Éclat <span class="italic text-akerFassi">Naturel</span> avec les Trésors du Maroc
           </h1>
-          <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Huiles végétales pressées à froid, eau de rose première distillation, Aker Fassi, Nila sahraoui et soins capillaires naturels. Commandez en 1 clic et payez à la livraison.
+
+          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Eau de rose première distillation, huiles végétales pressées à froid, Aker Fassi, Nila sahraoui et soins capillaires 100% purs. Commandez en 10 secondes — <strong>Paiement à la livraison</strong>.
           </p>
-          <div class="flex flex-wrap justify-center lg:justify-start gap-3.5 pt-2">
-            <a href="#catalogue-section" class="bg-bordeaux hover:bg-akerFassi text-white font-bold px-8 py-4 rounded-full shadow-lg transition text-sm">
-              Découvrir le Catalogue
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+            <a href="#catalogue-section" class="bg-bordeaux hover:bg-akerFassi text-white font-bold px-8 py-4 rounded-full shadow-lg transition text-sm sm:text-base flex items-center gap-2">
+              <span>Explorer la Boutique</span>
+              <span>&rarr;</span>
             </a>
-            <a href="#packs-section" class="bg-white hover:bg-roseSoft text-bordeaux border border-bordeaux/20 font-bold px-8 py-4 rounded-full transition text-sm">
-              Coffrets & Packs Promo
+            <a href="#packs-section" class="bg-white hover:bg-roseSoft text-bordeaux border border-bordeaux/25 font-bold px-8 py-4 rounded-full transition text-sm sm:text-base">
+              Voir les Coffrets -25%
             </a>
           </div>
-          <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-6 text-xs font-semibold text-gray-600">
-            <span>✓ 100% Naturel & Bio</span>
-            <span>✓ Paiement à la livraison</span>
-            <span>✓ Expédition 24h/48h Maroc</span>
+
+          <!-- Preuve sociale rapide -->
+          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm font-semibold text-gray-700">
+            <div class="flex items-center gap-1.5">
+              <span class="text-amber-500 text-base">★★★★★</span>
+              <span>4.9/5 (+1 200 clientes satisfaites)</span>
+            </div>
+            <span class="hidden sm:inline text-gray-300">|</span>
+            <span>🚚 Livraison 24h–48h</span>
+            <span class="hidden sm:inline text-gray-300">|</span>
+            <span>🌿 100% Certifié Bio</span>
           </div>
         </div>
 
-        <div class="relative">
-          <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-            <img src="ref-03.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=1000&q=85';" alt="Cosmétiques Naturels Kelaat M'gouna" class="w-full h-full object-cover" />
+        <!-- Visuel Hero avec Badge Flottant -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative aspect-[4/5] max-w-md mx-auto rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white bg-white">
+            <img src="ref-03.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=900&q=85';" alt="Eau de Rose Bio Kelaat M'gouna" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-bordeauxDark/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg flex items-center justify-between">
+              <div>
+                <p class="text-[11px] font-bold uppercase text-akerFassi">Produit Star • Kelaat M'gouna</p>
+                <p class="font-serif text-lg font-bold text-bordeaux">Eau de Rose Bio 1ère Distillation</p>
+              </div>
+              <button onclick="openProductPage('REF-03', false)" class="bg-bordeaux text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-akerFassi transition">
+                65 DH
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CATEGORIES VISUELLES (STYLE ORINEEDS) -->
-    <section id="categories-section" class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between mb-8">
-        <div>
-          <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Explorer par besoin</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bordeaux mt-1">Nos Catégories</h2>
-        </div>
+    <!-- BANDEAU DEFILANT (MARQUEE STYLE PALMAROSA) -->
+    <div class="bg-bordeaux text-white py-3 overflow-hidden border-b border-bordeauxDark">
+      <div class="animate-marquee gap-10 text-xs sm:text-sm font-semibold tracking-wider uppercase">
+        <span>✦ 100% Naturel & Authentique</span>
+        <span>✦ Coopérative Beauty Rose Kelaat M'gouna</span>
+        <span>✦ Paiement en Espèces à la Livraison</span>
+        <span>✦ Livraison Gratuite dès 249 DH</span>
+        <span>✦ Sans Produits Chimiques ni Parabènes</span>
+        <span>✦ 100% Naturel & Authentique</span>
+        <span>✦ Coopérative Beauty Rose Kelaat M'gouna</span>
+        <span>✦ Paiement en Espèces à la Livraison</span>
+        <span>✦ Livraison Gratuite dès 249 DH</span>
+        <span>✦ Sans Produits Chimiques ni Parabènes</span>
+      </div>
+    </div>
+
+    <!-- UNIVERS / CATEGORIES CIRCULAIRES (STYLE PALMAROSA) -->
+    <section id="categories-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Nos Collections</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-bordeaux mt-1">Acheter par Univers</h2>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        <button onclick="selectCategoryAndScroll('huiles')" class="group text-left bg-rosePoudre hover:bg-roseSoft rounded-2xl p-4 border border-roseSoft transition">
-          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-white">
-            <img src="ref-01.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=500&q=80';" alt="Huiles et Eaux Florales" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+        <button onclick="selectCategoryAndScroll('huiles')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-roseSoft group-hover:border-akerFassi transition overflow-hidden bg-rosePoudre shadow-sm">
+            <img src="ref-01.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=500&q=80';" alt="Huiles & Eaux" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
           </div>
-          <p class="font-bold text-bordeaux text-sm">Huiles & Eaux Florales</p>
-          <p class="text-xs text-gray-500 mt-0.5">10 produits</p>
+          <h3 class="font-bold text-bordeaux text-sm sm:text-base mt-3 group-hover:text-akerFassi transition">Huiles & Eaux Florales</h3>
+          <span class="text-xs text-gray-500">10 références</span>
         </button>
 
-        <button onclick="selectCategoryAndScroll('cremes')" class="group text-left bg-rosePoudre hover:bg-roseSoft rounded-2xl p-4 border border-roseSoft transition">
-          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-white">
-            <img src="ref-13.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?auto=format&fit=crop&w=500&q=80';" alt="Crèmes et Beurres" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        <button onclick="selectCategoryAndScroll('cremes')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-roseSoft group-hover:border-akerFassi transition overflow-hidden bg-rosePoudre shadow-sm">
+            <img src="ref-13.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?auto=format&fit=crop&w=500&q=80';" alt="Crèmes & Beurres" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
           </div>
-          <p class="font-bold text-bordeaux text-sm">Crèmes & Beurres</p>
-          <p class="text-xs text-gray-500 mt-0.5">12 produits</p>
+          <h3 class="font-bold text-bordeaux text-sm sm:text-base mt-3 group-hover:text-akerFassi transition">Crèmes & Beurres</h3>
+          <span class="text-xs text-gray-500">12 références</span>
         </button>
 
-        <button onclick="selectCategoryAndScroll('cheveux')" class="group text-left bg-rosePoudre hover:bg-roseSoft rounded-2xl p-4 border border-roseSoft transition">
-          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-white">
-            <img src="ref-23.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=500&q=80';" alt="Soins Capillaires" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        <button onclick="selectCategoryAndScroll('cheveux')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-roseSoft group-hover:border-akerFassi transition overflow-hidden bg-rosePoudre shadow-sm">
+            <img src="ref-23.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=500&q=80';" alt="Soins Capillaires" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
           </div>
-          <p class="font-bold text-bordeaux text-sm">Soins Capillaires</p>
-          <p class="text-xs text-gray-500 mt-0.5">10 produits</p>
+          <h3 class="font-bold text-bordeaux text-sm sm:text-base mt-3 group-hover:text-akerFassi transition">Soins Capillaires</h3>
+          <span class="text-xs text-gray-500">10 références</span>
         </button>
 
-        <button onclick="selectCategoryAndScroll('hammam')" class="group text-left bg-rosePoudre hover:bg-roseSoft rounded-2xl p-4 border border-roseSoft transition">
-          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-white">
-            <img src="ref-40.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=500&q=80';" alt="Hammam et Corps" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        <button onclick="selectCategoryAndScroll('hammam')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-roseSoft group-hover:border-akerFassi transition overflow-hidden bg-rosePoudre shadow-sm">
+            <img src="ref-40.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=500&q=80';" alt="Hammam & Corps" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
           </div>
-          <p class="font-bold text-bordeaux text-sm">Hammam & Corps</p>
-          <p class="text-xs text-gray-500 mt-0.5">16 produits</p>
+          <h3 class="font-bold text-bordeaux text-sm sm:text-base mt-3 group-hover:text-akerFassi transition">Hammam & Corps</h3>
+          <span class="text-xs text-gray-500">16 références</span>
         </button>
 
-        <button onclick="selectCategoryAndScroll('parfums')" class="group text-left bg-rosePoudre hover:bg-roseSoft rounded-2xl p-4 border border-roseSoft transition col-span-2 sm:col-span-1">
-          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-white">
-            <img src="ref-52.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80';" alt="Parfums et Makhmariya" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+        <button onclick="selectCategoryAndScroll('parfums')" class="group flex flex-col items-center col-span-2 sm:col-span-1">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-roseSoft group-hover:border-akerFassi transition overflow-hidden bg-rosePoudre shadow-sm">
+            <img src="ref-52.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80';" alt="Parfums & Makhmariya" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
           </div>
-          <p class="font-bold text-bordeaux text-sm">Parfums & Makhmariya</p>
-          <p class="text-xs text-gray-500 mt-0.5">5 produits</p>
+          <h3 class="font-bold text-bordeaux text-sm sm:text-base mt-3 group-hover:text-akerFassi transition">Parfums & Makhmariya</h3>
+          <span class="text-xs text-gray-500">5 références</span>
         </button>
       </div>
     </section>
 
     <!-- COFFRETS & PACKS PROMO -->
-    <section id="packs-section" class="py-14 bg-rosePoudre border-y border-roseSoft">
+    <section id="packs-section" class="py-16 bg-rosePoudre border-y border-roseSoft">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-          <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Économisez jusqu'à -25%</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bordeaux mt-1">Coffrets & Rituels NOUR•IA</h2>
-          <p class="text-gray-600 text-sm mt-2">Cliquez sur un coffret pour accéder à sa fiche détaillée et commander en 10 secondes.</p>
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Rituels Complets • Jusqu'à -25%</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-bordeaux mt-1">Coffrets Best-Sellers</h2>
+          </div>
+          <p class="text-gray-600 text-sm max-w-md">Des routines complètes prêtes à offrir ou pour sublimer votre peau et vos cheveux au quotidien.</p>
         </div>
-        <div id="packs-grid" class="grid md:grid-cols-3 gap-6"></div>
+        <div id="packs-grid" class="grid md:grid-cols-3 gap-7"></div>
       </div>
     </section>
 
@@ -181,53 +233,71 @@
     <section id="catalogue-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Beauty Rose Coopérative • 53 Références</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bordeaux mt-1">Catalogue Complet</h2>
+          <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Catalogue Officiel • 53 Produits</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-bordeaux mt-1">Toute la Collection</h2>
         </div>
 
         <div class="w-full md:w-80">
-          <input id="search-input" type="text" placeholder="🔍 Rechercher (ex: Rose, Aker Fassi, Indigo...)" class="w-full px-4 py-3 rounded-full border border-gray-200 bg-rosePoudre/60 text-sm focus:outline-none focus:border-akerFassi" />
+          <input id="search-input" type="text" placeholder="🔍 Rechercher un produit (Rose, Indigo, Argan...)" class="w-full px-4 py-3 rounded-full border border-roseSoft bg-rosePoudre/70 text-sm focus:outline-none focus:border-akerFassi" />
         </div>
       </div>
 
-      <!-- Barre des Filtres -->
-      <div class="flex overflow-x-auto no-scrollbar gap-2 pb-3 mb-8">
-        <button onclick="filterCategory('all', this)" class="cat-btn shrink-0 bg-bordeaux text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition">Tout (53)</button>
-        <button onclick="filterCategory('huiles', this)" class="cat-btn shrink-0 bg-gray-100 text-gray-700 hover:bg-roseSoft hover:text-bordeaux px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition">Huiles & Eaux Florales (10)</button>
-        <button onclick="filterCategory('cremes', this)" class="cat-btn shrink-0 bg-gray-100 text-gray-700 hover:bg-roseSoft hover:text-bordeaux px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition">Crèmes & Beurres (12)</button>
-        <button onclick="filterCategory('cheveux', this)" class="cat-btn shrink-0 bg-gray-100 text-gray-700 hover:bg-roseSoft hover:text-bordeaux px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition">Soins Capillaires (10)</button>
-        <button onclick="filterCategory('hammam', this)" class="cat-btn shrink-0 bg-gray-100 text-gray-700 hover:bg-roseSoft hover:text-bordeaux px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition">Hammam & Corps (16)</button>
-        <button onclick="filterCategory('parfums', this)" class="cat-btn shrink-0 bg-gray-100 text-gray-700 hover:bg-roseSoft hover:text-bordeaux px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition">Parfums & Makhmariya (5)</button>
+      <!-- Filtres -->
+      <div class="flex overflow-x-auto no-scrollbar gap-2.5 pb-3 mb-8">
+        <button onclick="filterCategory('all', this)" class="cat-btn shrink-0 bg-bordeaux text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition shadow-2xs">Tout (53)</button>
+        <button onclick="filterCategory('huiles', this)" class="cat-btn shrink-0 bg-rosePoudre text-bordeaux hover:bg-roseSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Huiles & Eaux Florales (10)</button>
+        <button onclick="filterCategory('cremes', this)" class="cat-btn shrink-0 bg-rosePoudre text-bordeaux hover:bg-roseSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Crèmes & Beurres (12)</button>
+        <button onclick="filterCategory('cheveux', this)" class="cat-btn shrink-0 bg-rosePoudre text-bordeaux hover:bg-roseSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Soins Capillaires (10)</button>
+        <button onclick="filterCategory('hammam', this)" class="cat-btn shrink-0 bg-rosePoudre text-bordeaux hover:bg-roseSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Hammam & Corps (16)</button>
+        <button onclick="filterCategory('parfums', this)" class="cat-btn shrink-0 bg-rosePoudre text-bordeaux hover:bg-roseSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Parfums & Makhmariya (5)</button>
       </div>
 
       <!-- Grille Produits -->
       <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
     </section>
 
-    <!-- BANDEAU REASSURANCE MAROC -->
-    <section class="py-12 bg-rosePoudre border-t border-roseSoft">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-3 gap-6 text-center">
-        <div class="bg-white p-6 rounded-2xl border border-roseSoft">
-          <div class="text-2xl mb-2">🚚</div>
-          <h3 class="font-bold text-bordeaux text-base">Livraison Partout au Maroc</h3>
-          <p class="text-xs text-gray-600 mt-1">Expédition rapide en 24h à 48h (35 DH, gratuite dès 249 DH).</p>
+    <!-- SECTION AVIS CLIENTES (STYLE PALMAROSA) -->
+    <section id="avis-section" class="py-16 bg-rosePoudre border-t border-roseSoft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span class="text-akerFassi text-xs font-bold uppercase tracking-widest">Témoignages Vérifiés</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-bordeaux mt-1">Elles Adorent NOUR•IA</h2>
         </div>
-        <div class="bg-white p-6 rounded-2xl border border-roseSoft">
-          <div class="text-2xl mb-2">💵</div>
-          <h3 class="font-bold text-bordeaux text-base">Paiement à la Livraison</h3>
-          <p class="text-xs text-gray-600 mt-1">Payez en espèces uniquement lorsque vous recevez votre colis.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-roseSoft">
-          <div class="text-2xl mb-2">🌿</div>
-          <h3 class="font-bold text-bordeaux text-base">Coopérative Kelaat M'gouna</h3>
-          <p class="text-xs text-gray-600 mt-1">Produits 100% authentiques, purs et certifiés sans produits chimiques.</p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-3xl border border-roseSoft shadow-2xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 text-sm">★★★★★</span>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">Achat vérifié</span>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">"L'eau de rose première distillation et le Balm Lips Aker Fassi sont incroyables ! Livraison reçue à Casablanca en moins de 24h."</p>
+            <p class="text-xs font-bold text-bordeaux pt-2 border-t border-gray-100">Salma B. — Casablanca</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-roseSoft shadow-2xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 text-sm">★★★★★</span>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">Achat vérifié</span>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">"J'ai pris le shampoing à la rose et le mélange 10 huiles : dès la 2ème semaine la chute de cheveux a nettement diminué. Je recommande !"</p>
+            <p class="text-xs font-bold text-bordeaux pt-2 border-t border-gray-100">Khadija M. — Rabat</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-roseSoft shadow-2xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 text-sm">★★★★★</span>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">Achat vérifié</span>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">"La Tabrima à la rose et le Ghassoul Aker Fassi laissent la peau toute douce et parfumée après le hammam. Service client très sérieux."</p>
+            <p class="text-xs font-bold text-bordeaux pt-2 border-t border-gray-100">Imane K. — Marrakech</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ===================================================================== -->
-  <!-- VUE 2 : PAGE PRODUIT DEDICACEE (STRUCTURE STYLE SELLCOD - CONVERSION) -->
+  <!-- VUE 2 : PAGE PRODUIT DEDICACEE (NUMERO DE TELEPHONE UNIQUEMENT)       -->
   <!-- ===================================================================== -->
   <section id="product-detail-view" class="hidden bg-white pb-16">
     <div class="bg-rosePoudre border-b border-roseSoft">
@@ -246,30 +316,30 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
       <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-        <!-- COLONNE GAUCHE : VISUEL PRODUIT -->
+        <!-- VISUEL PRODUIT -->
         <div class="lg:col-span-6 space-y-4">
-          <div class="relative aspect-square rounded-3xl overflow-hidden bg-rosePoudre border border-roseSoft shadow-sm">
+          <div class="relative aspect-square rounded-3xl overflow-hidden bg-rosePoudre border border-roseSoft shadow-md">
             <img id="pd-img" src="" alt="" class="w-full h-full object-cover" />
             <span id="pd-badge" class="absolute top-4 left-4 bg-akerFassi text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow"></span>
           </div>
 
           <div class="grid grid-cols-3 gap-2.5 text-center">
-            <div class="bg-rosePoudre/70 p-3 rounded-2xl border border-roseSoft">
+            <div class="bg-rosePoudre/80 p-3 rounded-2xl border border-roseSoft">
               <p class="text-xs font-bold text-bordeaux">🌿 100% Naturel</p>
               <p class="text-[11px] text-gray-500">Kelaat M'gouna</p>
             </div>
-            <div class="bg-rosePoudre/70 p-3 rounded-2xl border border-roseSoft">
+            <div class="bg-rosePoudre/80 p-3 rounded-2xl border border-roseSoft">
               <p class="text-xs font-bold text-bordeaux">💵 Cash Livraison</p>
-              <p class="text-[11px] text-gray-500">Zéro risque</p>
+              <p class="text-[11px] text-gray-500">Paiement à réception</p>
             </div>
-            <div class="bg-rosePoudre/70 p-3 rounded-2xl border border-roseSoft">
+            <div class="bg-rosePoudre/80 p-3 rounded-2xl border border-roseSoft">
               <p class="text-xs font-bold text-bordeaux">🚚 24h – 48h</p>
               <p class="text-[11px] text-gray-500">Partout au Maroc</p>
             </div>
           </div>
         </div>
 
-        <!-- COLONNE DROITE : INFOS + FORMULAIRE COD DIRECT (STYLE SELLCOD) -->
+        <!-- COMMANDE RAPIDE : NUMERO DE TELEPHONE UNIQUEMENT -->
         <div class="lg:col-span-6 space-y-5">
           <div>
             <div class="flex items-center gap-2 mb-1.5">
@@ -283,21 +353,22 @@
           <div class="flex items-baseline gap-3 pb-2 border-b border-gray-100">
             <span id="pd-price" class="text-3xl sm:text-4xl font-extrabold text-akerFassi"></span>
             <span id="pd-old-price" class="text-lg text-gray-400 line-through"></span>
-            <span class="text-xs font-bold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full">Offre Spéciale Maroc</span>
+            <span class="text-xs font-bold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full">Promo Limitée</span>
           </div>
 
-          <!-- FORMULAIRE DE COMMANDE RAPIDE COD (NUMÉRO + VILLE UNIQUEMENT) -->
-          <div class="bg-rosePoudre border-2 border-akerFassi/30 rounded-3xl p-5 sm:p-6 shadow-md space-y-4">
+          <!-- BOX DE COMMANDE ULTRA-RAPIDE (NUMERO SEULEMENT) -->
+          <div class="bg-rosePoudre border-2 border-akerFassi/35 rounded-3xl p-5 sm:p-6 shadow-md space-y-4">
             <div class="flex items-center justify-between border-b border-roseSoft pb-3">
               <div>
-                <h2 class="text-base sm:text-lg font-extrabold text-bordeaux">Commander Maintenant (COD)</h2>
-                <p class="text-xs text-gray-600">Remplissez votre numéro et votre ville pour valider sur WhatsApp</p>
+                <h2 class="text-base sm:text-lg font-extrabold text-bordeaux">Commander en 1 Clic (COD)</h2>
+                <p class="text-xs text-gray-600">Entrez simplement votre numéro pour confirmer sur WhatsApp</p>
               </div>
-              <span class="text-2xl">🇲🇦</span>
+              <span class="text-2xl">📲</span>
             </div>
 
+            <!-- Quantité -->
             <div class="flex items-center justify-between bg-white px-4 py-2.5 rounded-xl border border-roseSoft">
-              <span class="text-xs sm:text-sm font-bold text-bordeaux">Quantité souhaitée :</span>
+              <span class="text-xs sm:text-sm font-bold text-bordeaux">Quantité :</span>
               <div class="flex items-center gap-4">
                 <button type="button" onclick="changePdQty(-1)" class="w-8 h-8 rounded-full bg-rosePoudre hover:bg-roseSoft font-bold text-bordeaux text-lg flex items-center justify-center">-</button>
                 <span id="pd-qty" class="text-base font-extrabold text-bordeaux">1</span>
@@ -305,46 +376,13 @@
               </div>
             </div>
 
-            <div class="space-y-3">
-              <div>
-                <label class="block text-xs font-bold text-bordeaux mb-1">Numéro de Téléphone (WhatsApp / Appel) *</label>
-                <input id="pd-phone" type="tel" placeholder="Ex : 06 12 34 56 78" class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-sm font-medium focus:outline-none focus:border-akerFassi focus:ring-2 focus:ring-akerFassi/20" />
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-bordeaux mb-1">Votre Ville au Maroc *</label>
-                <select id="pd-city" class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-sm font-medium focus:outline-none focus:border-akerFassi focus:ring-2 focus:ring-akerFassi/20">
-                  <option value="">-- Sélectionnez votre ville --</option>
-                  <option value="Casablanca">Casablanca</option>
-                  <option value="Rabat">Rabat</option>
-                  <option value="Marrakech">Marrakech</option>
-                  <option value="Fès">Fès</option>
-                  <option value="Tanger">Tanger</option>
-                  <option value="Agadir">Agadir</option>
-                  <option value="Meknès">Meknès</option>
-                  <option value="Oujda">Oujda</option>
-                  <option value="Kénitra">Kénitra</option>
-                  <option value="Tétouan">Tétouan</option>
-                  <option value="Salé">Salé</option>
-                  <option value="Témara">Témara</option>
-                  <option value="Mohammédia">Mohammédia</option>
-                  <option value="El Jadida">El Jadida</option>
-                  <option value="Béni Mellal">Béni Mellal</option>
-                  <option value="Nador">Nador</option>
-                  <option value="Taza">Taza</option>
-                  <option value="Khouribga">Khouribga</option>
-                  <option value="Settat">Settat</option>
-                  <option value="Safi">Safi</option>
-                  <option value="Essaouira">Essaouira</option>
-                  <option value="Ouarzazate / Kelaat M'gouna">Ouarzazate / Kelaat M'gouna</option>
-                  <option value="Errachidia">Errachidia</option>
-                  <option value="Laâyoune">Laâyoune</option>
-                  <option value="Dakhla">Dakhla</option>
-                  <option value="Autre ville au Maroc">Autre ville au Maroc</option>
-                </select>
-              </div>
+            <!-- Champ Numéro Uniquement -->
+            <div>
+              <label class="block text-xs font-bold text-bordeaux mb-1.5">Votre Numéro de Téléphone (WhatsApp / Appel) *</label>
+              <input id="pd-phone" type="tel" placeholder="Ex : 06 12 34 56 78" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-white text-base font-semibold focus:outline-none focus:border-akerFassi focus:ring-2 focus:ring-akerFassi/20" />
             </div>
 
+            <!-- Récapitulatif -->
             <div class="bg-white p-3.5 rounded-xl border border-roseSoft space-y-1.5 text-xs">
               <div class="flex justify-between text-gray-600">
                 <span>Sous-total produit :</span>
@@ -360,15 +398,17 @@
               </div>
             </div>
 
+            <!-- Bouton WhatsApp -->
             <button type="button" onclick="submitSellCodWhatsApp()" class="btn-pulse w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 px-6 rounded-2xl shadow-lg transition text-base flex items-center justify-center gap-2.5">
-              <span>📲 Commander sur WhatsApp (Paiement à la livraison)</span>
+              <span>📲 Commander sur WhatsApp</span>
             </button>
 
             <button type="button" onclick="addCurrentPdToCart()" class="w-full bg-white hover:bg-roseSoft text-bordeaux border border-bordeaux/25 font-bold py-3 rounded-xl text-xs transition">
-              + Ajouter au panier (si vous voulez ajouter d'autres produits)
+              + Ajouter au panier (pour commander plusieurs produits)
             </button>
           </div>
 
+          <!-- Description -->
           <div class="pt-4 space-y-3">
             <h3 class="font-bold text-bordeaux text-base border-b border-gray-100 pb-2">Description & Bienfaits</h3>
             <p id="pd-desc-fr" class="text-sm text-gray-700 leading-relaxed"></p>
@@ -377,28 +417,29 @@
         </div>
       </div>
 
+      <!-- Produits Similaires -->
       <div class="mt-16 pt-12 border-t border-gray-100">
-        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-bordeaux mb-6">Vous aimerez aussi</h3>
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-bordeaux mb-6">Complétez Votre Routine</h3>
         <div id="related-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-bordeauxDark text-roseSoft py-10">
+  <footer class="bg-bordeauxDark text-roseSoft py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="text-center sm:text-left">
         <span class="font-serif text-2xl font-bold text-white">NOUR•IA</span>
         <span class="font-arabic text-amber-200 mr-2">نورية</span>
-        <p class="text-xs text-roseSoft/80 mt-1">Cosmétiques Naturels de Kelaat M'gouna • Livraison Partout au Maroc 🇲🇦</p>
+        <p class="text-xs text-roseSoft/80 mt-1">Coopérative Beauty Rose • Kelaat M'gouna • Livraison Partout au Maroc 🇲🇦</p>
       </div>
-      <a href="https://wa.me/212776183941" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition">
+      <a href="https://wa.me/212776183941" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold px-6 py-3 rounded-full transition shadow">
         WhatsApp : 07 76 18 39 41
       </a>
     </div>
   </footer>
 
-  <!-- PANIER LATERAL -->
+  <!-- PANIER LATERAL (NUMERO UNIQUEMENT) -->
   <div id="cart-modal" class="fixed inset-0 z-50 hidden">
     <div onclick="toggleCart()" class="absolute inset-0 bg-black/55 backdrop-blur-xs"></div>
     <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
@@ -409,7 +450,7 @@
 
       <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
 
-      <div class="p-5 border-t border-roseSoft bg-rosePoudre space-y-2.5">
+      <div class="p-5 border-t border-roseSoft bg-rosePoudre space-y-3">
         <div class="flex justify-between text-xs text-gray-600">
           <span>Livraison Maroc</span>
           <span id="shipping-cost" class="font-bold text-bordeaux">35 DH (Gratuite dès 249 DH)</span>
@@ -418,8 +459,7 @@
           <span>Total à payer (COD)</span>
           <span id="cart-total">0 DH</span>
         </div>
-        <input id="cart-phone" type="tel" placeholder="Votre Numéro Téléphone (06/07...) *" class="w-full px-3.5 py-2.5 rounded-xl border border-roseSoft text-sm bg-white" />
-        <input id="cart-city" type="text" placeholder="Votre Ville au Maroc *" class="w-full px-3.5 py-2.5 rounded-xl border border-roseSoft text-sm bg-white" />
+        <input id="cart-phone" type="tel" placeholder="Votre Numéro Téléphone (06 / 07...) *" class="w-full px-4 py-3 rounded-xl border border-roseSoft text-sm font-semibold bg-white" />
         <button onclick="checkoutCartWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-full shadow-md transition text-sm">
           📲 Valider le panier sur WhatsApp
         </button>
@@ -435,7 +475,18 @@
   <script>
     const WHATSAPP_NUMBER = "212776183941";
 
-    // Images de secours si un fichier local n'est pas encore uploadé
+    // Compteur promo dynamique (style Palmarosa)
+    let secondsLeft = 4 * 3600 + 59 * 60 + 59;
+    setInterval(() => {
+      if (secondsLeft > 0) secondsLeft--;
+      const h = String(Math.floor(secondsLeft / 3600)).padStart(2, '0');
+      const m = String(Math.floor((secondsLeft % 3600) / 60)).padStart(2, '0');
+      const s = String(secondsLeft % 60).padStart(2, '0');
+      const el = document.getElementById("promo-timer");
+      if (el) el.innerText = `${h}:${m}:${s}`;
+    }, 1000);
+
+    // Images de secours si le fichier local ref-XX.jpg n'est pas encore uploadé
     const FALLBACK = {
       rose: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=700&q=80",
       oil: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=700&q=80",
@@ -563,22 +614,22 @@
       const container = document.getElementById("packs-grid");
       container.innerHTML = packs.map(p => `
         <div onclick="openProductPage('${p.id}', true)" class="cursor-pointer bg-white rounded-3xl overflow-hidden border border-roseSoft shadow-sm product-card flex flex-col">
-          <div class="relative aspect-[4/3] bg-rosePoudre">
-            <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallback}';" alt="${p.name}" class="w-full h-full object-cover" />
-            <span class="absolute top-3 left-3 bg-akerFassi text-white text-xs font-bold px-3 py-1 rounded-full shadow">${p.badge}</span>
+          <div class="relative aspect-[4/3] bg-rosePoudre overflow-hidden">
+            <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallback}';" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+            <span class="absolute top-3.5 left-3.5 bg-akerFassi text-white text-xs font-bold px-3.5 py-1 rounded-full shadow">${p.badge}</span>
           </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
+          <div class="p-6 flex-1 flex flex-col justify-between">
             <div>
               <p class="font-arabic text-xs text-akerFassi font-bold">${p.ar}</p>
               <h3 class="font-serif text-2xl font-bold text-bordeaux mt-0.5">${p.name}</h3>
               <p class="text-xs text-gray-600 mt-2 line-clamp-2">${p.descFr}</p>
             </div>
-            <div class="mt-5 pt-3 border-t border-roseSoft flex items-center justify-between">
+            <div class="mt-5 pt-4 border-t border-roseSoft flex items-center justify-between">
               <div>
                 <span class="text-xs text-gray-400 line-through">${p.oldPrice} DH</span>
-                <p class="text-xl font-extrabold text-akerFassi">${p.price} DH</p>
+                <p class="text-2xl font-extrabold text-akerFassi">${p.price} DH</p>
               </div>
-              <span class="bg-bordeaux text-white text-xs font-bold px-4 py-2.5 rounded-full">
+              <span class="bg-bordeaux hover:bg-akerFassi text-white text-xs font-bold px-5 py-3 rounded-full transition shadow-2xs">
                 Commander &rarr;
               </span>
             </div>
@@ -601,39 +652,42 @@
         return;
       }
 
-      grid.innerHTML = filtered.map(item => `
-        <div onclick="openProductPage('${item.id}', false)" class="cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col">
+      grid.innerHTML = filtered.map(item => {
+        const discount = Math.round(((item.oldPrice - item.price) / item.oldPrice) * 100);
+        return `
+        <div onclick="openProductPage('${item.id}', false)" class="cursor-pointer bg-white rounded-3xl overflow-hidden border border-roseSoft/80 product-card flex flex-col">
           <div class="relative aspect-square overflow-hidden bg-rosePoudre">
-            <img src="${item.img}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${item.name}" class="w-full h-full object-cover" />
-            <span class="absolute top-2.5 left-2.5 bg-white/95 text-bordeaux text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-2xs">${item.id}</span>
+            <img src="${item.img}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+            <span class="absolute top-3 left-3 bg-akerFassi text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-2xs">-${discount}%</span>
+            <span class="absolute top-3 right-3 bg-white/95 text-bordeaux text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-2xs">${item.id}</span>
           </div>
           <div class="p-4 flex-1 flex flex-col justify-between">
             <div>
               <p class="font-arabic text-[11px] text-akerFassi font-bold">${item.ar}</p>
               <h3 class="font-bold text-gray-900 text-sm sm:text-base leading-snug mt-0.5 line-clamp-2">${item.name}</h3>
             </div>
-            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+            <div class="mt-4 pt-3 border-t border-roseSoft/70 flex items-center justify-between">
               <div>
                 <span class="text-xs text-gray-400 line-through block">${item.oldPrice} DH</span>
                 <span class="font-extrabold text-lg text-bordeaux">${item.price} DH</span>
               </div>
-              <span class="bg-rosePoudre hover:bg-bordeaux hover:text-white text-bordeaux font-bold text-xs px-3.5 py-2 rounded-full transition">
-                Acheter
+              <span class="bg-bordeaux hover:bg-akerFassi text-white font-bold text-xs px-4 py-2.5 rounded-full transition">
+                Commander
               </span>
             </div>
           </div>
         </div>
-      `).join("");
+      `}).join("");
     }
 
     function filterCategory(cat, btnElement) {
       currentCategory = cat;
       document.querySelectorAll(".cat-btn").forEach(btn => {
         btn.classList.remove("bg-bordeaux", "text-white");
-        btn.classList.add("bg-gray-100", "text-gray-700");
+        btn.classList.add("bg-rosePoudre", "text-bordeaux");
       });
       if (btnElement) {
-        btnElement.classList.remove("bg-gray-100", "text-gray-700");
+        btnElement.classList.remove("bg-rosePoudre", "text-bordeaux");
         btnElement.classList.add("bg-bordeaux", "text-white");
       }
       renderProducts();
@@ -643,7 +697,7 @@
       currentCategory = cat;
       document.querySelectorAll(".cat-btn").forEach(btn => {
         btn.classList.remove("bg-bordeaux", "text-white");
-        btn.classList.add("bg-gray-100", "text-gray-700");
+        btn.classList.add("bg-rosePoudre", "text-bordeaux");
       });
       renderProducts();
       document.getElementById("catalogue-section").scrollIntoView({ behavior: "smooth" });
@@ -656,7 +710,7 @@
       pdQty = 1;
       document.getElementById("pd-breadcrumb-cat").innerText = activeProduct.catName;
       document.getElementById("pd-breadcrumb-name").innerText = activeProduct.name;
-      
+
       const pdImg = document.getElementById("pd-img");
       pdImg.onerror = function() { this.onerror = null; this.src = activeProduct.fallback; };
       pdImg.src = activeProduct.img;
@@ -703,7 +757,7 @@
     function renderRelatedProducts(current) {
       const related = products.filter(p => p.id !== current.id && (p.cat === current.cat || current.cat === undefined)).slice(0, 4);
       document.getElementById("related-products-grid").innerHTML = related.map(item => `
-        <div onclick="openProductPage('${item.id}', false)" class="cursor-pointer bg-rosePoudre/40 rounded-2xl overflow-hidden border border-roseSoft product-card flex flex-col">
+        <div onclick="openProductPage('${item.id}', false)" class="cursor-pointer bg-rosePoudre/50 rounded-2xl overflow-hidden border border-roseSoft product-card flex flex-col">
           <div class="aspect-square overflow-hidden bg-white">
             <img src="${item.img}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${item.name}" class="w-full h-full object-cover" />
           </div>
@@ -718,16 +772,10 @@
 
     function submitSellCodWhatsApp() {
       const phone = document.getElementById("pd-phone").value.trim();
-      const city = document.getElementById("pd-city").value.trim();
 
       if (!phone || phone.length < 8) {
         alert("⚠️ Merci d'entrer votre numéro de téléphone (Ex : 06 12 34 56 78).");
         document.getElementById("pd-phone").focus();
-        return;
-      }
-      if (!city) {
-        alert("⚠️ Merci de choisir votre ville au Maroc.");
-        document.getElementById("pd-city").focus();
         return;
       }
 
@@ -745,7 +793,6 @@
 💰 *TOTAL À PAYER (COD) :* *${total} DH*
 ━━━━━━━━━━━━━━━━━━━━━━
 📞 *Téléphone Client :* ${phone}
-📍 *Ville (Maroc) :* ${city}
 ━━━━━━━━━━━━━━━━━━━━━━
 ✅ _Paiement en espèces à la livraison._`;
 
@@ -814,10 +861,8 @@
     function checkoutCartWhatsApp() {
       if (cart.length === 0) return alert("Votre panier est vide !");
       const phone = document.getElementById("cart-phone").value.trim();
-      const city = document.getElementById("cart-city").value.trim();
 
       if (!phone || phone.length < 8) return alert("⚠️ Merci d'entrer votre numéro de téléphone.");
-      if (!city) return alert("⚠️ Merci d'entrer votre ville au Maroc.");
 
       let subtotal = 0;
       let lines = cart.map(i => {
@@ -837,7 +882,6 @@ ${lines}
 💰 *TOTAL À PAYER (COD) :* *${total} DH*
 ━━━━━━━━━━━━━━━━━━━━━━
 📞 *Téléphone Client :* ${phone}
-📍 *Ville (Maroc) :* ${city}
 ━━━━━━━━━━━━━━━━━━━━━━
 ✅ _Paiement en espèces à la livraison._`;
 
