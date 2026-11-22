@@ -70,7 +70,7 @@
 
       <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-oliveBio/80">
         <button onclick="showHomeView()" class="hover:text-kasbahTerra transition">Accueil</button>
-        <a href="#heritage-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Kelaat M'gouna</a>
+        <a href="#heritage-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Savoir-Faire</a>
         <a href="#categories-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Nos Univers</a>
         <a href="#packs-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Coffrets Bio</a>
         <a href="#catalogue-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Catalogue (53)</a>
@@ -87,61 +87,70 @@
   </header>
 
   <!-- ===================================================================== -->
-  <!-- VUE 1 : PAGE D'ACCUEIL BIO & PATRIMOINE KELAAT M'GOUNA                -->
+  <!-- VUE 1 : PAGE D'ACCUEIL AVEC VOTRE IMAGE KASBAH & ROSES EN ARRIERE-PLAN -->
   <!-- ===================================================================== -->
   <main id="home-view">
 
-    <!-- HERO BANNER AVEC PAYSAGE HISTORIQUE DE LA VALLEE DES ROSES -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-creamBg via-sandSoft/50 to-creamBg border-b border-sandSoft">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 grid lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-sandSoft shadow-2xs">
-            <span class="w-2 h-2 rounded-full bg-oliveBio"></span>
-            <span class="text-xs font-bold uppercase tracking-widest text-oliveBio">Vallée des Roses • Kelaat M'gouna 🇲🇦</span>
+    <!-- HERO BANNER FULL BACKGROUND (hero-kasbah.jpg) + PRODUITS PHARES (hero-produits.jpg) -->
+    <section class="relative overflow-hidden border-b border-sandSoft">
+      <!-- Image 3 en arrière-plan -->
+      <img src="hero-kasbah.jpg" alt="Récolte des roses et Kasbah de Kelaat M'gouna" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <!-- Voile sombre élégant pour que le texte soit 100% lisible -->
+      <div class="absolute inset-0 bg-gradient-to-r from-oliveDark/90 via-oliveDark/75 to-oliveDark/45"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-24 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left text-white">
+          <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/25">
+            <span class="w-2 h-2 rounded-full bg-goldSahara"></span>
+            <span class="text-xs font-bold uppercase tracking-widest text-creamBg">Vallée des Roses • Kelaat M'gouna 🇲🇦</span>
           </div>
 
-          <h1 class="font-serif text-4xl sm:text-6xl lg:text-[62px] font-bold text-oliveBio leading-[1.06]">
-            L'Héritage Bio des <span class="italic text-kasbahTerra">Kasbahs</span> & de la Rose de Damas
+          <h1 class="font-serif text-4xl sm:text-6xl lg:text-[62px] font-bold text-white leading-[1.06] drop-shadow-sm">
+            L'Héritage Bio des <span class="italic text-goldSahara">Kasbahs</span> & de la Rose de Damas
           </h1>
 
-          <p class="text-gray-700 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Puisés au cœur des oasis historiques de Kelaat M'gouna : eau de rose première distillation, huiles végétales vierges, Aker Fassi et rituels de beauté 100% authentiques.
+          <p class="text-creamBg/90 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Puisés au cœur des oasis historiques de Kelaat M'gouna : eau de rose première distillation, huiles végétales vierges, Tabrima, Aker Fassi et soins 100% purs récoltés à l'aube.
           </p>
 
           <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-            <a href="#catalogue-section" class="bg-oliveBio hover:bg-kasbahTerra text-white font-bold px-8 py-4 rounded-full shadow-lg transition text-sm sm:text-base flex items-center gap-2">
+            <a href="#catalogue-section" class="bg-kasbahTerra hover:bg-goldSahara hover:text-oliveDark text-white font-bold px-8 py-4 rounded-full shadow-xl transition text-sm sm:text-base flex items-center gap-2">
               <span>Découvrir les Soins Bio</span>
               <span>&rarr;</span>
             </a>
-            <a href="#heritage-section" class="bg-white hover:bg-sandSoft text-oliveBio border border-oliveBio/25 font-bold px-8 py-4 rounded-full transition text-sm sm:text-base">
-              Notre Histoire & Terroir
+            <a href="#heritage-section" class="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 font-bold px-8 py-4 rounded-full transition text-sm sm:text-base">
+              Notre Savoir-Faire
             </a>
           </div>
 
-          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm font-semibold text-oliveBio/90">
+          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm font-semibold text-creamBg">
             <div class="flex items-center gap-1.5">
-              <span class="text-amber-500 text-base">★★★★★</span>
+              <span class="text-goldSahara text-base">★★★★★</span>
               <span>4.9/5 (+1 200 clientes conquises)</span>
             </div>
-            <span class="hidden sm:inline text-gray-300">|</span>
+            <span class="hidden sm:inline text-white/30">|</span>
             <span>🌿 100% Pure Origine Maroc</span>
-            <span class="hidden sm:inline text-gray-300">|</span>
+            <span class="hidden sm:inline text-white/30">|</span>
             <span>💵 Cash à la livraison</span>
           </div>
         </div>
 
-        <!-- Visuel Historique Kasbah & Vallée des Roses -->
+        <!-- Carte Produits Phares (Image 1 : hero-produits.jpg) -->
         <div class="lg:col-span-5 relative">
-          <div class="relative aspect-[4/5] max-w-md mx-auto rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white bg-sandSoft">
-            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=950&q=85" alt="Kasbah historique de Kelaat M'gouna et Vallée des Roses" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-oliveDark/80 via-oliveDark/15 to-transparent"></div>
-            <div class="absolute top-4 left-4 bg-oliveBio/90 backdrop-blur-md text-creamBg text-xs font-bold px-3.5 py-1.5 rounded-full">
-              🏰 Terroir Historique • 1 400m d'altitude
+          <div class="relative aspect-[4/5] max-w-md mx-auto rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/85 bg-creamBg">
+            <img src="hero-produits.jpg" onerror="this.onerror=null;this.src='ref-40.jpg';" alt="Tabrima Rose, Parfum Mille Roses et Savon Lait d'Ânesse" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-oliveDark/75 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4 bg-kasbahTerra text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow">
+              ✨ Best-Sellers Coopérative
             </div>
-            <div class="absolute bottom-5 left-5 right-5 bg-creamBg/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-sandSoft">
-              <p class="font-arabic text-xs text-kasbahTerra font-bold">تعاونية بيوتي روز • قلعة مكونة</p>
-              <p class="font-serif text-lg font-bold text-oliveBio">Récolte Artisanale & Distillation Pure</p>
-              <p class="text-xs text-gray-600 mt-0.5">De nos coopératives féminines directement chez vous.</p>
+            <div class="absolute bottom-5 left-5 right-5 bg-creamBg/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-sandSoft flex items-center justify-between gap-2">
+              <div>
+                <p class="font-arabic text-xs text-kasbahTerra font-bold">تبريمة الورد • عطر ألف وردة</p>
+                <p class="font-serif text-lg font-bold text-oliveBio leading-tight">Rituel Beauté Royale</p>
+              </div>
+              <button onclick="openProductPage('PACK-02', true)" class="shrink-0 bg-oliveBio hover:bg-kasbahTerra text-white text-xs font-bold px-4 py-2.5 rounded-full transition">
+                Voir le Pack
+              </button>
             </div>
           </div>
         </div>
@@ -164,48 +173,47 @@
       </div>
     </div>
 
-    <!-- SECTION PATRIMOINE & IMAGES HISTORIQUES DE KELAAT M'GOUNA -->
+    <!-- SECTION SAVOIR-FAIRE & DISTILLATION (AVEC VOS VRAIES IMAGES UNIQUEMENT) -->
     <section id="heritage-section" class="py-16 bg-white border-b border-sandSoft">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Patrimoine & Savoir-Faire Ancestral</span>
-          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1">Kelaat M'gouna, La Citadelle des Roses</h2>
-          <p class="text-gray-600 text-sm sm:text-base mt-3">
-            Nichée au pied du Haut Atlas, Kelaat M'gouna abrite des kasbahs séculaires en pisé et la plus célèbre vallée de roses du Maroc. Chaque flacon préserve ce patrimoine vivant.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="group rounded-3xl overflow-hidden bg-creamBg border border-sandSoft shadow-2xs">
-            <div class="aspect-[4/3] overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80" alt="Kasbahs historiques en terre de Kelaat M'gouna" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-            </div>
-            <div class="p-5">
-              <span class="text-[11px] font-bold uppercase text-kasbahTerra">Architecture & Histoire</span>
-              <h3 class="font-serif text-2xl font-bold text-oliveBio mt-1">Les Kasbahs de la Vallée du Dadès</h3>
-              <p class="text-xs text-gray-600 mt-2 leading-relaxed">Des forteresses historiques en terre ocre qui veillent depuis des siècles sur les jardins irrigués de la vallée.</p>
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <!-- Image 2 : Distillation traditionnelle en alambic de cuivre (distillation-rose.jpg) -->
+          <div class="lg:col-span-6">
+            <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-creamBg bg-sandSoft">
+              <img src="distillation-rose.jpg" onerror="this.onerror=null;this.src='ref-03.jpg';" alt="Distillation traditionnelle de la Rose de Damas en alambic de cuivre" class="w-full h-full object-cover" />
             </div>
           </div>
 
-          <div class="group rounded-3xl overflow-hidden bg-creamBg border border-sandSoft shadow-2xs">
-            <div class="aspect-[4/3] overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" alt="Roses de Damas de Kelaat M'gouna" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <!-- Texte Patrimoine & Savoir-Faire -->
+          <div class="lg:col-span-6 space-y-6">
+            <div>
+              <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Patrimoine & Savoir-Faire Ancestral</span>
+              <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1 leading-tight">
+                De la Cueillette à l'Aube jusqu'à la Distillation Pure
+              </h2>
             </div>
-            <div class="p-5">
-              <span class="text-[11px] font-bold uppercase text-roseValley">Cueillette à l'Aube</span>
-              <h3 class="font-serif text-2xl font-bold text-oliveBio mt-1">La Rose Centifolia & Damascena</h3>
-              <p class="text-xs text-gray-600 mt-2 leading-relaxed">Cueillies à la main au lever du soleil en mai avant que la chaleur n'évapore leurs précieuses huiles essentielles.</p>
-            </div>
-          </div>
 
-          <div class="group rounded-3xl overflow-hidden bg-creamBg border border-sandSoft shadow-2xs">
-            <div class="aspect-[4/3] overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=800&q=80" alt="Oasis et palmeraies du Sud Marocain" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-            </div>
-            <div class="p-5">
-              <span class="text-[11px] font-bold uppercase text-oliveBio">Coopérative Féminine</span>
-              <h3 class="font-serif text-2xl font-bold text-oliveBio mt-1">Extraction Pure & Éthique</h3>
-              <p class="text-xs text-gray-600 mt-2 leading-relaxed">Soutien direct aux femmes rurales de Kelaat M'gouna avec des procédés 100% naturels, sans solvants chimiques.</p>
+            <div class="space-y-4">
+              <div class="bg-creamBg p-4 rounded-2xl border border-sandSoft">
+                <h3 class="font-serif text-xl font-bold text-oliveBio">🏰 Les Kasbahs de la Vallée du Dadès</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mt-1 leading-relaxed">
+                  Des forteresses historiques en terre ocre qui veillent depuis des siècles sur les jardins irrigués de la vallée de Kelaat M'gouna.
+                </p>
+              </div>
+
+              <div class="bg-creamBg p-4 rounded-2xl border border-sandSoft">
+                <h3 class="font-serif text-xl font-bold text-roseValley">🌹 Roses de Damas de Kelaat M'gouna • Cueillette à l'Aube</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mt-1 leading-relaxed">
+                  <strong>La Rose Centifolia & Damascena :</strong> Cueillies à la main au lever du soleil en mai avant que la chaleur n'évapore leurs précieuses huiles essentielles, puis distillées dans des alambics en cuivre traditionnel.
+                </p>
+              </div>
+
+              <div class="bg-creamBg p-4 rounded-2xl border border-sandSoft">
+                <h3 class="font-serif text-xl font-bold text-kasbahTerra">🌴 Oasis et Palmeraies du Sud Marocain • Coopérative Féminine</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mt-1 leading-relaxed">
+                  <strong>Extraction Pure & Éthique :</strong> Soutien direct aux femmes rurales de Kelaat M'gouna pour vous garantir des soins 100% naturels, purs et sans aucun additif chimique.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -559,16 +567,16 @@
       if (el) el.innerText = `${h}:${m}:${s}`;
     }, 1000);
 
-    // Images de secours
+    // Images de secours si ref-XX.jpg n'est pas encore uploadé
     const FALLBACK = {
-      rose: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=700&q=80",
-      oil: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=700&q=80",
-      cream: "https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?auto=format&fit=crop&w=700&q=80",
-      butter: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=700&q=80",
-      hair: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=700&q=80",
-      hammam: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=80",
-      soap: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=700&q=80",
-      perfume: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80"
+      rose: "hero-produits.jpg",
+      oil: "distillation-rose.jpg",
+      cream: "hero-produits.jpg",
+      butter: "hero-produits.jpg",
+      hair: "distillation-rose.jpg",
+      hammam: "hero-produits.jpg",
+      soap: "hero-produits.jpg",
+      perfume: "hero-produits.jpg"
     };
 
     const packs = [
@@ -583,7 +591,7 @@
         descFr: "Le rituel complet visage de la Vallée des Roses : Eau de Rose 1ère Distillation Bio 250ml + Huile de Pépins de Figue de Barbarie + Crème Vitamine E & Huile de Rose + Balm Lips Aker Fassi.",
         descAr: "باك متكامل لإشراقة الوجه من قلعة مكونة: ماء الورد التقطير الأول بيو 250 مل + زيت التين الشوكي + كريم فيتامين E وزيت الورد + مورد الخدود والشفاه بالعكر الفاسي.",
         img: "ref-03.jpg",
-        fallback: FALLBACK.rose
+        fallback: "distillation-rose.jpg"
       },
       {
         id: "PACK-02",
@@ -593,10 +601,10 @@
         badge: "Éclat Corps • -22%",
         oldPrice: 180,
         price: 139,
-        descFr: "Tout le savoir-faire du hammam marocain : Tabrima à la Rose & Herbes + Ghassoul Aker Fassi 100ml + Duo Aker Fassi & Nila Sahraoui + Savon au Lait d'Ânesse + Crème Pieds Aker Fassi.",
-        descAr: "مجموعة الحمام المغربي الأصيل: تبريمة بالورد والأعشاب + غاسول العكر الفاسي + العكر الفاسي والنيلة الصحراوية + صابون حليب الأتان + كريم العكر الفاسي للقدمين.",
-        img: "ref-40.jpg",
-        fallback: FALLBACK.hammam
+        descFr: "Tout le savoir-faire du hammam marocain : Tabrima à la Rose & Herbes + Ghassoul Aker Fassi 100ml + Duo Aker Fassi & Nila Sahraoui + Savon au Lait d'Ânesse + Parfum Mille Roses.",
+        descAr: "مجموعة الحمام المغربي الأصيل: تبريمة بالورد والأعشاب + غاسول العكر الفاسي + العكر الفاسي والنيلة الصحراوية + صابون حليب الأتان + عطر ألف وردة.",
+        img: "hero-produits.jpg",
+        fallback: "ref-40.jpg"
       },
       {
         id: "PACK-03",
@@ -609,7 +617,7 @@
         descFr: "Fortification capillaire et parfum oriental : Shampoing Antichute à la Rose 200ml + Mélange 10 Huiles aux Plantes + Huile de Sidr 100ml + Makhmariya Amira Al Arab 50g.",
         descAr: "عناية متكاملة لتقوية الشعر وتعطير الجسم: شامبو الورد ضد التساقط + خلطة 10 زيوت بالأعشاب + زيت السدر الطبيعي + مخمرية أميرة العرب.",
         img: "ref-23.jpg",
-        fallback: FALLBACK.hair
+        fallback: "hero-produits.jpg"
       }
     ];
 
