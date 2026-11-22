@@ -1,1 +1,554 @@
 
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOUR•IA | نورية — Trésors Bio de Kelaat M'gouna & Vallée des Roses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            creamBg: '#FAF6F0',
+            sandSoft: '#EFE7DA',
+            oliveBio: '#234236',
+            oliveDark: '#162B23',
+            kasbahTerra: '#A84B32',
+            roseValley: '#C45B6C',
+            goldSahara: '#C59B5F'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['"Noto Kufi Arabic"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      color: #1C2621;
+      background-color: transparent;
+    }
+
+    /* Khalfia tabta f chacha (bhal écran téléphone) l site kamel */
+    .site-wallpaper {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .site-wallpaper-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 14, 10, 0.45);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .product-card { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px -12px rgba(35, 66, 54, 0.16); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+    @keyframes pulse-btn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .btn-pulse { animation: pulse-btn 2s infinite; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Khalfia tabta f chacha l site kamel -->
+  <img src="bg-site.jpg" alt="Kelaat M'gouna" class="site-wallpaper" />
+  <div class="site-wallpaper-overlay"></div>
+
+  <!-- TOP BAR PROMO + COMPTEUR -->
+  <div class="bg-oliveDark text-creamBg text-xs py-2.5 px-4 text-center font-medium tracking-wide flex flex-wrap items-center justify-center gap-2">
+    <span>🌿 Direct Coopérative Kelaat M'gouna • Paiement à la Livraison (COD) Partout au Maroc •</span>
+    <span class="bg-kasbahTerra text-white px-2.5 py-0.5 rounded-full font-bold text-[11px]">Offre Bio se termine dans : <span id="promo-timer">04:59:59</span></span>
+  </div>
+
+  <!-- HEADER NATUREL & ELEGANT -->
+  <header class="sticky top-0 z-40 bg-creamBg/95 backdrop-blur-md border-b border-sandSoft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <button onclick="showHomeView()" class="flex items-center gap-2.5 text-left group">
+        <div class="w-9 h-9 rounded-full bg-oliveBio text-creamBg flex items-center justify-center font-serif font-bold text-lg shadow-sm group-hover:bg-kasbahTerra transition">N</div>
+        <div>
+          <span class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-oliveBio">NOUR•IA</span>
+          <span class="font-arabic text-base text-kasbahTerra font-bold mr-1">نورية</span>
+        </div>
+      </button>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-oliveBio/80">
+        <button onclick="showHomeView()" class="hover:text-kasbahTerra transition">Accueil</button>
+        <a href="#heritage-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Savoir-Faire</a>
+        <a href="#categories-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Nos Univers</a>
+        <a href="#packs-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Coffrets Bio</a>
+        <a href="#catalogue-section" onclick="showHomeView()" class="hover:text-kasbahTerra transition">Catalogue (53)</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="toggleCart()" class="relative bg-white hover:bg-sandSoft text-oliveBio border border-sandSoft px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 transition shadow-2xs">
+          <svg class="w-4 h-4 text-kasbahTerra" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="hidden sm:inline">Panier</span>
+          <span id="cart-count" class="bg-kasbahTerra text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- VUE 1 : PAGE D'ACCUEIL AVEC VOTRE IMAGE KASBAH & ROSES EN ARRIERE-PLAN -->
+  <!-- ===================================================================== -->
+  <main id="home-view">
+
+    <!-- HERO BANNER FULL BACKGROUND (hero-kasbah.jpg) + PRODUITS PHARES (hero-produits.jpg) -->
+    <section class="relative overflow-hidden border-b border-sandSoft">
+      <img src="hero-kasbah.jpg" alt="Récolte des roses et Kasbah de Kelaat M'gouna" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-r from-oliveDark/90 via-oliveDark/75 to-oliveDark/45"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-24 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left text-white">
+          <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/25">
+            <span class="w-2 h-2 rounded-full bg-goldSahara"></span>
+            <span class="text-xs font-bold uppercase tracking-widest text-creamBg">Vallée des Roses • Kelaat M'gouna 🇲🇦</span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-6xl lg:text-[62px] font-bold text-white leading-[1.06] drop-shadow-sm">
+            L'Héritage Bio des <span class="italic text-goldSahara">Kasbahs</span> & de la Rose de Damas
+          </h1>
+
+          <p class="text-creamBg/90 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Puisés au cœur des oasis historiques de Kelaat M'gouna : eau de rose première distillation, huiles végétales vierges, Tabrima, Aker Fassi et soins 100% purs récoltés à l'aube.
+          </p>
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+            <a href="#catalogue-section" class="bg-kasbahTerra hover:bg-goldSahara hover:text-oliveDark text-white font-bold px-8 py-4 rounded-full shadow-xl transition text-sm sm:text-base flex items-center gap-2">
+              <span>Découvrir les Soins Bio</span>
+              <span>→</span>
+            </a>
+            <a href="#heritage-section" class="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 font-bold px-8 py-4 rounded-full transition text-sm sm:text-base">
+              Notre Savoir-Faire
+            </a>
+          </div>
+
+          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm font-semibold text-creamBg">
+            <div class="flex items-center gap-1.5">
+              <span class="text-goldSahara text-base">★★★★★</span>
+              <span>4.9/5 (+1 200 clientes conquises)</span>
+            </div>
+            <span class="hidden sm:inline text-white/30">|</span>
+            <span>🌿 100% Pure Origine Maroc</span>
+            <span class="hidden sm:inline text-white/30">|</span>
+            <span>💵 Cash à la livraison</span>
+          </div>
+        </div>
+
+        <!-- Carte Produits Phares -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative aspect-[4/5] max-w-md mx-auto rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/85 bg-creamBg">
+            <img src="hero-produits.jpg" onerror="this.onerror=null;this.src='ref-40.jpg';" alt="Tabrima Rose, Parfum Mille Roses et Savon Lait d'Ânesse" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-oliveDark/75 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4 bg-kasbahTerra text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow">
+              ✨ Best-Sellers Coopérative
+            </div>
+            <div class="absolute bottom-5 left-5 right-5 bg-creamBg/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-sandSoft flex items-center justify-between gap-2">
+              <div>
+                <p class="font-arabic text-xs text-kasbahTerra font-bold">تبريمة الورد • عطر ألف وردة</p>
+                <p class="font-serif text-lg font-bold text-oliveBio leading-tight">Rituel Beauté Royale</p>
+              </div>
+              <button onclick="openProductPage('PACK-02', true)" class="shrink-0 bg-oliveBio hover:bg-kasbahTerra text-white text-xs font-bold px-4 py-2.5 rounded-full transition">
+                Voir le Pack
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANDEAU DEFILANT -->
+    <div class="bg-oliveBio text-creamBg py-3 overflow-hidden border-b border-oliveDark">
+      <div class="animate-marquee gap-10 text-xs sm:text-sm font-semibold tracking-wider uppercase">
+        <span>🌿 Cosmétiques Bio & Naturels</span>
+        <span>🏰 Direct Coopérative Kelaat M'gouna</span>
+        <span>🌹 Rose de Damas Première Distillation</span>
+        <span>💵 Paiement en Espèces à la Livraison</span>
+        <span>🚚 Livraison Gratuite dès 249 DH</span>
+        <span>🌿 Cosmétiques Bio & Naturels</span>
+        <span>🏰 Direct Coopérative Kelaat M'gouna</span>
+        <span>🌹 Rose de Damas Première Distillation</span>
+        <span>💵 Paiement en Espèces à la Livraison</span>
+        <span>🚚 Livraison Gratuite dès 249 DH</span>
+      </div>
+    </div>
+
+    <!-- SECTION SAVOIR-FAIRE & DISTILLATION -->
+    <section id="heritage-section" class="py-16 bg-white/95 border-b border-sandSoft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-6">
+            <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-creamBg bg-sandSoft">
+              <img src="distillation-rose.jpg" onerror="this.onerror=null;this.src='ref-03.jpg';" alt="Distillation traditionnelle de la Rose de Damas en alambic de cuivre" class="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-6">
+            <div>
+              <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Patrimoine & Savoir-Faire Ancestral</span>
+              <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1 leading-tight">
+                De la Cueillette à l'Aube jusqu'à la Distillation Pure
+              </h2>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bg-creamBg p-4 rounded-2xl border border-sandSoft">
+                <h3 class="font-serif text-xl font-bold text-oliveBio">🏰 Les Kasbahs de la Vallée du Dadès</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mt-1 leading-relaxed">
+                  Des forteresses historiques en terre ocre qui veillent depuis des siècles sur les jardins irrigués de la vallée de Kelaat M'gouna.
+                </p>
+              </div>
+
+              <div class="bg-creamBg p-4 rounded-2xl border border-sandSoft">
+                <h3 class="font-serif text-xl font-bold text-roseValley">🌹 Roses de Damas de Kelaat M'gouna • Cueillette à l'Aube</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mt-1 leading-relaxed">
+                  <strong>La Rose Centifolia & Damascena :</strong> Cueillies à la main au lever du soleil en mai avant que la chaleur n'évapore leurs précieuses huiles essentielles, puis distillées dans des alambics en cuivre traditionnel.
+                </p>
+              </div>
+
+              <div class="bg-creamBg p-4 rounded-2xl border border-sandSoft">
+                <h3 class="font-serif text-xl font-bold text-kasbahTerra">🌴 Oasis et Palmeraies du Sud Marocain • Coopérative Féminine</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mt-1 leading-relaxed">
+                  <strong>Extraction Pure & Éthique :</strong> Soutien direct aux femmes rurales de Kelaat M'gouna pour vous garantir des soins 100% naturels, purs et sans aucun additif chimique.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIVERS / CATEGORIES CIRCULAIRES -->
+    <section id="categories-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-creamBg/90 rounded-3xl my-6">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Soins Ciblés 100% Bio</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1">Explorer par Univers</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+        <button onclick="selectCategoryAndScroll('huiles')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-sandSoft group-hover:border-oliveBio transition overflow-hidden bg-white shadow-sm">
+            <img src="ref-01.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=500&q=80';" alt="Huiles & Eaux" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-bold text-oliveBio text-sm sm:text-base mt-3 group-hover:text-kasbahTerra transition">Huiles & Eaux Florales</h3>
+          <span class="text-xs text-gray-500">10 références</span>
+        </button>
+
+        <button onclick="selectCategoryAndScroll('cremes')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-sandSoft group-hover:border-oliveBio transition overflow-hidden bg-white shadow-sm">
+            <img src="ref-13.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?auto=format&fit=crop&w=500&q=80';" alt="Crèmes & Beurres" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-bold text-oliveBio text-sm sm:text-base mt-3 group-hover:text-kasbahTerra transition">Crèmes & Beurres</h3>
+          <span class="text-xs text-gray-500">12 références</span>
+        </button>
+
+        <button onclick="selectCategoryAndScroll('cheveux')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-sandSoft group-hover:border-oliveBio transition overflow-hidden bg-white shadow-sm">
+            <img src="ref-23.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=500&q=80';" alt="Soins Capillaires" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-bold text-oliveBio text-sm sm:text-base mt-3 group-hover:text-kasbahTerra transition">Soins Capillaires</h3>
+          <span class="text-xs text-gray-500">10 références</span>
+        </button>
+
+        <button onclick="selectCategoryAndScroll('hammam')" class="group flex flex-col items-center">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-sandSoft group-hover:border-oliveBio transition overflow-hidden bg-white shadow-sm">
+            <img src="ref-40.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=500&q=80';" alt="Hammam & Corps" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-bold text-oliveBio text-sm sm:text-base mt-3 group-hover:text-kasbahTerra transition">Hammam & Corps</h3>
+          <span class="text-xs text-gray-500">16 références</span>
+        </button>
+
+        <button onclick="selectCategoryAndScroll('parfums')" class="group flex flex-col items-center col-span-2 sm:col-span-1">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1.5 border-2 border-sandSoft group-hover:border-oliveBio transition overflow-hidden bg-white shadow-sm">
+            <img src="ref-52.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80';" alt="Parfums & Makhmariya" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-bold text-oliveBio text-sm sm:text-base mt-3 group-hover:text-kasbahTerra transition">Parfums & Makhmariya</h3>
+          <span class="text-xs text-gray-500">5 références</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- COFFRETS & PACKS PROMO -->
+    <section id="packs-section" class="py-16 bg-sandSoft/85 border-y border-sandSoft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Rituels Bio Complets • Jusqu'à -25%</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1">Coffrets de Kelaat M'gouna</h2>
+          </div>
+          <p class="text-gray-700 text-sm max-w-md">Des routines complètes composées de nos meilleurs soins naturels, expédiées partout au Maroc.</p>
+        </div>
+        <div id="packs-grid" class="grid md:grid-cols-3 gap-7"></div>
+      </div>
+    </section>
+
+    <!-- CATALOGUE COMPLET 53 PRODUITS -->
+    <section id="catalogue-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-creamBg/90 rounded-3xl my-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Beauty Rose Coopérative • 53 Soins Bio</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1">Toute la Collection</h2>
+        </div>
+
+        <div class="w-full md:w-80">
+          <input id="search-input" type="text" placeholder="🔍 Rechercher (Rose, Indigo, Argan, Aker Fassi...)" class="w-full px-4 py-3 rounded-full border border-sandSoft bg-white text-sm focus:outline-none focus:border-oliveBio" />
+        </div>
+      </div>
+
+      <!-- Filtres -->
+      <div class="flex overflow-x-auto no-scrollbar gap-2.5 pb-3 mb-8">
+        <button onclick="filterCategory('all', this)" class="cat-btn shrink-0 bg-oliveBio text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition shadow-2xs">Tout (53)</button>
+        <button onclick="filterCategory('huiles', this)" class="cat-btn shrink-0 bg-white border border-sandSoft text-oliveBio hover:bg-sandSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Huiles & Eaux Florales (10)</button>
+        <button onclick="filterCategory('cremes', this)" class="cat-btn shrink-0 bg-white border border-sandSoft text-oliveBio hover:bg-sandSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Crèmes & Beurres (12)</button>
+        <button onclick="filterCategory('cheveux', this)" class="cat-btn shrink-0 bg-white border border-sandSoft text-oliveBio hover:bg-sandSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Soins Capillaires (10)</button>
+        <button onclick="filterCategory('hammam', this)" class="cat-btn shrink-0 bg-white border border-sandSoft text-oliveBio hover:bg-sandSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Hammam & Corps (16)</button>
+        <button onclick="filterCategory('parfums', this)" class="cat-btn shrink-0 bg-white border border-sandSoft text-oliveBio hover:bg-sandSoft px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Parfums & Makhmariya (5)</button>
+      </div>
+
+      <!-- Grille Produits -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- AVIS CLIENTES ACCUEIL -->
+    <section class="py-16 bg-sandSoft/85 border-t border-sandSoft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Avis Vérifiés • 4.9/5</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1">Elles Ont Adopté Nos Soins Bio</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-3xl border border-sandSoft shadow-2xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 text-sm">★★★★★</span>
+              <span class="text-[11px] font-bold text-oliveBio bg-creamBg px-2.5 py-0.5 rounded-full">Achat vérifié</span>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">"On sent tout de suite que c'est du vrai produit de Kelaat M'gouna ! L'odeur de l'eau de rose bio est divine et ma peau est beaucoup plus lumineuse."</p>
+            <p class="text-xs font-bold text-oliveBio pt-2 border-t border-gray-100">Salma B. — Casablanca</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-sandSoft shadow-2xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 text-sm">★★★★★</span>
+              <span class="text-[11px] font-bold text-oliveBio bg-creamBg px-2.5 py-0.5 rounded-full">Achat vérifié</span>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">"Le shampoing à la rose et les 10 huiles aux plantes ont sauvé mes cheveux après l'été. Livraison ultra rapide et paiement à la réception sans souci."</p>
+            <p class="text-xs font-bold text-oliveBio pt-2 border-t border-gray-100">Khadija M. — Rabat</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-sandSoft shadow-2xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 text-sm">★★★★★</span>
+              <span class="text-[11px] font-bold text-oliveBio bg-creamBg px-2.5 py-0.5 rounded-full">Achat vérifié</span>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">"La Tabrima et le Ghassoul Aker Fassi donnent un résultat comme au spa dès la première utilisation. Merci à la coopérative !"</p>
+            <p class="text-xs font-bold text-oliveBio pt-2 border-t border-gray-100">Imane K. — Marrakech</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- VUE 2 : PAGE PRODUIT (MOTIVATION + AVIS CLIENTS + NUMERO SEULEMENT)   -->
+  <!-- ===================================================================== -->
+  <section id="product-detail-view" class="hidden bg-creamBg/95 pb-16">
+    <div class="bg-sandSoft/70 border-b border-sandSoft">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-2 text-gray-600">
+          <button onclick="showHomeView()" class="hover:text-kasbahTerra font-semibold">Accueil</button>
+          <span>/</span>
+          <span id="pd-breadcrumb-cat" class="text-gray-500">Catalogue</span>
+          <span>/</span>
+          <span id="pd-breadcrumb-name" class="text-oliveBio font-bold truncate max-w-[180px] sm:max-w-xs"></span>
+        </div>
+        <button onclick="showHomeView()" class="text-kasbahTerra font-bold hover:underline">← Retour à la boutique</button>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- VISUEL PRODUIT -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="relative aspect-square rounded-3xl overflow-hidden bg-white border border-sandSoft shadow-md">
+            <img id="pd-img" src="" alt="" class="w-full h-full object-cover" />
+            <span id="pd-badge" class="absolute top-4 left-4 bg-oliveBio text-creamBg text-xs font-bold px-3.5 py-1.5 rounded-full shadow"></span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-3 rounded-2xl border border-sandSoft">
+              <p class="text-xs font-bold text-oliveBio">🌿 100% Bio & Pur</p>
+              <p class="text-[11px] text-gray-500">Kelaat M'gouna</p>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-sandSoft">
+              <p class="text-xs font-bold text-oliveBio">💵 Cash Livraison</p>
+              <p class="text-[11px] text-gray-500">Zéro risque</p>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-sandSoft">
+              <p class="text-xs font-bold text-oliveBio">🚚 24h – 48h</p>
+              <p class="text-[11px] text-gray-500">Partout au Maroc</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DETAILS + MOTIVATION + COMMANDE RAPIDE -->
+        <div class="lg:col-span-6 space-y-5">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1.5">
+              <span id="pd-ref" class="text-xs font-bold uppercase tracking-wider bg-sandSoft text-oliveBio px-2.5 py-0.5 rounded-md"></span>
+              <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-md">★★★★★ 4.9/5 (Avis clients)</span>
+            </div>
+            <p id="pd-ar" class="font-arabic text-base sm:text-lg text-kasbahTerra font-bold mt-2"></p>
+            <h1 id="pd-title" class="font-serif text-3xl sm:text-4xl font-bold text-oliveBio leading-tight mt-0.5"></h1>
+          </div>
+
+          <!-- BANDEAU MOTIVATION & URGENCE -->
+          <div class="bg-white border-l-4 border-kasbahTerra p-3.5 rounded-r-2xl shadow-2xs space-y-1">
+            <p class="text-xs sm:text-sm font-extrabold text-kasbahTerra flex items-center gap-1.5">
+              <span>🔥 Offre Direct Coopérative : Plus que <span id="pd-stock-left">7</span> unités disponibles !</span>
+            </p>
+            <p class="text-xs text-gray-600">
+              ✨ <strong>Offrez à votre peau la pureté de Kelaat M'gouna</strong> : résultats visibles dès les premières utilisations, sans aucun produit chimique.
+            </p>
+          </div>
+
+          <div class="flex items-baseline gap-3 pb-2 border-b border-sandSoft">
+            <span id="pd-price" class="text-3xl sm:text-4xl font-extrabold text-oliveBio"></span>
+            <span id="pd-old-price" class="text-lg text-gray-400 line-through"></span>
+            <span class="text-xs font-bold bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full">Prix Coopérative</span>
+          </div>
+
+          <!-- BOX DE COMMANDE ULTRA-RAPIDE (NUMERO SEULEMENT) -->
+          <div class="bg-white border-2 border-oliveBio/30 rounded-3xl p-5 sm:p-6 shadow-md space-y-4">
+            <div class="flex items-center justify-between border-b border-sandSoft pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-oliveBio">Commander en 1 Clic (COD)</h2>
+                <p class="text-xs text-gray-600">Entrez votre numéro pour valider votre colis sur WhatsApp</p>
+              </div>
+              <span class="text-2xl">📲</span>
+            </div>
+
+            <!-- Quantité -->
+            <div class="flex items-center justify-between bg-creamBg px-4 py-2.5 rounded-xl border border-sandSoft">
+              <span class="text-xs sm:text-sm font-bold text-oliveBio">Quantité :</span>
+              <div class="flex items-center gap-4">
+                <button type="button" onclick="changePdQty(-1)" class="w-8 h-8 rounded-full bg-white hover:bg-sandSoft font-bold text-oliveBio text-lg flex items-center justify-center border border-sandSoft">-</button>
+                <span id="pd-qty" class="text-base font-extrabold text-oliveBio">1</span>
+                <button type="button" onclick="changePdQty(1)" class="w-8 h-8 rounded-full bg-white hover:bg-sandSoft font-bold text-oliveBio text-lg flex items-center justify-center border border-sandSoft">+</button>
+              </div>
+            </div>
+
+            <!-- Champ Numéro Uniquement -->
+            <div>
+              <label class="block text-xs font-bold text-oliveBio mb-1.5">Votre Numéro de Téléphone (WhatsApp / Appel) *</label>
+              <input id="pd-phone" type="tel" placeholder="Ex : 06 12 34 56 78" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 bg-creamBg/50 text-base font-semibold focus:outline-none focus:border-oliveBio focus:ring-2 focus:ring-oliveBio/20" />
+            </div>
+
+            <!-- Récapitulatif -->
+            <div class="bg-creamBg p-3.5 rounded-xl border border-sandSoft space-y-1.5 text-xs">
+              <div class="flex justify-between text-gray-600">
+                <span>Sous-total produit :</span>
+                <span id="pd-subtotal" class="font-bold text-gray-800"></span>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <span>Livraison Maroc :</span>
+                <span id="pd-shipping" class="font-bold text-oliveBio"></span>
+              </div>
+              <div class="flex justify-between text-sm font-extrabold text-oliveBio pt-1.5 border-t border-sandSoft">
+                <span>Total à payer à la livraison :</span>
+                <span id="pd-total" class="text-kasbahTerra text-base"></span>
+              </div>
+            </div>
+
+            <!-- Bouton WhatsApp -->
+            <button type="button" onclick="submitSellCodWhatsApp()" class="btn-pulse w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 px-6 rounded-2xl shadow-lg transition text-base flex items-center justify-center gap-2.5">
+              <span>📲 Commander Maintenant sur WhatsApp</span>
+            </button>
+
+            <button type="button" onclick="addCurrentPdToCart()" class="w-full bg-creamBg hover:bg-sandSoft text-oliveBio border border-oliveBio/25 font-bold py-3 rounded-xl text-xs transition">
+              + Ajouter au panier (pour commander plusieurs produits)
+            </button>
+          </div>
+
+          <!-- Description -->
+          <div class="pt-4 space-y-3">
+            <h3 class="font-bold text-oliveBio text-base border-b border-sandSoft pb-2">Composition & Bienfaits Naturels</h3>
+            <p id="pd-desc-fr" class="text-sm text-gray-700 leading-relaxed"></p>
+            <p id="pd-desc-ar" dir="rtl" class="font-arabic text-sm text-gray-700 leading-relaxed bg-white p-3.5 rounded-xl border border-sandSoft"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION AVIS & COMMENTAIRES DES CLIENTS SUR LE PRODUIT -->
+      <div class="mt-14 pt-10 border-t border-sandSoft">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+          <div>
+            <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Retours d'expérience</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-oliveBio">Avis des Clientes sur ce Produit</h3>
+          </div>
+          <span class="text-xs font-bold text-oliveBio bg-white px-3.5 py-1.5 rounded-full border border-sandSoft">★★★★★ 4.9 / 5</span>
+        </div>
+
+        <div id="pd-reviews-list" class="grid md:grid-cols-3 gap-5">
+          <div class="bg-white p-5 rounded-2xl border border-sandSoft space-y-2">
+            <p class="text-amber-500 text-xs">★★★★★</p>
+            <p class="text-xs text-gray-700 leading-relaxed">"Qualité authentique de Kelaat M'gouna, livraison rapide et paiement à la réception."</p>
+            <p class="text-xs font-bold text-oliveBio">Nadia T. — Marrakech</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-sandSoft space-y-2">
+            <p class="text-amber-500 text-xs">★★★★★</p>
+            <p class="text-xs text-gray-700 leading-relaxed">"Texture agréable et parfum naturel très doux, je recommande vivement."</p>
+            <p class="text-xs font-bold text-oliveBio">Hajar E. — Tanger</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-sandSoft space-y-2">
+            <p class="text-amber-500 text-xs">★★★★★</p>
+            <p class="text-xs text-gray-700 leading-relaxed">"Produit conforme à la description, coopérative sérieuse et fiable."</p>
+            <p class="text-xs font-bold text-oliveBio">Zineb R. — Agadir</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-oliveDark text-creamBg/90 py-10 border-t border-oliveBio">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div>
+        <span class="font-serif text-xl font-bold text-white">NOUR•IA</span>
+        <span class="text-creamBg/70 ml-2">• Coopérative Kelaat M'gouna</span>
+      </div>
+      <p class="text-creamBg/70">100% Naturel • Paiement à la Livraison (COD) Partout au Maroc</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
