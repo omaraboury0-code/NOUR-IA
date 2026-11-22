@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOUR-IA | Cosmétiques Bio & Naturels de Kelaat M'Gouna</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans & Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // PALETTE STRICTE DE 3 COULEURS BIO
+                        forest: {
+                            DEFAULT: '#1B3B2B',
+                            dark: '#12281D',
+                            light: '#264F3B',
+                        },
+                        sage: {
+                            DEFAULT: '#4A7C59',
+                            soft: '#EBF2EE',
+                            muted: '#D5E3DB',
+                        },
+                        cream: {
+                            DEFAULT: '#FAF8F3',
+                            pure: '#FFFFFF',
+                            dark: '#F0ECE1',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        arabic: ['"Cairo"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF8F3;
+            color: #1B3B2B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-header {
+            background: rgba(250, 248, 243, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .botanical-grid-bg {
+            background-image: radial-gradient(#4A7C59 0.85px, transparent 0.85px);
+            background-size: 24px 24px;
+        }
+        .product-card:hover .product-svg {
+            transform: translateY(-4px) scale(1.03);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4A7C59;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sage selection:text-cream-pure">
+
+    <!-- 1. TOP ANNOUNCEMENT BAR (Style byher.ma + WhatsApp 0776183941 + Réseaux NOUR-IA) -->
+    <div class="bg-forest text-cream text-[11px] sm:text-xs py-2.5 px-4 border-b border-sage/30">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2 font-medium">
+                <span class="inline-block w-2 h-2 rounded-full bg-sage animate-pulse"></span>
+                <span>Livraison gratuite dès <strong>300 DH</strong> partout au Maroc • 100 % Bio Kelaat M'Gouna • Code : <span class="underline font-bold">NOUR10</span></span>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 font-semibold">
+                <a href="https://wa.me/212776183941" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-cream-pure hover:text-sage-muted transition">
+                    <i class="fa-brands fa-whatsapp text-sm text-sage-muted"></i>
+                    <span>0776183941</span>
+                </a>
+                <span class="text-cream/30">|</span>
+                <a href="https://facebook.com/NOUR-IA" target="_blank" rel="noopener" aria-label="Facebook NOUR-IA" class="hover:text-sage-muted transition flex items-center gap-1">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span class="hidden md:inline">NOUR-IA</span>
+                </a>
+                <a href="https://instagram.com/nour.ia" target="_blank" rel="noopener" aria-label="Instagram @NOUR-IA" class="hover:text-sage-muted transition flex items-center gap-1">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span class="hidden md:inline">@NOUR-IA</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-header border-b border-sage-muted transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-3">
+                <!-- Brand Emblem -->
+                <a href="#" class="flex items-center gap-3 group shrink-0">
+                    <div class="w-11 h-11 rounded-2xl bg-forest flex items-center justify-center text-cream shadow-md group-hover:bg-sage transition-colors">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 2C7.5
