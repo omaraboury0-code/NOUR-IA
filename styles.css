@@ -1,0 +1,500 @@
+// --- Fallback Image Handler (إذا لم توجد الصورة محلياً في images/) ---
+const FALLBACK_IMAGES = {
+    huiles: "https://images.unsplash.com/photo-1608248597260-2fe533425b0f?auto=format&fit=crop&w=400&q=80",
+    cremes: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
+    cheveux: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+    hygiene: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=400&q=80",
+    parfums: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80",
+    default: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80"
+};
+
+function handleImgError(imgEl, category = "default") {
+    if (!imgEl || imgEl.dataset.fallbackApplied) return;
+    imgEl.dataset.fallbackApplied = "true";
+    imgEl.src = FALLBACK_IMAGES[category] || FALLBACK_IMAGES.default;
+}
+
+// --- Catalogue Complet Beauty Rose Coopérative (53 Produits avec Descriptions) ---
+const products = [
+    // 1. HUILES VÉGÉTALES & EAUX FLORALES (01 - 10)
+    {
+        id: 1,
+        title: "01. Pure Almond Oil / Huile d'Amande Douce (100ml)",
+        category: "huiles",
+        price: 65,
+        oldPrice: null,
+        image: "images/01.jpg",
+        badge: "100ml",
+        isPromo: false,
+        descFr: "Huile d'amande douce, pressée à froid, soin cheveux, douceur et souplesse, éclat naturel, tous types de cheveux, 100ml.",
+        descAr: "زيت اللوز العذب الطبيعي، معصورة على البارد، تغذية وتنعيم الشعر، لمعان طبيعي، لجميع أنواع الشعر."
+    },
+    {
+        id: 2,
+        title: "02. Eau de Rose Distillée 100% Spray (200ml)",
+        category: "huiles",
+        price: 50,
+        oldPrice: 65,
+        image: "images/02.jpg",
+        badge: "Spray 200ml",
+        isPromo: true,
+        descFr: "Eau de rose distillée 100%, soin visage et peau, antirides, soin des yeux, antipyrétique, produit du Maroc, 200ml.",
+        descAr: "ماء الورد المقطر 100%، صالح لبشرة الوجه، ضد التجاعيد، علاج العيون، ضد الحمى، منتج مغربي."
+    },
+    {
+        id: 3,
+        title: "03. Eau de Rose Première Distillation Bio (250ml)",
+        category: "huiles",
+        price: 60,
+        oldPrice: null,
+        image: "images/03.jpg",
+        badge: "Bio 250ml",
+        isPromo: false,
+        descFr: "Eau de rose première distillation, agriculture biologique, antirides, soulage les yeux, contre la fièvre, Kelaat M'gouna, Maroc, 250ml.",
+        descAr: "ماء الورد المقطر، التقطير الأول، فلاحة بيولوجية، ضد التجاعيد، قلعة مكونة، منتوج مغربي."
+    },
+    {
+        id: 4,
+        title: "04. Mélange 10 Huiles aux Plantes",
+        category: "huiles",
+        price: 85,
+        oldPrice: 100,
+        image: "images/04.jpg",
+        badge: "10 Huiles",
+        isPromo: true,
+        descFr: "10 huiles aux plantes, soin capillaire fortifiant, huile aux herbes naturelles, Kelaat M'gouna, BeautyRose Coopérative.",
+        descAr: "10 زيوت بالأعشاب الطبيعية، تقوية وتغذية الشعر، قلعة مكونة، تعاونية بيوتي روز."
+    },
+    {
+        id: 5,
+        title: "05. Huile de Lavande / زيت الخزامة",
+        category: "huiles",
+        price: 65,
+        oldPrice: null,
+        image: "images/05.jpg",
+        badge: "Naturel",
+        isPromo: false,
+        descFr: "Huile de lavande naturelle, soin apaisant peau et cheveux, aromathérapie, Kelaat M'gouna.",
+        descAr: "زيت الخزامة الطبيعي، مهدئ للبشرة والشعر، قلعة مكونة."
+    },
+    {
+        id: 6,
+        title: "06. Huile d'Amande Bio / زيت اللوز بيو",
+        category: "huiles",
+        price: 75,
+        oldPrice: null,
+        image: "images/06.jpg",
+        badge: "100% Bio",
+        isPromo: false,
+        descFr: "Huile d'amande 100% bio, hydratation peau et cheveux, soin nourrissant naturel, Kelaat M'gouna.",
+        descAr: "زيت اللوز بيو 100%، ترطيب وتغذية البشرة والشعر، قلعة مكونة."
+    },
+    {
+        id: 7,
+        title: "07. Huile de Figues de Barbarie / زيت التين الشوكي",
+        category: "huiles",
+        price: 140,
+        oldPrice: 170,
+        image: "images/07.jpg",
+        badge: "Anti-Âge",
+        isPromo: true,
+        descFr: "Huile de pépins de figue de barbarie, anti-âge naturel, régénérant visage, Kelaat M'gouna.",
+        descAr: "زيت التين الشوكي، مضاد للشيخوخة والتجاعيد، تجديد خلايا البشرة، قلعة مكونة."
+    },
+    {
+        id: 8,
+        title: "08. Huile de Sésame / زيت السمسم",
+        category: "huiles",
+        price: 65,
+        oldPrice: null,
+        image: "images/08.jpg",
+        badge: "Naturel",
+        isPromo: false,
+        descFr: "Huile de sésame naturelle, protection solaire légère, soin nourrissant cheveux et corps, Kelaat M'gouna.",
+        descAr: "زيت السمسم الطبيعي، تغذية وحماية البشرة والشعر، قلعة مكونة."
+    },
+    {
+        id: 9,
+        title: "09. Sidr Oil / زيت السدر (100ml)",
+        category: "huiles",
+        price: 75,
+        oldPrice: null,
+        image: "images/09.jpg",
+        badge: "100ml",
+        isPromo: false,
+        descFr: "Huile de jujubier (Sidr), soin purifiant peau et cheveux, fortification capillaire, 100ml.",
+        descAr: "زيت السدر الطبيعي للبشرة والشعر، تقوية بصيلات الشعر وتنقية البشرة."
+    },
+    {
+        id: 10,
+        title: "10. Huile de Réglisse / زيت عرق السوس",
+        category: "huiles",
+        price: 80,
+        oldPrice: 95,
+        image: "images/10.jpg",
+        badge: "Éclat",
+        isPromo: true,
+        descFr: "Huile de réglisse, unifiant du teint, soin éclaircissant naturel, anti-taches, Kelaat M'gouna.",
+        descAr: "زيت عرق السوس، تفتيح وتوحيد لون البشرة، إزالة التصبغات، قلعة مكونة."
+    },
+
+    // 2. CRÈMES DE SOIN, BEURRES & BAUMES (11 - 22)
+    {
+        id: 11,
+        title: "11. Crème Anti-Cernes à base d'Huile de Ricin (50ml)",
+        category: "cremes",
+        price: 60,
+        oldPrice: null,
+        image: "images/11.jpg",
+        badge: "50ml",
+        isPromo: false,
+        descFr: "Crème anti-cernes, contour des yeux, huile de ricin, hydratation contour des yeux, soin femme, 50ml.",
+        descAr: "كريم مزيل للهالات السوداء بزيت الخروع، ترطيب محيط العين، للنساء."
+    },
+    {
+        id: 12,
+        title: "12. Crème Hydratante Vitamine E & Huile de Rose (30g)",
+        category: "cremes",
+        price: 55,
+        oldPrice: null,
+        image: "images/12.jpg",
+        badge: "30g",
+        isPromo: false,
+        descFr: "Crème hydratante et nourrissante, vitamine E, huile de rose, soin visage, tous types de peaux, 30g.",
+        descAr: "كريم مرطب ومغذي فيتامين E، زيت الورد، لجميع أنواع البشرة."
+    },
+    {
+        id: 13,
+        title: "13. Beurre de Karité / زبدة الشيا (150g)",
+        category: "cremes",
+        price: 85,
+        oldPrice: 100,
+        image: "images/13.jpg",
+        badge: "150g",
+        isPromo: true,
+        descFr: "Beurre de karité pur, hydratation intense visage, corps et cheveux, nutrition profonde, 150g.",
+        descAr: "زبدة الشيا الطبيعية، ترطيب عميق للوجه الجسم والشعر، 150 غرام."
+    },
+    {
+        id: 14,
+        title: "14. Crème Hydratante à l'Encens Masculin / اللبان الذكر (100g)",
+        category: "cremes",
+        price: 70,
+        oldPrice: null,
+        image: "images/14.jpg",
+        badge: "100g",
+        isPromo: false,
+        descFr: "Crème hydratante à l'oliban (encens masculin), raffermissant, visage, corps et mains, Kelaat M'gouna, 100g.",
+        descAr: "كريم باللبان الذكر، للوجه والجسم واليدين شد وترطيب البشرة، قلعة مكونة."
+    },
+    {
+        id: 15,
+        title: "15. Crème Hydratante Antirides Huile d'Amande (100g)",
+        category: "cremes",
+        price: 70,
+        oldPrice: null,
+        image: "images/15.jpg",
+        badge: "100g",
+        isPromo: false,
+        descFr: "Crème hydratante antirides à l'huile d'amande, soin visage, corps et mains, Kelaat M'gouna, 100g.",
+        descAr: "كريم بزيت اللوز، مضاد للتجاعيد، للوجه والجسم واليدين، قلعة مكونة."
+    },
+    {
+        id: 16,
+        title: "16. Crème Hydratante à l'Aker Fassi (100g)",
+        category: "cremes",
+        price: 70,
+        oldPrice: 85,
+        image: "images/16.jpg",
+        badge: "100g",
+        isPromo: true,
+        descFr: "Crème hydratante à l'aker fassi (coquelicot), soin revitalisant des pieds, effet rosé naturel, visage, corps et mains, 100g.",
+        descAr: "كريم بالعكر الفاسي لتوريد القدمين وترطيب الوجه والجسم واليدين، قلعة مكونة."
+    },
+    {
+        id: 17,
+        title: "17. Crème Hydratante à l'Huile d'Argan (100g)",
+        category: "cremes",
+        price: 70,
+        oldPrice: null,
+        image: "images/17.jpg",
+        badge: "100g",
+        isPromo: false,
+        descFr: "Crème hydratante à l'huile d'argan, soin nourrissant visage, corps et mains, Kelaat M'gouna, 100g.",
+        descAr: "كريم بزيت الأركان، لترطيب وتغذية البشرة، للوجه والجسم واليدين، قلعة مكونة."
+    },
+    {
+        id: 18,
+        title: "18. Crème Hydratante à l'Huile de Réglisse (100g)",
+        category: "cremes",
+        price: 70,
+        oldPrice: null,
+        image: "images/18.jpg",
+        badge: "100g",
+        isPromo: false,
+        descFr: "Crème hydratante à l'huile de réglisse, soin éclaircissant et unifiant, visage, corps et mains, Kelaat M'gouna, 100g.",
+        descAr: "كريم بزيت عرق السوس، لترطيب وتفتيح البشرة، للوجه والجسم واليدين، قلعة مكونة."
+    },
+    {
+        id: 19,
+        title: "19. Glycerin Cream / كريم الجلسرين الأصلي (100g)",
+        category: "cremes",
+        price: 65,
+        oldPrice: null,
+        image: "images/19.jpg",
+        badge: "100g",
+        isPromo: false,
+        descFr: "Crème à la glycérine originale, hydratation et protection des peaux sèches, Kelaat M'gouna, 100g.",
+        descAr: "كريم الجلسرين الأصلي ترطيب وحماية البشرة الجافة، قلعة مكونة، 100 غرام."
+    },
+    {
+        id: 20,
+        title: "20. Beurre de Fenugrec / زبدة الحلبة (150g)",
+        category: "cremes",
+        price: 85,
+        oldPrice: 100,
+        image: "images/20.jpg",
+        badge: "150g",
+        isPromo: true,
+        descFr: "Beurre de fenugrec naturel, soin raffermissant et galbant buste et hanches, 150g.",
+        descAr: "زبدة الحلبة الطبيعية، خاصة لتكبير وشد الأرداف والصدر، 150 غرام."
+    },
+    {
+        id: 21,
+        title: "21. Crème Massage Graisse de Dromadaire (100g)",
+        category: "cremes",
+        price: 75,
+        oldPrice: null,
+        image: "images/21.jpg",
+        badge: "100g",
+        isPromo: false,
+        descFr: "Crème de massage à la bosse de dromadaire et aux huiles essentielles, soulagement articulaire et musculaire, 100g.",
+        descAr: "كريم مساج بذروة الجمل والزيوت الأساسية، لتخفيف آلام المفاصل والعضلات، 100 غرام."
+    },
+    {
+        id: 22,
+        title: "22. Balm Lips / مورد الخدود والشفاه",
+        category: "cremes",
+        price: 45,
+        oldPrice: 55,
+        image: "images/22.jpg",
+        badge: "100% Naturel",
+        isPromo: true,
+        descFr: "Teinte naturelle lèvres et joues, 100% naturel, sans produits chimiques, effet bonne mine rosé, tous types de peaux.",
+        descAr: "مورد الخدود والشفاه الطبيعي 100%، خالي من المواد الكيماوية، لون وردي طبيعي ثابت."
+    },
+
+    // 3. SOINS CAPILLAIRES (23 - 32)
+    {
+        id: 23,
+        title: "23. Shampoing Traitant Antichute à la Rose (200ml)",
+        category: "cheveux",
+        price: 60,
+        oldPrice: null,
+        image: "images/23.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Shampoing à la rose, soin antichute, hydrate le cuir chevelu, apporte de la brillance, 100% origine naturelle, 200ml.",
+        descAr: "شامبون معالج لتساقط الشعر بالورد يرطب فروة الشعر ويضفي لمعاناً، لجميع أنواع الشعر."
+    },
+    {
+        id: 24,
+        title: "24. Shampoing Traitant au Cade / العرعار (200ml)",
+        category: "cheveux",
+        price: 60,
+        oldPrice: null,
+        image: "images/24.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Shampoing au cade, antipelliculaire, apaise démangeaisons et irritations du cuir chevelu, revitalise la fibre capillaire, 200ml.",
+        descAr: "شامبون مرطب وعلاجي بالعرعار (الكاد)، يقلل القشرة ويخفف تهيج فروة الرأس والحكة."
+    },
+    {
+        id: 25,
+        title: "25. Shampoing Antipelliculaire au Romarin / إكليل الجبل (200ml)",
+        category: "cheveux",
+        price: 60,
+        oldPrice: null,
+        image: "images/25.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Shampoing au romarin, antipelliculaire, hydrate le cuir chevelu, brillance des cheveux, 100% ingrédients naturels, 200ml.",
+        descAr: "شامبون ضد القشرة بإكليل الجبل (اليارير)، يرطب فروة الشعر ويمنح لمعاناً طبيعياً."
+    },
+    {
+        id: 26,
+        title: "26. Shampoing Hydratant à l'Argan (200ml)",
+        category: "cheveux",
+        price: 60,
+        oldPrice: null,
+        image: "images/26.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Shampoing à l'argan, hydrate le cuir chevelu, ajoute de la brillance, tous types de cheveux, 100% naturel, 200ml.",
+        descAr: "شامبون مرطب للشعر بزيت الأركان يرطب فروة الشعر ويضفي لمعاناً، لجميع أنواع الشعر."
+    },
+    {
+        id: 27,
+        title: "27. Shampoing Hydratant au Coco (200ml)",
+        category: "cheveux",
+        price: 60,
+        oldPrice: null,
+        image: "images/27.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Shampoing à la noix de coco, hydratation intense et brillance, tous types de cheveux, 100% naturel, 200ml.",
+        descAr: "شامبون مرطب للشعر بجوز الهند، يرطب فروة الشعر ويمنح لمعاناً، لجميع أنواع الشعر."
+    },
+    {
+        id: 28,
+        title: "28. Shampoing Traitant au Chanvre / زيت القنب (200ml)",
+        category: "cheveux",
+        price: 65,
+        oldPrice: 75,
+        image: "images/28.jpg",
+        badge: "200ml",
+        isPromo: true,
+        descFr: "Shampoing à l'huile de chanvre, soin antichute, hydrate le cuir chevelu, brillance et force, 100% naturel, 200ml.",
+        descAr: "شامبون معالج لتساقط الشعر بزيت القنب يرطب فروة الشعر ويقوي البصيلات."
+    },
+    {
+        id: 29,
+        title: "29. Hair Styling Cream / كريم بديل الزيت للشعر الجاف",
+        category: "cheveux",
+        price: 70,
+        oldPrice: null,
+        image: "images/29.jpg",
+        badge: "Cheveux Secs",
+        isPromo: false,
+        descFr: "Crème coiffante substitut d'huile, soin hydratant pour cheveux secs, douceur et éclat à la coiffure.",
+        descAr: "كريم بديل الزيت للشعر كريم مرطب للشعر الجاف، نعومة ولمعان للتصفيف."
+    },
+    {
+        id: 30,
+        title: "30. Poudre d'Indigo Naturel / الأنديكو الخالص (150g)",
+        category: "cheveux",
+        price: 75,
+        oldPrice: null,
+        image: "images/30.jpg",
+        badge: "150g",
+        isPromo: false,
+        descFr: "Indigo naturel pur, coloration végétale naturelle, sans additifs chimiques, couvre les cheveux blancs, 150g.",
+        descAr: "الأنديكو الخالص، صباغة طبيعية دون إضافات كيماوية، تغطية الشيب بلون أسود طبيعي."
+    },
+    {
+        id: 31,
+        title: "31. Poudre d'Indigo Naturel - Mode d'Emploi (150g)",
+        category: "cheveux",
+        price: 75,
+        oldPrice: null,
+        image: "images/31.jpg",
+        badge: "Guide Inclus",
+        isPromo: false,
+        descFr: "Guide d'utilisation indigo naturel, coloration noire ou brune (en mélange avec le henné), lutte contre les cheveux blancs prématurés.",
+        descAr: "عشبة الأنديكو الطبيعية، لصبغ الشعر والتخلص من الشيب المبكر بطريقة طبيعية وآمنة، طريقة الاستعمال."
+    },
+    {
+        id: 32,
+        title: "32. Henné Cheveux aux Herbes Naturelles (150g)",
+        category: "cheveux",
+        price: 70,
+        oldPrice: 85,
+        image: "images/32.jpg",
+        badge: "150g",
+        isPromo: true,
+        descFr: "Henné cheveux et mélange d'herbes naturelles, antipelliculaire, antichute, masque capillaire nourrissant et brillance, 150g.",
+        descAr: "حناء الشعر السحرية بالأعشاب الطبيعية، ضد القشرة وتساقط الشعر، تغذية ولمعان، 150 غرام."
+    },
+
+    // 4. HYGIÈNE, BAIN, HAMMAM & SOINS TRADITIONNELS (33 - 48)
+    {
+        id: 33,
+        title: "33. Doucha Body Wash Pêche & Rose Gel Douche (400ml)",
+        category: "hygiene",
+        price: 85,
+        oldPrice: null,
+        image: "images/33.jpg",
+        badge: "400ml",
+        isPromo: false,
+        descFr: "Gel douche hydratant pêche et rose, fraîcheur quotidienne, tous types de peaux, 400ml.",
+        descAr: "جيل دوش بالخوخ والورد، ترطيب وانتعاش يومي، لجميع أنواع البشرة، 400 مل."
+    },
+    {
+        id: 34,
+        title: "34. Gel Douche Fruits / جيل دوش بالفواكه (200ml)",
+        category: "hygiene",
+        price: 50,
+        oldPrice: null,
+        image: "images/34.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Gel douche aux fruits, calmant et adoucissant, riche en vitamines B5, 100% fraîcheur, 200ml.",
+        descAr: "جيل دوش بالفواكه، مهدئ ومنعم للبشرة، غني بالفيتامينات، انتعاش 100%."
+    },
+    {
+        id: 35,
+        title: "35. Gel Douche Fraise / جيل دوش بالفراولة (200ml)",
+        category: "hygiene",
+        price: 50,
+        oldPrice: null,
+        image: "images/35.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Gel douche à la fraise, calmant et adoucissant, riche en vitamines, 100% fraîcheur, 200ml.",
+        descAr: "جيل دوش بالفراولة، مهدئ ومنعم للبشرة، غني بالفيتامينات، انتعاش 100%."
+    },
+    {
+        id: 36,
+        title: "36. Gel Douche Fresh Menthe / جيل دوش بالنعناع (200ml)",
+        category: "hygiene",
+        price: 50,
+        oldPrice: null,
+        image: "images/36.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Gel douche frais à la menthe, effet glacé revitalisant, calmant et adoucissant, riche en vitamines, 200ml.",
+        descAr: "جيل دوش بالنعناع المنعش مهدئ ومنعم غني بالفيتامينات، انتعاش 100%."
+    },
+    {
+        id: 37,
+        title: "37. Gel Douche Rose / جيل دوش بالورد (200ml)",
+        category: "hygiene",
+        price: 50,
+        oldPrice: null,
+        image: "images/37.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Gel douche à la rose, calmant et adoucissant, riche en vitamines, 100% fraîcheur, 200ml.",
+        descAr: "جيل دوش بالورد مهدئ ومنعم للبشرة، غني بالفيتامينات، انتعاش 100%."
+    },
+    {
+        id: 38,
+        title: "38. Gel Douche Aloe Vera / جيل دوش بالصبار (200ml)",
+        category: "hygiene",
+        price: 50,
+        oldPrice: null,
+        image: "images/38.jpg",
+        badge: "200ml",
+        isPromo: false,
+        descFr: "Gel douche à l'aloe vera, calmant, hydratant et adoucissant, riche en vitamines, 200ml.",
+        descAr: "جيل دوش بالصبار (الألوفيرا)، مهدئ ومرطب ومنعم للبشرة، غني بالفيتامينات."
+    },
+    {
+        id: 39,
+        title: "39. Savon Solide au Lait d'Ânesse (80g)",
+        category: "hygiene",
+        price: 40,
+        oldPrice: null,
+        image: "images/39.jpg",
+        badge: "80g",
+        isPromo: false,
+        descFr: "Savon solide au lait d'ânesse, soin doux visage et corps, hydratant et régénérant, 80g.",
+        descAr: "صابون حليب الأتان الطبيعي للوجه والجسم، ترطيب وتنعيم البشرة، 80 غرام."
+    },
+    {
+        id: 40,
+        title: "40. Tabrima à la Rose et aux Herbes / تبريمة بالورد والأعشاب",
+        category: "hygiene",
+        price: 65,
+        oldPrice: 80,
+        image: "images/40.
