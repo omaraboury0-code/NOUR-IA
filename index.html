@@ -29,7 +29,28 @@
     }
   </script>
   <style>
-    body { background-color: #FAF6F0; color: #1C2621; }
+    body { color: #1C2621; background-color: transparent; }
+
+    /* Khalfia tabta f chacha (bhal écran téléphone) l site kamel */
+    .site-wallpaper {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .site-wallpaper-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 14, 10, 0.45);
+      z-index: -1;
+      pointer-events: none;
+    }
+
     .product-card { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
     .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px -12px rgba(35, 66, 54, 0.16); }
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -50,6 +71,10 @@
   </style>
 </head>
 <body class="font-sans antialiased">
+
+  <!-- Khalfia tabta f chacha l site kamel -->
+  <img src="bg-site.jpg" alt="Kelaat M'gouna" class="site-wallpaper" />
+  <div class="site-wallpaper-overlay"></div>
 
   <!-- TOP BAR PROMO + COMPTEUR -->
   <div class="bg-oliveDark text-creamBg text-xs py-2.5 px-4 text-center font-medium tracking-wide flex flex-wrap items-center justify-center gap-2">
@@ -116,7 +141,7 @@
           <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
             <a href="#catalogue-section" class="bg-kasbahTerra hover:bg-goldSahara hover:text-oliveDark text-white font-bold px-8 py-4 rounded-full shadow-xl transition text-sm sm:text-base flex items-center gap-2">
               <span>Découvrir les Soins Bio</span>
-              <span>&rarr;</span>
+              <span>→</span>
             </a>
             <a href="#heritage-section" class="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 font-bold px-8 py-4 rounded-full transition text-sm sm:text-base">
               Notre Savoir-Faire
@@ -174,7 +199,7 @@
     </div>
 
     <!-- SECTION SAVOIR-FAIRE & DISTILLATION (AVEC VOS VRAIES IMAGES UNIQUEMENT) -->
-    <section id="heritage-section" class="py-16 bg-white border-b border-sandSoft">
+    <section id="heritage-section" class="py-16 bg-white/95 border-b border-sandSoft">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-12 gap-10 items-center">
           <!-- Image 2 : Distillation traditionnelle en alambic de cuivre (distillation-rose.jpg) -->
@@ -221,7 +246,7 @@
     </section>
 
     <!-- UNIVERS / CATEGORIES CIRCULAIRES -->
-    <section id="categories-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="categories-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-creamBg/90 rounded-3xl my-6">
       <div class="text-center max-w-xl mx-auto mb-12">
         <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Soins Ciblés 100% Bio</span>
         <h2 class="font-serif text-3xl sm:text-5xl font-bold text-oliveBio mt-1">Explorer par Univers</h2>
@@ -271,7 +296,7 @@
     </section>
 
     <!-- COFFRETS & PACKS PROMO -->
-    <section id="packs-section" class="py-16 bg-sandSoft/55 border-y border-sandSoft">
+    <section id="packs-section" class="py-16 bg-sandSoft/85 border-y border-sandSoft">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
@@ -285,7 +310,7 @@
     </section>
 
     <!-- CATALOGUE COMPLET 53 PRODUITS -->
-    <section id="catalogue-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="catalogue-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-creamBg/90 rounded-3xl my-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
           <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Beauty Rose Coopérative • 53 Soins Bio</span>
@@ -312,7 +337,7 @@
     </section>
 
     <!-- AVIS CLIENTES ACCUEIL -->
-    <section class="py-16 bg-sandSoft/50 border-t border-sandSoft">
+    <section class="py-16 bg-sandSoft/85 border-t border-sandSoft">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-xl mx-auto mb-12">
           <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Avis Vérifiés • 4.9/5</span>
@@ -354,7 +379,7 @@
   <!-- ===================================================================== -->
   <!-- VUE 2 : PAGE PRODUIT (MOTIVATION + AVIS CLIENTS + NUMERO SEULEMENT)   -->
   <!-- ===================================================================== -->
-  <section id="product-detail-view" class="hidden bg-creamBg pb-16">
+  <section id="product-detail-view" class="hidden bg-creamBg/95 pb-16">
     <div class="bg-sandSoft/70 border-b border-sandSoft">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between text-xs">
         <div class="flex items-center gap-2 text-gray-600">
@@ -364,7 +389,7 @@
           <span>/</span>
           <span id="pd-breadcrumb-name" class="text-oliveBio font-bold truncate max-w-[180px] sm:max-w-xs"></span>
         </div>
-        <button onclick="showHomeView()" class="text-kasbahTerra font-bold hover:underline">&larr; Retour à la boutique</button>
+        <button onclick="showHomeView()" class="text-kasbahTerra font-bold hover:underline">← Retour à la boutique</button>
       </div>
     </div>
 
@@ -487,529 +512,43 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
             <span class="text-kasbahTerra text-xs font-bold uppercase tracking-widest">Retours d'expérience</span>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-oliveBio">Commentaires & Avis des Clientes</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-oliveBio">Avis des Clientes sur ce Produit</h3>
           </div>
-          <div class="bg-white px-4 py-2 rounded-full border border-sandSoft text-xs font-bold text-oliveBio flex items-center gap-2">
-            <span class="text-amber-500 text-base">★★★★★</span>
-            <span>4.9 / 5 basé sur les commandes vérifiées</span>
-          </div>
+          <span class="text-xs font-bold text-oliveBio bg-white px-3.5 py-1.5 rounded-full border border-sandSoft">★★★★★ 4.9 / 5</span>
         </div>
 
-        <div id="pd-reviews-grid" class="grid md:grid-cols-3 gap-5"></div>
-      </div>
-
-      <!-- Produits Similaires -->
-      <div class="mt-14 pt-10 border-t border-sandSoft">
-        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-oliveBio mb-6">Complétez Votre Rituel Bio</h3>
-        <div id="related-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+        <div id="pd-reviews-list" class="grid md:grid-cols-3 gap-5">
+          <div class="bg-white p-5 rounded-2xl border border-sandSoft space-y-2">
+            <p class="text-amber-500 text-xs">★★★★★</p>
+            <p class="text-xs text-gray-700 leading-relaxed">"Qualité authentique de Kelaat M'gouna, livraison rapide et paiement à la réception."</p>
+            <p class="text-xs font-bold text-oliveBio">Nadia T. — Marrakech</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-sandSoft space-y-2">
+            <p class="text-amber-500 text-xs">★★★★★</p>
+            <p class="text-xs text-gray-700 leading-relaxed">"Texture agréable et parfum naturel très doux, je recommande vivement."</p>
+            <p class="text-xs font-bold text-oliveBio">Hajar E. — Tanger</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-sandSoft space-y-2">
+            <p class="text-amber-500 text-xs">★★★★★</p>
+            <p class="text-xs text-gray-700 leading-relaxed">"Produit conforme à la description, coopérative sérieuse et fiable."</p>
+            <p class="text-xs font-bold text-oliveBio">Zineb R. — Agadir</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-oliveDark text-creamBg py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="text-center sm:text-left">
-        <span class="font-serif text-2xl font-bold text-white">NOUR•IA</span>
-        <span class="font-arabic text-goldSahara mr-2">نورية</span>
-        <p class="text-xs text-creamBg/80 mt-1">Coopérative Beauty Rose • Kelaat M'gouna • Cosmétiques Bio du Maroc 🇲🇦</p>
+  <footer class="bg-oliveDark text-creamBg/90 py-10 border-t border-oliveBio">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div>
+        <span class="font-serif text-xl font-bold text-white">NOUR•IA</span>
+        <span class="text-creamBg/70 ml-2">• Coopérative Kelaat M'gouna</span>
       </div>
-      <a href="https://wa.me/212776183941" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold px-6 py-3 rounded-full transition shadow">
-        WhatsApp : 07 76 18 39 41
-      </a>
+      <p class="text-creamBg/70">100% Naturel • Paiement à la Livraison (COD) Partout au Maroc</p>
     </div>
   </footer>
 
-  <!-- PANIER LATERAL (NUMERO UNIQUEMENT) -->
-  <div id="cart-modal" class="fixed inset-0 z-50 hidden">
-    <div onclick="toggleCart()" class="absolute inset-0 bg-black/55 backdrop-blur-xs"></div>
-    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
-      <div class="p-5 border-b border-sandSoft flex items-center justify-between bg-creamBg">
-        <h3 class="font-serif text-2xl font-bold text-oliveBio">Votre Panier Bio</h3>
-        <button onclick="toggleCart()" class="text-gray-500 hover:text-oliveBio text-2xl leading-none">&times;</button>
-      </div>
-
-      <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
-
-      <div class="p-5 border-t border-sandSoft bg-creamBg space-y-3">
-        <div class="flex justify-between text-xs text-gray-600">
-          <span>Livraison Maroc</span>
-          <span id="shipping-cost" class="font-bold text-oliveBio">35 DH (Gratuite dès 249 DH)</span>
-        </div>
-        <div class="flex justify-between text-lg font-extrabold text-oliveBio">
-          <span>Total à payer (COD)</span>
-          <span id="cart-total">0 DH</span>
-        </div>
-        <input id="cart-phone" type="tel" placeholder="Votre Numéro Téléphone (06 / 07...) *" class="w-full px-4 py-3 rounded-xl border border-sandSoft text-sm font-semibold bg-white" />
-        <button onclick="checkoutCartWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-full shadow-md transition text-sm">
-          📲 Valider le panier sur WhatsApp
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- BOUTON FLOTTANT WHATSAPP -->
-  <a href="https://wa.me/212776183941?text=Salam%20NOUR%E2%80%A2IA%20%F0%9F%8C%BF%2C%20bghit%20nstafser%203la%20les%20produits%20bio%20dyalkom." target="_blank" class="fixed bottom-5 right-5 z-40 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-full shadow-xl flex items-center gap-2 text-sm font-bold transition">
-    <span>💬 WhatsApp</span>
-  </a>
-
-  <script>
-    const WHATSAPP_NUMBER = "212776183941";
-
-    // Compteur promo dynamique
-    let secondsLeft = 4 * 3600 + 59 * 60 + 59;
-    setInterval(() => {
-      if (secondsLeft > 0) secondsLeft--;
-      const h = String(Math.floor(secondsLeft / 3600)).padStart(2, '0');
-      const m = String(Math.floor((secondsLeft % 3600) / 60)).padStart(2, '0');
-      const s = String(secondsLeft % 60).padStart(2, '0');
-      const el = document.getElementById("promo-timer");
-      if (el) el.innerText = `${h}:${m}:${s}`;
-    }, 1000);
-
-    // Images de secours si ref-XX.jpg n'est pas encore uploadé
-    const FALLBACK = {
-      rose: "hero-produits.jpg",
-      oil: "distillation-rose.jpg",
-      cream: "hero-produits.jpg",
-      butter: "hero-produits.jpg",
-      hair: "distillation-rose.jpg",
-      hammam: "hero-produits.jpg",
-      soap: "hero-produits.jpg",
-      perfume: "hero-produits.jpg"
-    };
-
-    const packs = [
-      {
-        id: "PACK-01",
-        catName: "Coffrets Bio",
-        name: "Coffret Éclat Kelaat M'gouna",
-        ar: "باك إشراقة قلعة مكونة",
-        badge: "Best-Seller • -25%",
-        oldPrice: 220,
-        price: 165,
-        descFr: "Le rituel complet visage de la Vallée des Roses : Eau de Rose 1ère Distillation Bio 250ml + Huile de Pépins de Figue de Barbarie + Crème Vitamine E & Huile de Rose + Balm Lips Aker Fassi.",
-        descAr: "باك متكامل لإشراقة الوجه من قلعة مكونة: ماء الورد التقطير الأول بيو 250 مل + زيت التين الشوكي + كريم فيتامين E وزيت الورد + مورد الخدود والشفاه بالعكر الفاسي.",
-        img: "ref-03.jpg",
-        fallback: "distillation-rose.jpg"
-      },
-      {
-        id: "PACK-02",
-        catName: "Coffrets Bio",
-        name: "Rituel Hammam Royal & Aker Fassi",
-        ar: "باك الحمام الملكي والعكر الفاسي",
-        badge: "Éclat Corps • -22%",
-        oldPrice: 180,
-        price: 139,
-        descFr: "Tout le savoir-faire du hammam marocain : Tabrima à la Rose & Herbes + Ghassoul Aker Fassi 100ml + Duo Aker Fassi & Nila Sahraoui + Savon au Lait d'Ânesse + Parfum Mille Roses.",
-        descAr: "مجموعة الحمام المغربي الأصيل: تبريمة بالورد والأعشاب + غاسول العكر الفاسي + العكر الفاسي والنيلة الصحراوية + صابون حليب الأتان + عطر ألف وردة.",
-        img: "hero-produits.jpg",
-        fallback: "ref-40.jpg"
-      },
-      {
-        id: "PACK-03",
-        catName: "Coffrets Bio",
-        name: "Coffret Cheveux Forts & Musc Oriental",
-        ar: "باك العناية بالشعر والمسك الشرقي",
-        badge: "Soin Complet • -20%",
-        oldPrice: 199,
-        price: 159,
-        descFr: "Fortification capillaire et parfum oriental : Shampoing Antichute à la Rose 200ml + Mélange 10 Huiles aux Plantes + Huile de Sidr 100ml + Makhmariya Amira Al Arab 50g.",
-        descAr: "عناية متكاملة لتقوية الشعر وتعطير الجسم: شامبو الورد ضد التساقط + خلطة 10 زيوت بالأعشاب + زيت السدر الطبيعي + مخمرية أميرة العرب.",
-        img: "ref-23.jpg",
-        fallback: "hero-produits.jpg"
-      }
-    ];
-
-    const products = [
-      // 1. HUILES VÉGÉTALES & EAUX FLORALES (01 - 10)
-      { id: "REF-01", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Pure Almond Oil - Huile d'Amande Douce (100ml)", ar: "زيت اللوز العذب 100 مل", oldPrice: 85, price: 69, descFr: "Huile d'amande douce, pressée à froid, soin cheveux, douceur et souplesse, éclat naturel, tous types de cheveux, 100ml.", descAr: "زيت اللوز العذب الطبيعي، معصورة على البارد، تغذية وتنعيم الشعر، لمعان طبيعي لجميع أنواع الشعر.", img: "ref-01.jpg", fallback: FALLBACK.oil },
-      { id: "REF-02", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Eau de Rose Distillée 100% Spray (200ml)", ar: "ماء الورد بيوتي روز المقطر 200 مل", oldPrice: 49, price: 35, descFr: "Eau de rose distillée 100%, soin visage et peau, antirides, soin des yeux, antipyrétique, produit du Maroc, 200ml.", descAr: "ماء الورد المقطر 100%، صالح لبشرة الوجه، ضد التجاعيد وعلاج العيون، ضد الحمى، منتج مغربي.", img: "ref-02.jpg", fallback: FALLBACK.rose },
-      { id: "REF-03", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Eau de Rose Première Distillation Bio (250ml)", ar: "ماء الورد المقطر التقطير الأول بيو 250 مل", oldPrice: 80, price: 65, descFr: "Eau de rose première distillation, agriculture biologique, antirides, soulage les yeux, contre la fièvre, Kelaat M'gouna, Maroc, 250ml.", descAr: "ماء الورد المقطر، التقطير الأول، فلاحة بيولوجية، ضد التجاعيد، قلعة مكونة، منتوج مغربي.", img: "ref-03.jpg", fallback: FALLBACK.rose },
-      { id: "REF-04", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Mélange 10 Huiles aux Plantes", ar: "خلطة 10 زيوت بالأعشاب الطبيعية", oldPrice: 55, price: 39, descFr: "10 huiles aux plantes, soin capillaire fortifiant, huile aux herbes naturelles, Kelaat M'gouna, BeautyRose Coopérative.", descAr: "10 زيوت بالأعشاب الطبيعية، تقوية وتغذية الشعر، قلعة مكونة، تعاونية بيوتي روز.", img: "ref-04.jpg", fallback: FALLBACK.oil },
-      { id: "REF-05", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Huile de Lavande Naturelle", ar: "زيت الخزامة الطبيعي", oldPrice: 45, price: 35, descFr: "Huile de lavande naturelle, soin apaisant peau et cheveux, aromathérapie, Kelaat M'gouna.", descAr: "زيت الخزامة الطبيعي، مهدئ للبشرة والشعر، قلعة مكونة.", img: "ref-05.jpg", fallback: FALLBACK.oil },
-      { id: "REF-06", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Huile d'Amande 100% Bio", ar: "زيت اللوز بيو 100%", oldPrice: 45, price: 35, descFr: "Huile d'amande 100% bio, hydratation peau et cheveux, soin nourrissant naturel, Kelaat M'gouna.", descAr: "زيت اللوز بيو 100%، ترطيب وتغذية البشرة والشعر، قلعة مكونة.", img: "ref-06.jpg", fallback: FALLBACK.oil },
-      { id: "REF-07", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Huile de Figues de Barbarie", ar: "زيت التين الشوكي", oldPrice: 60, price: 45, descFr: "Huile de pépins de figue de barbarie, anti-âge naturel, régénérant visage, Kelaat M'gouna.", descAr: "زيت التين الشوكي، مضاد للشيخوخة والتجاعيد، تجديد خلايا البشرة، قلعة مكونة.", img: "ref-07.jpg", fallback: FALLBACK.oil },
-      { id: "REF-08", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Huile de Sésame Naturelle", ar: "زيت السمسم الطبيعي", oldPrice: 45, price: 35, descFr: "Huile de sésame naturelle, protection solaire légère, soin nourrissant cheveux et corps, Kelaat M'gouna.", descAr: "زيت السمسم الطبيعي، تغذية وحماية البشرة والشعر، قلعة مكونة.", img: "ref-08.jpg", fallback: FALLBACK.oil },
-      { id: "REF-09", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Sidr Oil - Huile de Jujubier (100ml)", ar: "زيت السدر الطبيعي 100 مل", oldPrice: 65, price: 49, descFr: "Huile de jujubier (Sidr), soin purifiant peau et cheveux, fortification capillaire, 100ml.", descAr: "زيت السدر الطبيعي للبشرة والشعر، تقوية بصيلات الشعر وتنقية البشرة.", img: "ref-09.jpg", fallback: FALLBACK.oil },
-      { id: "REF-10", cat: "huiles", catName: "Huiles & Eaux Florales", name: "Huile de Réglisse (Licorice)", ar: "زيت عرق السوس", oldPrice: 49, price: 35, descFr: "Huile de réglisse, unifiant du teint, soin éclaircissant naturel, anti-taches, Kelaat M'gouna.", descAr: "زيت عرق السوس، تفتيح وتوحيد لون البشرة، إزالة التصبغات، قلعة مكونة.", img: "ref-10.jpg", fallback: FALLBACK.oil },
-
-      // 2. CRÈMES DE SOIN, BEURRES & BAUMES (11 - 22)
-      { id: "REF-11", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Anti-Cernes à l'Huile de Ricin (50ml)", ar: "كريم مزيل للهالات السوداء بزيت الخروع", oldPrice: 80, price: 65, descFr: "Crème anti-cernes, contour des yeux, huile de ricin, hydratation contour des yeux, soin femme, 50ml.", descAr: "كريم مزيل للهالات السوداء بزيت الخروع، ترطيب محيط العين، للنساء.", img: "ref-11.jpg", fallback: FALLBACK.cream },
-      { id: "REF-12", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Hydratante Vitamine E & Huile de Rose (30g)", ar: "كريم مرطب ومغذي فيتامين E وزيت الورد", oldPrice: 50, price: 39, descFr: "Crème hydratante et nourrissante, vitamine E, huile de rose, soin visage, tous types de peaux, 30g.", descAr: "كريم مرطب ومغذي فيتامين E، زيت الورد، لجميع أنواع البشرة.", img: "ref-12.jpg", fallback: FALLBACK.cream },
-      { id: "REF-13", cat: "cremes", catName: "Crèmes & Beurres", name: "Beurre de Karité Pur (150g)", ar: "زبدة الشيا الطبيعية 150 غ", oldPrice: 70, price: 55, descFr: "Beurre de karité pur, hydratation intense visage, corps et cheveux, nutrition profonde, 150g.", descAr: "زبدة الشيا الطبيعية، ترطيب عميق للوجه الجسم والشعر، 150 غرام.", img: "ref-13.jpg", fallback: FALLBACK.butter },
-      { id: "REF-14", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Hydratante à l'Encens Masculin (100g)", ar: "كريم باللبان الذكر 100 غ", oldPrice: 39, price: 29, descFr: "Crème hydratante à l'oliban (encens masculin), raffermissant, visage, corps et mains, Kelaat M'gouna, 100g.", descAr: "كريم باللبان الذكر، للوجه والجسم واليدين شد وترطيب البشرة، قلعة مكونة.", img: "ref-14.jpg", fallback: FALLBACK.cream },
-      { id: "REF-15", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Antirides à l'Huile d'Amande (100g)", ar: "كريم بزيت اللوز مضاد للتجاعيد 100 غ", oldPrice: 39, price: 29, descFr: "Crème hydratante antirides à l'huile d'amande, soin visage, corps et mains, Kelaat M'gouna, 100g.", descAr: "كريم بزيت اللوز، مضاد للتجاعيد، للوجه والجسم واليدين، قلعة مكونة.", img: "ref-15.jpg", fallback: FALLBACK.cream },
-      { id: "REF-16", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Hydratante à l'Aker Fassi (100g)", ar: "كريم بالعكر الفاسي لتوريد القدمين والوجه", oldPrice: 39, price: 29, descFr: "Crème hydratante à l'aker fassi (coquelicot), soin revitalisant des pieds, effet rosé naturel, visage, corps et mains, 100g.", descAr: "كريم بالعكر الفاسي لتوريد القدمين وترطيب الوجه والجسم واليدين، قلعة مكونة.", img: "ref-16.jpg", fallback: FALLBACK.cream },
-      { id: "REF-17", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Hydratante à l'Huile d'Argan (100g)", ar: "كريم بزيت الأركان 100 غ", oldPrice: 39, price: 29, descFr: "Crème hydratante à l'huile d'argan, soin nourrissant visage, corps et mains, Kelaat M'gouna, 100g.", descAr: "كريم بزيت الأركان، لترطيب وتغذية البشرة، للوجه والجسم واليدين، قلعة مكونة.", img: "ref-17.jpg", fallback: FALLBACK.cream },
-      { id: "REF-18", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Hydratante à l'Huile de Réglisse (100g)", ar: "كريم بزيت عرق السوس 100 غ", oldPrice: 39, price: 29, descFr: "Crème hydratante à l'huile de réglisse, soin éclaircissant et unifiant, visage, corps et mains, Kelaat M'gouna, 100g.", descAr: "كريم بزيت عرق السوس، لترطيب وتفتيح البشرة، للوجه والجسم واليدين، قلعة مكونة.", img: "ref-18.jpg", fallback: FALLBACK.cream },
-      { id: "REF-19", cat: "cremes", catName: "Crèmes & Beurres", name: "Glycerin Cream - Crème Glycérine Originale (100g)", ar: "كريم الجلسرين الأصلي 100 غ", oldPrice: 45, price: 35, descFr: "Crème à la glycérine originale, hydratation et protection des peaux sèches, Kelaat M'gouna, 100g.", descAr: "كريم الجلسرين الأصلي، ترطيب وحماية البشرة الجافة، قلعة مكونة، 100 غرام.", img: "ref-19.jpg", fallback: FALLBACK.cream },
-      { id: "REF-20", cat: "cremes", catName: "Crèmes & Beurres", name: "Beurre de Fenugrec Nature Luxe (150g)", ar: "زبدة الحلبة الطبيعية 150 غ", oldPrice: 70, price: 55, descFr: "Beurre de fenugrec naturel, soin raffermissant et galbant buste et hanches, 150g.", descAr: "زبدة الحلبة الطبيعية، خاصة لتكبير وشد الأرداف والصدر، 150 غرام.", img: "ref-20.jpg", fallback: FALLBACK.butter },
-      { id: "REF-21", cat: "cremes", catName: "Crèmes & Beurres", name: "Crème Massage Graisse de Dromadaire (100g)", ar: "كريم مساج بذروة الجمل والزيوت الأساسية", oldPrice: 55, price: 45, descFr: "Crème de massage à la bosse de dromadaire et aux huiles essentielles, soulagement articulaire et musculaire, 100g.", descAr: "كريم مساج بذروة الجمل والزيوت الأساسية، لتخفيف آلام المفاصل والعضلات، 100 غرام.", img: "ref-21.jpg", fallback: FALLBACK.butter },
-      { id: "REF-22", cat: "cremes", catName: "Crèmes & Beurres", name: "Balm Lips - Teinte Joues & Lèvres", ar: "مورد الخدود والشفاه الطبيعي 100%", oldPrice: 55, price: 45, descFr: "Teinte naturelle lèvres et joues, 100% naturel, sans produits chimiques, effet bonne mine rosé, tous types de peaux.", descAr: "مورد الخدود والشفاه الطبيعي 100%، خالي من المواد الكيماوية، لون وردي طبيعي ثابت.", img: "ref-22.jpg", fallback: FALLBACK.rose },
-
-      // 3. SOINS CAPILLAIRES (23 - 32)
-      { id: "REF-23", cat: "cheveux", catName: "Soins Capillaires", name: "Shampoing Traitant Antichute à la Rose (200ml)", ar: "شامبو معالج لتساقط الشعر بالورد", oldPrice: 49, price: 39, descFr: "Shampoing à la rose, soin antichute, hydrate le cuir chevelu, apporte de la brillance, 100% origine naturelle, 200ml.", descAr: "شامبوان معالج لتساقط الشعر بالورد، يرطب فروة الشعر ويضفي لمعاناً، لجميع أنواع الشعر.", img: "ref-23.jpg", fallback: FALLBACK.hair },
-      { id: "REF-24", cat: "cheveux", catName: "Soins Capillaires", name: "Shampoing Traitant au Cade (200ml)", ar: "شامبو مرطب وعلاجي بالعرعار (الكاد)", oldPrice: 49, price: 39, descFr: "Shampoing au cade, antipelliculaire, apaise démangeaisons et irritations du cuir chevelu, revitalise la fibre capillaire, 200ml.", descAr: "شامبوان مرطب وعلاجي بالعرعار (الكاد)، يقلل القشرة ويخفف تهيج فروة الرأس والحكة.", img: "ref-24.jpg", fallback: FALLBACK.hair },
-      { id: "REF-25", cat: "cheveux", catName: "Soins Capillaires", name: "Shampoing Antipelliculaire au Romarin (200ml)", ar: "شامبو ضد القشرة بإكليل الجبل (اليازير)", oldPrice: 49, price: 39, descFr: "Shampoing au romarin, antipelliculaire, hydrate le cuir chevelu, brillance des cheveux, 100% ingrédients naturels, 200ml.", descAr: "شامبوان ضد القشرة بإكليل الجبل (اليازير)، يرطب فروة الشعر ويمنح لمعاناً طبيعياً.", img: "ref-25.jpg", fallback: FALLBACK.hair },
-      { id: "REF-26", cat: "cheveux", catName: "Soins Capillaires", name: "Shampoing Hydratant à l'Argan (200ml)", ar: "شامبو مرطب للشعر بزيت الأركان", oldPrice: 49, price: 39, descFr: "Shampoing à l'argan, hydrate le cuir chevelu, ajoute de la brillance, tous types de cheveux, 100% naturel, 200ml.", descAr: "شامبوان مرطب للشعر بزيت الأركان، يرطب فروة الشعر ويضفي لمعاناً، لجميع أنواع الشعر.", img: "ref-26.jpg", fallback: FALLBACK.hair },
-      { id: "REF-27", cat: "cheveux", catName: "Soins Capillaires", name: "Shampoing Hydratant au Coco (200ml)", ar: "شامبو مرطب للشعر بجوز الهند", oldPrice: 49, price: 39, descFr: "Shampoing à la noix de coco, hydratation intense et brillance, tous types de cheveux, 100% naturel, 200ml.", descAr: "شامبوان مرطب للشعر بجوز الهند، يرطب فروة الشعر ويمنح لمعاناً، لجميع أنواع الشعر.", img: "ref-27.jpg", fallback: FALLBACK.hair },
-      { id: "REF-28", cat: "cheveux", catName: "Soins Capillaires", name: "Shampoing Traitant au Chanvre / Cannabis (200ml)", ar: "شامبو معالج لتساقط الشعر بزيت القنب", oldPrice: 49, price: 39, descFr: "Shampoing à l'huile de chanvre, soin antichute, hydrate le cuir chevelu, brillance et force, 100% naturel, 200ml.", descAr: "شامبوان معالج لتساقط الشعر بزيت القنب، يرطب فروة الشعر ويقوي البصيلات.", img: "ref-28.jpg", fallback: FALLBACK.hair },
-      { id: "REF-29", cat: "cheveux", catName: "Soins Capillaires", name: "Hair Styling Cream - Substitut d'Huile", ar: "كريم بديل الزيت للشعر الجاف", oldPrice: 55, price: 45, descFr: "Crème coiffante substitut d'huile, soin hydratant pour cheveux secs, douceur et éclat à la coiffure.", descAr: "كريم بديل الزيت للشعر، كريم مرطب للشعر الجاف، نعومة ولمعان للتصفيف.", img: "ref-29.jpg", fallback: FALLBACK.cream },
-      { id: "REF-30", cat: "cheveux", catName: "Soins Capillaires", name: "Poudre d'Indigo Naturel Pur (150g)", ar: "الأنديكو الخالص 150 غ", oldPrice: 70, price: 55, descFr: "Indigo naturel pur, coloration végétale naturelle, sans additifs chimiques, couvre les cheveux blancs, 150g.", descAr: "الأنديكو الخالص، صباغة طبيعية دون إضافات كيماوية، تغطية الشيب بلون أسود طبيعي.", img: "ref-30.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-31", cat: "cheveux", catName: "Soins Capillaires", name: "Poudre d'Indigo + Guide Coloration Noire/Brune (150g)", ar: "عشبة الأنديكو الطبيعية للشيب المبكر", oldPrice: 70, price: 55, descFr: "Guide d'utilisation indigo naturel, coloration noire ou brune (en mélange avec le henné), lutte contre les cheveux blancs prématurés.", descAr: "عشبة الأنديكو الطبيعية، لصبغ الشعر والتخلص من الشيب المبكر بطريقة طبيعية وآمنة.", img: "ref-31.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-32", cat: "cheveux", catName: "Soins Capillaires", name: "Henné Cheveux aux Herbes Naturelles (150g)", ar: "حناء الشعر السحرية بالأعشاب الطبيعية", oldPrice: 45, price: 35, descFr: "Henné cheveux et mélange d'herbes naturelles, antipelliculaire, antichute, masque capillaire nourrissant et brillance, 150g.", descAr: "حناء الشعر السحرية بالأعشاب الطبيعية، ضد القشرة وتساقط الشعر، تغذية ولمعان، 150 غرام.", img: "ref-32.jpg", fallback: FALLBACK.hammam },
-
-      // 4. HYGIÈNE, BAIN, HAMMAM & SOINS TRADITIONNELS (33 - 48)
-      { id: "REF-33", cat: "hammam", catName: "Hammam & Corps", name: "Doucha Body Wash Pêche & Rose (400ml)", ar: "جيل دوش بالخوخ والورد 400 مل", oldPrice: 55, price: 45, descFr: "Gel douche hydratant pêche et rose, fraîcheur quotidienne, tous types de peaux, 400ml.", descAr: "جيل دوش بالخوخ والورد، ترطيب وانتعاش يومي، لجميع أنواع البشرة، 400 مل.", img: "ref-33.jpg", fallback: FALLBACK.soap },
-      { id: "REF-34", cat: "hammam", catName: "Hammam & Corps", name: "Gel Douche aux Fruits Vitamine B5 (200ml)", ar: "جيل دوش بالفواكه والفيتامينات", oldPrice: 45, price: 35, descFr: "Gel douche aux fruits, calmant et adoucissant, riche en vitamines B5, 100% fraîcheur, 200ml.", descAr: "جيل دوش بالفواكه، مهدئ ومنعم للبشرة، غني بالفيتامينات، انتعاش 100%.", img: "ref-34.jpg", fallback: FALLBACK.soap },
-      { id: "REF-35", cat: "hammam", catName: "Hammam & Corps", name: "Gel Douche à la Fraise (200ml)", ar: "جيل دوش بالفراولة 200 مل", oldPrice: 45, price: 35, descFr: "Gel douche à la fraise, calmant et adoucissant, riche en vitamines, 100% fraîcheur, 200ml.", descAr: "جيل دوش بالفراولة، مهدئ ومنعم للبشرة، غني بالفيتامينات، انتعاش 100%.", img: "ref-35.jpg", fallback: FALLBACK.soap },
-      { id: "REF-36", cat: "hammam", catName: "Hammam & Corps", name: "Gel Douche Fresh Menthe Glacée (200ml)", ar: "جيل دوش بالنعناع المنعش", oldPrice: 45, price: 35, descFr: "Gel douche frais à la menthe, effet glacé revitalisant, calmant et adoucissant, riche en vitamines, 200ml.", descAr: "جيل دوش بالنعناع المنعش، مهدئ ومنعم، غني بالفيتامينات، انتعاش 100%.", img: "ref-36.jpg", fallback: FALLBACK.soap },
-      { id: "REF-37", cat: "hammam", catName: "Hammam & Corps", name: "Gel Douche à la Rose (200ml)", ar: "جيل دوش بالورد 200 مل", oldPrice: 45, price: 35, descFr: "Gel douche à la rose, calmant et adoucissant, riche en vitamines, 100% fraîcheur, 200ml.", descAr: "جيل دوش بالورد مهدئ ومنعم للبشرة، غني بالفيتامينات، انتعاش 100%.", img: "ref-37.jpg", fallback: FALLBACK.rose },
-      { id: "REF-38", cat: "hammam", catName: "Hammam & Corps", name: "Gel Douche Aloe Vera (200ml)", ar: "جيل دوش بالصبار (الألوفيرا)", oldPrice: 45, price: 35, descFr: "Gel douche à l'aloe vera, calmant, hydratant et adoucissant, riche en vitamines, 200ml.", descAr: "جيل دوش بالصبار (الألوفيرا)، مهدئ ومرطب ومنعم للبشرة، غني بالفيتامينات.", img: "ref-38.jpg", fallback: FALLBACK.soap },
-      { id: "REF-39", cat: "hammam", catName: "Hammam & Corps", name: "Savon Solide au Lait d'Ânesse (80g)", ar: "صابون حليب الأتان الطبيعي 80 غ", oldPrice: 35, price: 25, descFr: "Savon solide au lait d'ânesse, soin doux visage et corps, hydratant et régénérant, 80g.", descAr: "صابون حليب الأتان الطبيعي للوجه والجسم، ترطيب وتنعيم البشرة، 80 غرام.", img: "ref-39.jpg", fallback: FALLBACK.soap },
-      { id: "REF-40", cat: "hammam", catName: "Hammam & Corps", name: "Tabrima à la Rose et aux Herbes", ar: "تبريمة مغربية بالورد والأعشاب", oldPrice: 49, price: 39, descFr: "Tabrima marocaine 100% naturelle à la rose et aux herbes, gommage corps hammam, éclat et douceur de la peau.", descAr: "تبريمة مغربية بالورد والأعشاب الطبيعية 100%، تقشير وتوحيد لون الجسم في الحمام.", img: "ref-40.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-41", cat: "hammam", catName: "Hammam & Corps", name: "Ghassoul Aker Fassi (100ml)", ar: "غسول العكر الفاسي لتوريد وتجميل الجسم", oldPrice: 49, price: 39, descFr: "Ghassoul à l'aker fassi, embellissement et éclat rosé du corps, soin hammam marocain, 100ml.", descAr: "غسول العكر الفاسي، لتوريد وتجميل الجسم منتوج مغربي طبيعي 100 مل.", img: "ref-41.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-42", cat: "hammam", catName: "Hammam & Corps", name: "Duo Aker Fassi & Nila Sahraoui", ar: "العكر الفاسي الأصلي والنيلة الصحراوية", oldPrice: 45, price: 35, descFr: "Poudre d'aker fassi et nila sahraoui authentique, soin éclaircissant et adoucissant pour une peau lisse et lumineuse.", descAr: "العكر الفاسي الأصلي والنيلة الصحراوية، لبشرة ناعمة وبيضاء ومشرقة.", img: "ref-42.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-43", cat: "hammam", catName: "Hammam & Corps", name: "Gel Nettoyant Moussant pour Pieds (150ml)", ar: "رغوة منظفة للقدمين 150 مل", oldPrice: 69, price: 55, descFr: "Mousse nettoyante pour pieds, nettoie en profondeur et neutralise les mauvaises odeurs, 150ml.", descAr: "رغوة منظفة للقدمين، ينظف ويزيل الروائح الكريهة، 150 مل.", img: "ref-43.jpg", fallback: FALLBACK.soap },
-      { id: "REF-44", cat: "hammam", catName: "Hammam & Corps", name: "Lait Déodorant Yara-Ngh Protection 48h (75ml)", ar: "حليب مزيل للعرق يارا حماية 48 ساعة", oldPrice: 49, price: 39, descFr: "Lait déodorant anti-transpirant et anti-odeurs, protection 48 heures, formule douce sans alcool, 75ml.", descAr: "حليب مزيل للعرق يارا، حماية 48 ساعة ضد التعرق والروائح، خالي من الكحول، 75 مل.", img: "ref-44.jpg", fallback: FALLBACK.cream },
-      { id: "REF-45", cat: "hammam", catName: "Hammam & Corps", name: "Shaving Cream à la Caféine Homme (400ml)", ar: "كريم الحلاقة للرجال بالكافيين 400 مل", oldPrice: 85, price: 69, descFr: "Crème de rasage riche en antioxydants et caféine d'origine naturelle, rasage doux et apaisant, 400ml.", descAr: "كريم الحلاقة للرجال غني بمضادات الأكسدة والكافيين الطبيعي، 400 مل.", img: "ref-45.jpg", fallback: FALLBACK.cream },
-      { id: "REF-46", cat: "hammam", catName: "Hammam & Corps", name: "Khôl Naturel aux Noyaux de Dattes (7g)", ar: "كحل بلدي طبيعي بنواة التمر 7 غ", oldPrice: 39, price: 29, descFr: "Khôl traditionnel marocain naturel à base de noyaux de dattes, maquillage et soin des yeux, 7g.", descAr: "كحل بلدي طبيعي محضر بنواة التمر، لتجميل وتقوية العيون والرموش 7 غرام.", img: "ref-46.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-47", cat: "hammam", catName: "Hammam & Corps", name: "Écorce de Noyer / Souak Naturel Marocain", ar: "سواك مغربي طبيعي (لحاء الجوز)", oldPrice: 35, price: 25, descFr: "Souak naturel marocain (écorce de noyer), blanchiment naturel des dents, soin des gencives, Beauty Rose coopérative.", descAr: "سواك مغربي طبيعي (لحاء الجوز)، تبييض الأسنان والعناية بالفم واللثة، منتوج طبيعي.", img: "ref-47.jpg", fallback: FALLBACK.hammam },
-      { id: "REF-48", cat: "hammam", catName: "Hammam & Corps", name: "Mascara Fortifiant Cils et Sourcils (10ml)", ar: "مسكرة مكثفة ومقوية للرموش والحواجب", oldPrice: 60, price: 49, descFr: "Mascara soin fortifiant et densifiant pour cils et sourcils, formule naturelle, 10ml.", descAr: "مسكرة مكثفة ومقوية للرموش والحواجب بتركيبة طبيعية، 10 مل.", img: "ref-48.jpg", fallback: FALLBACK.rose },
-
-      // 5. PARFUMS, MUSCS & MAKHMARIYA (49 - 53)
-      { id: "REF-49", cat: "parfums", catName: "Parfums & Makhmariya", name: "Eau de Parfum Rayan (30ml)", ar: "عطر ريان أو دو بارفان 30 مل", oldPrice: 60, price: 49, descFr: "Eau de parfum Rayan, fragrance orientale raffinée et longue tenue, flacon 30ml.", descAr: "عطر ريان، أو دو بارفان برائحة شرقية فاخرة وثابتة، 30 مل.", img: "ref-49.jpg", fallback: FALLBACK.perfume },
-      { id: "REF-50", cat: "parfums", catName: "Parfums & Makhmariya", name: "Musc Noir Roll-on Parfum Sans Alcool (6ml)", ar: "مسك الطهارة الأسود رول أون 6 مل", oldPrice: 45, price: 35, descFr: "Musc noir, parfum roll-on concentré, huile parfumée orientale sans alcool, 6ml.", descAr: "مسك أسود معطر رول أون عطر شرقي مركز، مسك الطهارة الأسود، 6 مل.", img: "ref-50.jpg", fallback: FALLBACK.perfume },
-      { id: "REF-51", cat: "parfums", catName: "Parfums & Makhmariya", name: "Parfum Roll-on Mille Roses", ar: "عطر ألف وردة مسك الورد", oldPrice: 55, price: 45, descFr: "Parfum mille roses, roll-on parfumé, huile parfumée à la rose naturelle, fragrance florale sans alcool.", descAr: "عطر ألف وردة، مسك الورد عطر رول أون رائحة الورد الطبيعي.", img: "ref-51.jpg", fallback: FALLBACK.rose },
-      { id: "REF-52", cat: "parfums", catName: "Parfums & Makhmariya", name: "Makhmariya Yaqout Corps & Cheveux", ar: "مخمرية ياقوت للجسم والشعر", oldPrice: 80, price: 65, descFr: "Makhmariya parfumée Yaqout pour le corps et les cheveux, parfum oriental doux et longue durée.", descAr: "مخمرية ياقوت لتعطير وترطيب الجسم والشعر برائحة شرقية جذابة وثابتة.", img: "ref-52.jpg", fallback: FALLBACK.perfume },
-      { id: "REF-53", cat: "parfums", catName: "Parfums & Makhmariya", name: "Makhmariya Amira Al Arab (50g)", ar: "مخمرية أميرة العرب 50 غ", oldPrice: 70, price: 55, descFr: "Makhmariya hydratante et parfumante Amira Al Arab pour corps et cheveux, texture fondante, 50g.", descAr: "مخمرية أميرة العرب مرطبة ومعطرة للجسم والشعر، 50 غرام.", img: "ref-53.jpg", fallback: FALLBACK.perfume }
-    ];
-
-    let cart = [];
-    let currentCategory = "all";
-    let activeProduct = null;
-    let pdQty = 1;
-
-    function renderPacks() {
-      const container = document.getElementById("packs-grid");
-      container.innerHTML = packs.map(p => `
-        <div onclick="openProductPage('${p.id}', true)" class="cursor-pointer bg-white rounded-3xl overflow-hidden border border-sandSoft shadow-sm product-card flex flex-col">
-          <div class="relative aspect-[4/3] bg-creamBg overflow-hidden">
-            <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallback}';" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
-            <span class="absolute top-3.5 left-3.5 bg-kasbahTerra text-white text-xs font-bold px-3.5 py-1 rounded-full shadow">${p.badge}</span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <p class="font-arabic text-xs text-kasbahTerra font-bold">${p.ar}</p>
-              <h3 class="font-serif text-2xl font-bold text-oliveBio mt-0.5">${p.name}</h3>
-              <p class="text-xs text-gray-600 mt-2 line-clamp-2">${p.descFr}</p>
-            </div>
-            <div class="mt-5 pt-4 border-t border-sandSoft flex items-center justify-between">
-              <div>
-                <span class="text-xs text-gray-400 line-through">${p.oldPrice} DH</span>
-                <p class="text-2xl font-extrabold text-oliveBio">${p.price} DH</p>
-              </div>
-              <span class="bg-oliveBio hover:bg-kasbahTerra text-white text-xs font-bold px-5 py-3 rounded-full transition shadow-2xs">
-                Commander &rarr;
-              </span>
-            </div>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function renderProducts() {
-      const query = document.getElementById("search-input").value.toLowerCase();
-      const filtered = products.filter(item => {
-        const matchCat = currentCategory === "all" || item.cat === currentCategory;
-        const matchText = item.name.toLowerCase().includes(query) || item.ar.includes(query) || item.descFr.toLowerCase().includes(query) || item.id.toLowerCase().includes(query);
-        return matchCat && matchText;
-      });
-
-      const grid = document.getElementById("products-grid");
-      if (filtered.length === 0) {
-        grid.innerHTML = `<p class="col-span-full text-center text-gray-500 py-12">Aucun produit trouvé pour votre recherche.</p>`;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(item => {
-        const discount = Math.round(((item.oldPrice - item.price) / item.oldPrice) * 100);
-        return `
-        <div onclick="openProductPage('${item.id}', false)" class="cursor-pointer bg-white rounded-3xl overflow-hidden border border-sandSoft product-card flex flex-col">
-          <div class="relative aspect-square overflow-hidden bg-creamBg">
-            <img src="${item.img}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
-            <span class="absolute top-3 left-3 bg-kasbahTerra text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-2xs">-${discount}%</span>
-            <span class="absolute top-3 right-3 bg-white/95 text-oliveBio text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-2xs">${item.id}</span>
-          </div>
-          <div class="p-4 flex-1 flex flex-col justify-between">
-            <div>
-              <p class="font-arabic text-[11px] text-kasbahTerra font-bold">${item.ar}</p>
-              <h3 class="font-bold text-gray-900 text-sm sm:text-base leading-snug mt-0.5 line-clamp-2">${item.name}</h3>
-            </div>
-            <div class="mt-4 pt-3 border-t border-sandSoft flex items-center justify-between">
-              <div>
-                <span class="text-xs text-gray-400 line-through block">${item.oldPrice} DH</span>
-                <span class="font-extrabold text-lg text-oliveBio">${item.price} DH</span>
-              </div>
-              <span class="bg-oliveBio hover:bg-kasbahTerra text-white font-bold text-xs px-4 py-2.5 rounded-full transition">
-                Commander
-              </span>
-            </div>
-          </div>
-        </div>
-      `}).join("");
-    }
-
-    function filterCategory(cat, btnElement) {
-      currentCategory = cat;
-      document.querySelectorAll(".cat-btn").forEach(btn => {
-        btn.classList.remove("bg-oliveBio", "text-white");
-        btn.classList.add("bg-white", "text-oliveBio");
-      });
-      if (btnElement) {
-        btnElement.classList.remove("bg-white", "text-oliveBio");
-        btnElement.classList.add("bg-oliveBio", "text-white");
-      }
-      renderProducts();
-    }
-
-    function selectCategoryAndScroll(cat) {
-      currentCategory = cat;
-      document.querySelectorAll(".cat-btn").forEach(btn => {
-        btn.classList.remove("bg-oliveBio", "text-white");
-        btn.classList.add("bg-white", "text-oliveBio");
-      });
-      renderProducts();
-      document.getElementById("catalogue-section").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function renderProductReviews(product) {
-      const reviewsList = [
-        {
-          author: "Nadia L. — Casablanca",
-          date: "Il y a 2 jours",
-          text: `J'ai commandé "${product.name}" et je suis bluffée par la qualité ! On sent directement que c'est un produit authentique de Kelaat M'gouna. Livraison rapide et paiement à la réception.`
-        },
-        {
-          author: "Zineb R. — Rabat",
-          date: "Il y a 5 jours",
-          text: `Très satisfaite de mon achat. Texture agréable, odeur naturelle et résultats visibles dès la première semaine. Je vais recommander un deuxième flacon pour ma maman.`
-        },
-        {
-          author: "Meryem A. — Marrakech",
-          date: "Il y a 1 semaine",
-          text: `Service client au top sur WhatsApp, colis bien emballé et produit 100% naturel conforme à la description. Bravo à la coopérative Beauty Rose !`
-        }
-      ];
-
-      document.getElementById("pd-reviews-grid").innerHTML = reviewsList.map(r => `
-        <div class="bg-white p-5 rounded-2xl border border-sandSoft shadow-2xs space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-amber-500 text-sm">★★★★★</span>
-            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">✓ Achat vérifié</span>
-          </div>
-          <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">"${r.text}"</p>
-          <div class="pt-2 border-t border-gray-100 flex items-center justify-between text-[11px]">
-            <span class="font-bold text-oliveBio">${r.author}</span>
-            <span class="text-gray-400">${r.date}</span>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function openProductPage(id, isPack) {
-      activeProduct = isPack ? packs.find(p => p.id === id) : products.find(p => p.id === id);
-      if (!activeProduct) return;
-
-      pdQty = 1;
-      document.getElementById("pd-breadcrumb-cat").innerText = activeProduct.catName;
-      document.getElementById("pd-breadcrumb-name").innerText = activeProduct.name;
-
-      const pdImg = document.getElementById("pd-img");
-      pdImg.onerror = function() { this.onerror = null; this.src = activeProduct.fallback; };
-      pdImg.src = activeProduct.img;
-
-      document.getElementById("pd-badge").innerText = activeProduct.badge || "100% Bio • Kelaat M'gouna";
-      document.getElementById("pd-ref").innerText = activeProduct.id;
-      document.getElementById("pd-ar").innerText = activeProduct.ar;
-      document.getElementById("pd-title").innerText = activeProduct.name;
-      document.getElementById("pd-price").innerText = `${activeProduct.price} DH`;
-      document.getElementById("pd-old-price").innerText = `${activeProduct.oldPrice} DH`;
-      document.getElementById("pd-desc-fr").innerText = activeProduct.descFr;
-      document.getElementById("pd-desc-ar").innerText = activeProduct.descAr;
-      document.getElementById("pd-stock-left").innerText = Math.floor(Math.random() * 6) + 5;
-
-      updatePdPriceSummary();
-      renderProductReviews(activeProduct);
-      renderRelatedProducts(activeProduct);
-
-      document.getElementById("home-view").classList.add("hidden");
-      document.getElementById("product-detail-view").classList.remove("hidden");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function showHomeView() {
-      document.getElementById("product-detail-view").classList.add("hidden");
-      document.getElementById("home-view").classList.remove("hidden");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function changePdQty(delta) {
-      pdQty = Math.max(1, pdQty + delta);
-      updatePdPriceSummary();
-    }
-
-    function updatePdPriceSummary() {
-      document.getElementById("pd-qty").innerText = pdQty;
-      const subtotal = activeProduct.price * pdQty;
-      const shipping = subtotal >= 249 ? 0 : 35;
-      const total = subtotal + shipping;
-
-      document.getElementById("pd-subtotal").innerText = `${subtotal} DH`;
-      document.getElementById("pd-shipping").innerText = shipping === 0 ? "GRATUITE 🎉" : "35 DH (Gratuite dès 249 DH)";
-      document.getElementById("pd-total").innerText = `${total} DH`;
-    }
-
-    function renderRelatedProducts(current) {
-      const related = products.filter(p => p.id !== current.id && (p.cat === current.cat || current.cat === undefined)).slice(0, 4);
-      document.getElementById("related-products-grid").innerHTML = related.map(item => `
-        <div onclick="openProductPage('${item.id}', false)" class="cursor-pointer bg-white rounded-2xl overflow-hidden border border-sandSoft product-card flex flex-col">
-          <div class="aspect-square overflow-hidden bg-creamBg">
-            <img src="${item.img}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${item.name}" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-3.5">
-            <p class="font-arabic text-[10px] text-kasbahTerra font-bold">${item.ar}</p>
-            <h4 class="font-bold text-gray-900 text-sm line-clamp-1 mt-0.5">${item.name}</h4>
-            <p class="font-extrabold text-oliveBio text-base mt-2">${item.price} DH</p>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function submitSellCodWhatsApp() {
-      const phone = document.getElementById("pd-phone").value.trim();
-
-      if (!phone || phone.length < 8) {
-        alert("⚠️ Merci d'entrer votre numéro de téléphone (Ex : 06 12 34 56 78).");
-        document.getElementById("pd-phone").focus();
-        return;
-      }
-
-      const subtotal = activeProduct.price * pdQty;
-      const shipping = subtotal >= 249 ? 0 : 35;
-      const total = subtotal + shipping;
-
-      const message =
-`🌿 *NOUVELLE COMMANDE BIO — NOUR•IA (نورية)* 🌿
-━━━━━━━━━━━━━━━━━━━━━━
-🛍️ *Produit :* ${activeProduct.name}
-🔖 *Référence :* ${activeProduct.id}
-🔢 *Quantité :* ${pdQty} x ${activeProduct.price} DH
-🚚 *Livraison Maroc :* ${shipping === 0 ? "GRATUITE 🎉" : shipping + " DH"}
-💰 *TOTAL À PAYER (COD) :* *${total} DH*
-━━━━━━━━━━━━━━━━━━━━━━
-📞 *Téléphone Client :* ${phone}
-━━━━━━━━━━━━━━━━━━━━━━
-✅ _Paiement en espèces à la livraison._`;
-
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
-    }
-
-    function addCurrentPdToCart() {
-      if (!activeProduct) return;
-      const existing = cart.find(i => i.id === activeProduct.id);
-      if (existing) existing.qty += pdQty;
-      else cart.push({ id: activeProduct.id, name: activeProduct.name, price: activeProduct.price, qty: pdQty });
-      updateCartUI();
-      toggleCart(true);
-    }
-
-    function changeCartQty(id, delta) {
-      const item = cart.find(i => i.id === id);
-      if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      const count = cart.reduce((sum, i) => sum + i.qty, 0);
-      document.getElementById("cart-count").innerText = count;
-
-      const itemsContainer = document.getElementById("cart-items");
-      if (cart.length === 0) {
-        itemsContainer.innerHTML = `<p class="text-center text-gray-500 text-sm py-12">Votre panier est vide.</p>`;
-        document.getElementById("cart-total").innerText = "0 DH";
-        return;
-      }
-
-      let subtotal = 0;
-      itemsContainer.innerHTML = cart.map(item => {
-        subtotal += item.price * item.qty;
-        return `
-          <div class="flex items-center justify-between bg-creamBg p-3 rounded-xl border border-sandSoft">
-            <div class="pr-2">
-              <p class="text-[11px] font-bold text-kasbahTerra">${item.id}</p>
-              <p class="text-sm font-bold text-oliveBio">${item.name}</p>
-              <p class="text-xs text-gray-600">${item.price} DH x ${item.qty}</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="changeCartQty('${item.id}', -1)" class="w-7 h-7 rounded-full bg-white border border-sandSoft font-bold text-oliveBio">-</button>
-              <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
-              <button onclick="changeCartQty('${item.id}', 1)" class="w-7 h-7 rounded-full bg-white border border-sandSoft font-bold text-oliveBio">+</button>
-            </div>
-          </div>
-        `;
-      }).join("");
-
-      const shipping = subtotal >= 249 ? 0 : 35;
-      document.getElementById("shipping-cost").innerText = shipping === 0 ? "GRATUITE 🎉" : "35 DH (Gratuite dès 249 DH)";
-      document.getElementById("cart-total").innerText = `${subtotal + shipping} DH`;
-    }
-
-    function toggleCart(forceOpen = null) {
-      const modal = document.getElementById("cart-modal");
-      if (forceOpen === true) modal.classList.remove("hidden");
-      else if (forceOpen === false) modal.classList.add("hidden");
-      else modal.classList.toggle("hidden");
-    }
-
-    function checkoutCartWhatsApp() {
-      if (cart.length === 0) return alert("Votre panier est vide !");
-      const phone = document.getElementById("cart-phone").value.trim();
-
-      if (!phone || phone.length < 8) return alert("⚠️ Merci d'entrer votre numéro de téléphone.");
-
-      let subtotal = 0;
-      let lines = cart.map(i => {
-        subtotal += i.price * i.qty;
-        return `• [${i.id}] ${i.name} (x${i.qty}) = ${i.price * i.qty} DH`;
-      }).join("\n");
-
-      const shipping = subtotal >= 249 ? 0 : 35;
-      const total = subtotal + shipping;
-
-      const message =
-`🌿 *NOUVELLE COMMANDE PANIER — NOUR•IA (نورية)* 🌿
-━━━━━━━━━━━━━━━━━━━━━━
-${lines}
-━━━━━━━━━━━━━━━━━━━━━━
-🚚 *Livraison Maroc :* ${shipping === 0 ? "GRATUITE 🎉" : shipping + " DH"}
-💰 *TOTAL À PAYER (COD) :* *${total} DH*
-━━━━━━━━━━━━━━━━━━━━━━
-📞 *Téléphone Client :* ${phone}
-━━━━━━━━━━━━━━━━━━━━━━
-✅ _Paiement en espèces à la livraison._`;
-
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
-    }
-
-    document.getElementById("search-input").addEventListener("input", renderProducts);
-    renderPacks();
-    renderProducts();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-<img src="bg-site.jpg" alt="Kelaat M'gouna" class="site-wallpaper" />
-<div class="site-wallpaper-overlay"></div>
