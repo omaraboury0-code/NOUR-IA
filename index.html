@@ -1,548 +1,4 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOUR•IA (نورية) — Cosmétiques Naturels & Trésors de Kelaat M'gouna</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cairo:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #5C2434;
-      --primary-hover: #461926;
-      --accent: #E11D48;
-      --bg-soft: #FDF8F8;
-    }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-soft); }
-    h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; }
-    .font-arabic { font-family: 'Cairo', sans-serif; }
-    .bg-primary { background-color: var(--primary); }
-    .hover\:bg-primary-dark:hover { background-color: var(--primary-hover); }
-    .text-primary { color: var(--primary); }
-    .border-primary { border-color: var(--primary); }
-    .bg-accent { background-color: var(--accent); }
-    .text-accent { color: var(--accent); }
-    .ia-gradient {
-      background: linear-gradient(135deg, #F43F5E 0%, #FB7185 50%, #F59E0B 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  </style>
-</head>
-<body class="text-stone-800">
-
-  <!-- Bandeau Annonce -->
-  <div class="bg-primary text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium">
-    🌹 Livraison Rapide & Paiement à la Livraison (COD) — Maroc, Sénégal, Côte d'Ivoire, Mali, Gabon & Cameroun ✨
-  </div>
-
-  <!-- Header -->
-  <header class="bg-white/95 backdrop-blur sticky top-0 z-40 shadow-sm border-b border-rose-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
-      
-      <!-- Logo NOUR•IA (نورية) -->
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-2xl bg-primary text-white flex items-center justify-center font-serif font-bold text-2xl shadow-md border border-rose-300/40">
-          N<span class="text-rose-400 text-lg">•</span>
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-primary leading-none">
-              NOUR<span class="ia-gradient font-extrabold">•IA</span>
-            </span>
-            <span class="font-arabic text-xs bg-rose-50 text-primary px-2 py-0.5 rounded-full border border-rose-200 font-bold">نورية</span>
-          </div>
-          <span class="text-[10px] uppercase tracking-[0.2em] text-stone-500 block mt-0.5">Kelaat M'gouna • Cosmétique Bio</span>
-        </div>
-      </a>
-
-      <!-- Recherche -->
-      <div class="order-3 lg:order-2 w-full lg:w-1/3 relative">
-        <input type="text" id="searchInput" onkeyup="renderProducts()" placeholder="Rechercher : Eau de Rose, Nila, Aker Fassi, Figue..." 
-               class="w-full pl-10 pr-4 py-2.5 rounded-full bg-rose-50/70 border border-rose-200 text-sm focus:outline-none focus:border-rose-500">
-        <svg class="w-4 h-4 text-rose-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-      </div>
-
-      <!-- Thème Couleur + Devise + Panier -->
-      <div class="order-2 lg:order-3 flex items-center gap-2.5 sm:gap-3">
-        <!-- Sélecteur Nuances Rose/Rouge -->
-        <div class="hidden sm:flex items-center gap-1.5 bg-rose-50 px-2.5 py-1.5 rounded-full border border-rose-200" title="Changer la nuance">
-          <button onclick="setTheme('#5C2434', '#461926', '#E11D48', '#FDF8F8')" class="w-4 h-4 rounded-full bg-[#5C2434] ring-2 ring-offset-1 ring-rose-300" title="Rose & Bordeaux"></button>
-          <button onclick="setTheme('#9F1239', '#881337', '#F43F5E', '#FFF1F2')" class="w-4 h-4 rounded-full bg-[#9F1239]" title="Rouge Aker Fassi"></button>
-          <button onclick="setTheme('#831843', '#701A75', '#DB2777', '#FDF2F8')" class="w-4 h-4 rounded-full bg-[#831843]" title="Rose Poudré"></button>
-        </div>
-
-        <!-- Devise MAD / FCFA -->
-        <div class="flex items-center bg-rose-50 rounded-full p-1 border border-rose-200">
-          <button onclick="setCurrency('MAD')" id="btn-MAD" class="px-3 py-1 rounded-full text-xs font-bold bg-primary text-white transition">MAD</button>
-          <button onclick="setCurrency('FCFA')" id="btn-FCFA" class="px-3 py-1 rounded-full text-xs font-bold text-stone-600 hover:text-primary transition">FCFA</button>
-        </div>
-
-        <!-- Panier -->
-        <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-rose-50 hover:bg-rose-100 text-primary border border-rose-200 transition">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <span id="cartCount" class="absolute -top-1 -right-1 bg-accent text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative bg-primary text-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid md:grid-cols-2 gap-10 items-center">
-      <div class="space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-rose-200 text-xs font-semibold tracking-wider border border-rose-300/30">
-          <span>🌹 Kelaat M'gouna • 100% Bio & Naturel</span>
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-          Révélez la Lumière de Votre Peau avec <span class="ia-gradient italic">NOUR•IA</span>
-        </h1>
-        <p class="text-rose-100/90 text-base sm:text-lg max-w-xl leading-relaxed">
-          L'alliance de l'authenticité marocaine (Eau de Rose Bio, Aker Fassi, Nila Sahraoui, Figue de Barbarie) et de soins ciblés pour un éclat naturel immédiat.
-        </p>
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a href="#packs" class="px-7 py-3.5 rounded-full bg-accent hover:opacity-95 text-white font-semibold text-sm transition shadow-lg">
-            Découvrir les Packs WAW
-          </a>
-          <a href="#catalogue" class="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/25 transition">
-            Explorer le Catalogue
-          </a>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-2 border-rose-300/30 bg-rose-950 relative">
-          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80" alt="Cosmétiques NOUR•IA" class="w-full h-full object-cover opacity-90">
-          <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur text-stone-900 p-4 rounded-2xl shadow-lg flex items-center justify-between">
-            <div>
-              <p class="text-[11px] font-bold text-accent uppercase tracking-wider">Offre Star • Maroc & Afrique</p>
-              <p class="font-serif text-lg font-bold text-primary">Coffret Éclat Royal NOUR•IA</p>
-            </div>
-            <span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">+1 Cadeau Offert</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bandeau Garanties -->
-  <section class="bg-white border-b border-rose-100 py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div>
-        <span class="text-2xl">🌹</span>
-        <h3 class="font-bold text-sm text-primary mt-1">100% Bio & Pur</h3>
-        <p class="text-xs text-stone-500">Trésors de Kelaat M'gouna</p>
-      </div>
-      <div>
-        <span class="text-2xl">💵</span>
-        <h3 class="font-bold text-sm text-primary mt-1">Paiement à la Livraison</h3>
-        <p class="text-xs text-stone-500">Payez uniquement à réception</p>
-      </div>
-      <div>
-        <span class="text-2xl">🚚</span>
-        <h3 class="font-bold text-sm text-primary mt-1">Livraison Express</h3>
-        <p class="text-xs text-stone-500">Maroc & Afrique de l'Ouest</p>
-      </div>
-      <div>
-        <span class="text-2xl">✨</span>
-        <h3 class="font-bold text-sm text-primary mt-1">Sans Chimie</h3>
-        <p class="text-xs text-stone-500">Formules naturelles testées</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Packs Signatures -->
-  <section id="packs" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-accent font-bold text-xs uppercase tracking-widest">Routines Complètes & Cadeaux</span>
-      <h2 class="text-3xl sm:text-4xl font-bold text-primary mt-2">Nos Packs Signatures « WAW »</h2>
-      <p class="text-stone-600 text-sm mt-2">Des coffrets prêts à l'emploi pour sublimer votre peau et vos cheveux naturellement.</p>
-    </div>
-    <div id="packsGrid" class="grid md:grid-cols-3 gap-8"></div>
-  </section>
-
-  <!-- Catalogue Produits -->
-  <section id="catalogue" class="bg-white py-16 border-t border-rose-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-        <div>
-          <span class="text-accent font-bold text-xs uppercase tracking-widest">Boutique Officielle NOUR•IA</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-primary mt-1">Tous nos Soins Cosmétiques</h2>
-        </div>
-
-        <div class="flex flex-wrap gap-2">
-          <button onclick="setCategory('Tous')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-primary text-white transition">Tous</button>
-          <button onclick="setCategory('Éclat & Visage')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-rose-50 text-stone-700 hover:bg-rose-100 transition">Éclat & Visage</button>
-          <button onclick="setCategory('Capillaire')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-rose-50 text-stone-700 hover:bg-rose-100 transition">Capillaire</button>
-          <button onclick="setCategory('Hammam & Corps')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-rose-50 text-stone-700 hover:bg-rose-100 transition">Hammam & Corps</button>
-          <button onclick="setCategory('Parfums & Muscs')" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-rose-50 text-stone-700 hover:bg-rose-100 transition">Parfums & Muscs</button>
-        </div>
-      </div>
-
-      <div id="productsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-primary text-rose-100 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="font-serif text-3xl font-bold text-white tracking-wider">NOUR<span class="ia-gradient">•IA</span></span>
-          <span class="font-arabic text-sm text-rose-200">(نورية)</span>
-        </div>
-        <p class="text-sm mt-3 text-rose-100/80 leading-relaxed">
-          Cosmétiques naturels authentiques de Kelaat M'gouna (Maroc). Huiles végétales bio, soins éclaircissants naturels, rituels du hammam et parfums orientaux.
-        </p>
-      </div>
-      <div>
-        <h4 class="font-bold text-white mb-3">Zones de Livraison (COD)</h4>
-        <ul class="text-sm space-y-1.5 text-rose-100/90">
-          <li>🇲🇦 Maroc (Toutes les villes — 24h/48h)</li>
-          <li>🇸🇳 Sénégal (Dakar & régions)</li>
-          <li>🇨🇮 Côte d'Ivoire (Abidjan & intérieur)</li>
-          <li>🇲🇱 Mali • 🇬🇦 Gabon • 🇨🇲 Cameroun</li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold text-white mb-3">Service Client & WhatsApp</h4>
-        <p class="text-sm mb-2 text-rose-100/80">Commandes directes & conseils beauté gratuits :</p>
-        <p class="text-rose-300 font-bold text-sm">WhatsApp : +212 6 00 00 00 00</p>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-white/10 text-center text-xs text-rose-200/70">
-      © 2026 NOUR•IA (نورية) Cosmétiques Bio — Tous droits réservés.
-    </div>
-  </footer>
-
-  <!-- Panier Coulissant & Commande WhatsApp COD -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleCart()"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
-      <div class="p-5 bg-primary text-white flex items-center justify-between">
-        <h3 class="font-serif text-2xl font-bold">Votre Panier NOUR•IA</h3>
-        <button onclick="toggleCart()" class="text-white/80 hover:text-white text-2xl leading-none">&times;</button>
-      </div>
-
-      <div class="flex-1 overflow-y-auto p-5 space-y-6">
-        <div id="cartItems" class="space-y-3"></div>
-
-        <form id="codForm" onsubmit="submitOrder(event)" class="bg-rose-50/60 p-4 rounded-2xl border border-rose-200 space-y-3">
-          <h4 class="font-bold text-primary text-xs uppercase tracking-wider">Livraison & Paiement à Réception (COD)</h4>
-          <div>
-            <label class="block text-xs font-semibold text-stone-700 mb-1">Nom & Prénom *</label>
-            <input type="text" id="custName" required placeholder="Ex: Salma Benali / Fatou Diop" class="w-full px-3 py-2 rounded-xl border border-rose-200 text-sm bg-white">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-stone-700 mb-1">Téléphone / WhatsApp *</label>
-            <input type="tel" id="custPhone" required placeholder="Ex: 06... ou +221 77..." class="w-full px-3 py-2 rounded-xl border border-rose-200 text-sm bg-white">
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="block text-xs font-semibold text-stone-700 mb-1">Pays *</label>
-              <select id="countrySelect" onchange="updateCurrencyFromCountry()" class="w-full px-3 py-2 rounded-xl border border-rose-200 text-sm bg-white">
-                <option value="Maroc">🇲🇦 Maroc</option>
-                <option value="Sénégal">🇸🇳 Sénégal</option>
-                <option value="Côte d'Ivoire">🇨🇮 Côte d'Ivoire</option>
-                <option value="Mali">🇲🇱 Mali</option>
-                <option value="Gabon">🇬🇦 Gabon</option>
-                <option value="Cameroun">🇨🇲 Cameroun</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-stone-700 mb-1">Ville / Quartier *</label>
-              <input type="text" id="custCity" required placeholder="Ex: Casablanca, Dakar..." class="w-full px-3 py-2 rounded-xl border border-rose-200 text-sm bg-white">
-            </div>
-          </div>
-          <button type="submit" class="w-full py-3.5 rounded-xl bg-accent hover:opacity-95 text-white font-bold text-sm shadow-md transition">
-            Commander maintenant (WhatsApp / COD)
-          </button>
-        </form>
-      </div>
-
-      <div class="p-5 border-t border-rose-100 bg-rose-50/40 flex items-center justify-between">
-        <span class="font-bold text-stone-700">Total à payer :</span>
-        <span id="cartTotal" class="font-serif text-2xl font-bold text-primary">0 DH</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Détails Produit -->
-  <div id="productModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
-    <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 border border-rose-100">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-2xl">&times;</button>
-      <span id="modalCat" class="inline-block px-3 py-1 rounded-full bg-rose-50 text-primary text-xs font-bold"></span>
-      <h3 id="modalTitle" class="font-serif text-3xl font-bold text-primary"></h3>
-      <p id="modalPrice" class="text-xl font-bold text-accent"></p>
-      <div class="space-y-2 text-sm text-stone-600">
-        <p><strong class="text-stone-800">Bienfaits :</strong> <span id="modalDesc"></span></p>
-        <p><strong class="text-stone-800">Conseils d'utilisation :</strong> <span id="modalUsage"></span></p>
-      </div>
-      <button id="modalAddBtn" class="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm hover:opacity-95 transition">
-        Ajouter au panier
-      </button>
-    </div>
-  </div>
-
-  <script>
-    // REMPLACE CE NUMÉRO PAR TON VRAI NUMÉRO WHATSAPP (sans le +)
-    const WHATSAPP_NUMBER = "212600000000";
-
-    let currentCurrency = 'MAD';
-    let currentCategory = 'Tous';
-    let cart = [];
-
-    function setTheme(primary, hover, accent, bgSoft) {
-      document.documentElement.style.setProperty('--primary', primary);
-      document.documentElement.style.setProperty('--primary-hover', hover);
-      document.documentElement.style.setProperty('--accent', accent);
-      document.documentElement.style.setProperty('--bg-soft', bgSoft);
-    }
-
-    const packs = [
-      {
-        id: 'pack-1',
-        name: "Pack Éclat Royal & Teint Unifié",
-        badge: "BEST-SELLER • +1 CADEAU",
-        priceMAD: 229,
-        priceFCFA: 19500,
-        oldPriceMAD: 310,
-        oldPriceFCFA: 26000,
-        items: ["Duo Aker Fassi & Nila Sahraoui", "Huile de Réglisse (Anti-taches)", "Eau de Rose Première Distillation Bio", "🎁 CADEAU : Balm Lips Moward Naturel"],
-        img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 'pack-2',
-        name: "Pack Cheveux de Rêve & Anti-Chute",
-        badge: "SPÉCIAL POUSSE & FORCE",
-        priceMAD: 249,
-        priceFCFA: 21000,
-        oldPriceMAD: 330,
-        oldPriceFCFA: 28000,
-        items: ["Mélange 10 Huiles aux Plantes", "Shampoing Traitant à la Rose Bio", "Beurre de Karité Pur 150g", "Crème Coiffante Cheveux Secs"],
-        img: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 'pack-3',
-        name: "Pack Hammam & Séduction Orientale",
-        badge: "COFFRET PLAISIR & PARFUM",
-        priceMAD: 219,
-        priceFCFA: 18500,
-        oldPriceMAD: 290,
-        oldPriceFCFA: 24500,
-        items: ["Tabrima à la Rose & Herbes", "Crème Hydratante à l'Aker Fassi", "Makhmariya Amira Al Arab (50g)", "Parfum Roll-on Mille Roses"],
-        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
-      }
-    ];
-
-    const products = [
-      { id: 3, name: "Eau de Rose Première Distillation Bio (250ml)", cat: "Éclat & Visage", priceMAD: 65, priceFCFA: 5500, desc: "Eau florale pure de Kelaat M'gouna aux vertus antirides, tonifiantes et apaisantes.", usage: "Vaporiser matin et soir sur le visage propre avant votre soin.", img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80" },
-      { id: 42, name: "Duo Aker Fassi & Nila Sahraoui", cat: "Éclat & Visage", priceMAD: 89, priceFCFA: 7500, desc: "Poudres authentiques du Sahara pour un soin éclaircissant, unifiant et bonne mine.", usage: "Mélanger avec de l'eau de rose, appliquer 15 min en masque puis rincer.", img: "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&w=500&q=80" },
-      { id: 7, name: "Huile de Pépins de Figue de Barbarie", cat: "Éclat & Visage", priceMAD: 149, priceFCFA: 12500, desc: "Élixir anti-âge naturel puissant, régénérant cellulaire et raffermissant.", usage: "Appliquer 2 à 3 gouttes le soir sur le visage et le contour des yeux.", img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80" },
-      { id: 22, name: "Balm Lips Moward (Lèvres & Joues)", cat: "Éclat & Visage", priceMAD: 49, priceFCFA: 4500, desc: "Teinte naturelle 100% sans chimie à l'Aker Fassi pour un effet rosé longue tenue.", usage: "Appliquer une fine touche sur les lèvres et les pommettes.", img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80" },
-      { id: 10, name: "Huile de Réglisse (Licorice)", cat: "Éclat & Visage", priceMAD: 79, priceFCFA: 6500, desc: "Soin unifiant naturel et anti-taches brunes pour retrouver un teint lumineux.", usage: "Appliquer le soir sur les zones concernées.", img: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80" },
-      { id: 4, name: "Mélange 10 Huiles aux Plantes", cat: "Capillaire", priceMAD: 89, priceFCFA: 7500, desc: "Bain d'huiles fortifiant de Kelaat M'gouna contre la chute et pour stimuler la pousse.", usage: "Appliquer 1h à 2h avant le shampoing.", img: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=500&q=80" },
-      { id: 23, name: "Shampoing Traitant Antichute à la Rose", cat: "Capillaire", priceMAD: 69, priceFCFA: 6000, desc: "Formule 100% naturelle qui hydrate le cuir chevelu, freine la chute et apporte de la brillance.", usage: "Masser doucement sur cheveux mouillés puis rincer.", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80" },
-      { id: 13, name: "Beurre de Karité Pur (150g)", cat: "Capillaire", priceMAD: 79, priceFCFA: 6500, desc: "Nutrition profonde pour cheveux secs/crépus, corps et zones sèches.", usage: "Faire fondre une noisette dans les mains avant application.", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80" },
-      { id: 40, name: "Tabrima à la Rose & Herbes", cat: "Hammam & Corps", priceMAD: 65, priceFCFA: 5500, desc: "Gommage corps marocain 100% naturel pour exfolier, unifier et adoucir la peau.", usage: "Mélanger avec de l'eau de rose ou du savon noir au hammam.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80" },
-      { id: 16, name: "Crème Hydratante à l'Aker Fassi (100g)", cat: "Hammam & Corps", priceMAD: 69, priceFCFA: 6000, desc: "Soin revitalisant qui hydrate intensément et laisse un voile rosé naturel.", usage: "Appliquer quotidiennement sur le corps, les mains ou les pieds.", img: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=500&q=80" },
-      { id: 20, name: "Beurre de Fenugrec Galbant (150g)", cat: "Hammam & Corps", priceMAD: 89, priceFCFA: 7500, desc: "Soin raffermissant et galbant ciblé pour le buste et les hanches.", usage: "Masser quotidiennement pendant 5 à 10 minutes.", img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=500&q=80" },
-      { id: 51, name: "Parfum Roll-on Mille Roses", cat: "Parfums & Muscs", priceMAD: 45, priceFCFA: 4000, desc: "Huile parfumée sans alcool à la fragrance délicate de rose de Kelaat M'gouna.", usage: "Appliquer sur les poignets et le cou.", img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80" },
-      { id: 53, name: "Makhmariya Amira Al Arab (50g)", cat: "Parfums & Muscs", priceMAD: 75, priceFCFA: 6500, desc: "Crème parfumante orientale fondante pour parfumer durablement corps et cheveux.", usage: "Appliquer une petite touche sur la peau et les pointes.", img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=500&q=80" }
-    ];
-
-    function formatPrice(item, isOld = false) {
-      if (currentCurrency === 'MAD') {
-        return (isOld ? item.oldPriceMAD : item.priceMAD) + ' DH';
-      }
-      return (isOld ? item.oldPriceFCFA : item.priceFCFA).toLocaleString('fr-FR') + ' FCFA';
-    }
-
-    function setCurrency(curr) {
-      currentCurrency = curr;
-      document.getElementById('btn-MAD').className = curr === 'MAD' 
-        ? 'px-3 py-1 rounded-full text-xs font-bold bg-primary text-white transition' 
-        : 'px-3 py-1 rounded-full text-xs font-bold text-stone-600 hover:text-primary transition';
-      document.getElementById('btn-FCFA').className = curr === 'FCFA' 
-        ? 'px-3 py-1 rounded-full text-xs font-bold bg-primary text-white transition' 
-        : 'px-3 py-1 rounded-full text-xs font-bold text-stone-600 hover:text-primary transition';
-      renderPacks();
-      renderProducts();
-      updateCartUI();
-    }
-
-    function updateCurrencyFromCountry() {
-      const country = document.getElementById('countrySelect').value;
-      setCurrency(country === 'Maroc' ? 'MAD' : 'FCFA');
-    }
-
-    function renderPacks() {
-      document.getElementById('packsGrid').innerHTML = packs.map(p => `
-        <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-rose-100 flex flex-col hover:shadow-xl transition">
-          <div class="relative h-56 bg-rose-50">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
-            <span class="absolute top-3 left-3 bg-primary text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
-              ${p.badge}
-            </span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-            <div>
-              <h3 class="font-serif text-2xl font-bold text-primary">${p.name}</h3>
-              <ul class="mt-3 space-y-1.5 text-sm text-stone-600">
-                ${p.items.map(i => `<li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span><span>${i}</span></li>`).join('')}
-              </ul>
-            </div>
-            <div class="pt-4 border-t border-rose-100">
-              <div class="flex items-baseline gap-3 mb-3">
-                <span class="text-2xl font-bold text-primary">${formatPrice(p)}</span>
-                <span class="text-sm text-stone-400 line-through">${formatPrice(p, true)}</span>
-              </div>
-              <button onclick="addToCart('${p.id}', true)" class="w-full py-3 rounded-xl bg-primary hover:bg-primary-dark text-white font-semibold text-sm transition">
-                Commander ce Pack
-              </button>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function setCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.className = btn.innerText === cat 
-          ? 'cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-primary text-white transition'
-          : 'cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-rose-50 text-stone-700 hover:bg-rose-100 transition';
-      });
-      renderProducts();
-    }
-
-    function renderProducts() {
-      const search = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = products.filter(p => {
-        const matchCat = currentCategory === 'Tous' || p.cat === currentCategory;
-        const matchSearch = p.name.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search);
-        return matchCat && matchSearch;
-      });
-
-      document.getElementById('productsGrid').innerHTML = filtered.map(p => `
-        <div class="bg-[#FDF8F8] rounded-2xl overflow-hidden border border-rose-100 flex flex-col hover:border-rose-300 transition group">
-          <div class="h-48 bg-white overflow-hidden relative cursor-pointer" onclick="openModal(${p.id})">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-            <span class="absolute top-2.5 left-2.5 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-2.5 py-1 rounded-full">
-              ${p.cat}
-            </span>
-          </div>
-          <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h3 onclick="openModal(${p.id})" class="font-bold text-stone-900 text-base leading-snug cursor-pointer hover:text-primary">${p.name}</h3>
-              <p class="text-xs text-stone-500 mt-1 line-clamp-2">${p.desc}</p>
-            </div>
-            <div class="pt-2 flex items-center justify-between gap-2">
-              <span class="font-bold text-lg text-primary">${formatPrice(p)}</span>
-              <button onclick="addToCart(${p.id}, false)" class="px-3.5 py-2 rounded-xl bg-primary hover:bg-accent text-white text-xs font-semibold transition">
-                + Ajouter
-              </button>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function addToCart(id, isPack) {
-      const item = isPack ? packs.find(p => p.id === id) : products.find(p => p.id === id);
-      const existing = cart.find(c => c.id === id);
-      if (existing) existing.qty += 1;
-      else cart.push({ ...item, qty: 1 });
-      updateCartUI();
-      toggleCart(true);
-    }
-
-    function removeFromCart(id) {
-      cart = cart.filter(c => String(c.id) !== String(id));
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      document.getElementById('cartCount').innerText = cart.reduce((acc, item) => acc + item.qty, 0);
-      const container = document.getElementById('cartItems');
-      if (cart.length === 0) {
-        container.innerHTML = '<p class="text-sm text-stone-500 text-center py-6">Votre panier est vide. Ajoutez un soin ou un pack NOUR•IA !</p>';
-        document.getElementById('cartTotal').innerText = currentCurrency === 'MAD' ? '0 DH' : '0 FCFA';
-        return;
-      }
-
-      let total = 0;
-      container.innerHTML = cart.map(item => {
-        const unitPrice = currentCurrency === 'MAD' ? item.priceMAD : item.priceFCFA;
-        total += unitPrice * item.qty;
-        return `
-          <div class="flex items-center justify-between bg-rose-50/50 p-3 rounded-xl border border-rose-100">
-            <div>
-              <p class="font-bold text-sm text-primary">${item.name}</p>
-              <p class="text-xs text-stone-500">${item.qty} x ${formatPrice(item)}</p>
-            </div>
-            <button onclick="removeFromCart('${item.id}')" class="text-rose-600 hover:text-rose-800 text-xs font-bold px-2">Retirer</button>
-          </div>
-        `;
-      }).join('');
-
-      document.getElementById('cartTotal').innerText = currentCurrency === 'MAD' 
-        ? total + ' DH' 
-        : total.toLocaleString('fr-FR') + ' FCFA';
-    }
-
-    function toggleCart(forceOpen = null) {
-      const drawer = document.getElementById('cartDrawer');
-      if (forceOpen === true) drawer.classList.remove('hidden');
-      else drawer.classList.toggle('hidden');
-    }
-
-    function openModal(id) {
-      const p = products.find(prod => prod.id === id);
-      document.getElementById('modalCat').innerText = p.cat;
-      document.getElementById('modalTitle').innerText = p.name;
-      document.getElementById('modalPrice').innerText = formatPrice(p);
-      document.getElementById('modalDesc').innerText = p.desc;
-      document.getElementById('modalUsage').innerText = p.usage;
-      document.getElementById('modalAddBtn').onclick = () => { addToCart(p.id, false); closeModal(); };
-      document.getElementById('productModal').classList.remove('hidden');
-      document.getElementById('productModal').classList.add('flex');
-    }
-
-    function closeModal() {
-      document.getElementById('productModal').classList.add('hidden');
-      document.getElementById('productModal').classList.remove('flex');
-    }
-
-    function submitOrder(e) {
-      e.preventDefault();
-      if (cart.length === 0) {
-        alert("Veuillez ajouter au moins un produit à votre panier.");
-        return;
-      }
-      const name = document.getElementById('custName').value;
-      const phone = document.getElementById('custPhone').value;
-      const country = document.getElementById('countrySelect').value;
-      const city = document.getElementById('custCity').value;
-      const total = document.getElementById('cartTotal').innerText;
-
-      const itemsList = cart.map(i => `- ${i.qty}x ${i.name}`).join('%0A');
-      const msg = `Bonjour *NOUR•IA (نورية)* 🌹, je souhaite commander :%0A%0A${itemsList}%0A%0A*Total :* ${total}%0A*Nom :* ${name}%0A*Tél :* ${phone}%0A*Pays/Ville :* ${country} - ${city}`;
-
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
-      cart = [];
-      updateCartUI();
-      toggleCart();
-    }
-
-    renderPacks();
-    renderProducts();
-    updateCartUI();
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -743,4 +199,257 @@
         </div>
         <input id="client-name" type="text" placeholder="Votre Nom complet" class="w-full px-3.5 py-2 rounded-xl border border-roseSoft text-sm bg-white" />
         <input id="client-city" type="text" placeholder="Votre Ville & Adresse" class="w-full px-3.5 py-2 rounded-xl border border-roseSoft text-sm bg-white" />
-        <button onclick="checkoutWhatsApp()" class="w
+        <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-full shadow-md transition flex items-center justify-center gap-2">
+          <span>Commander sur WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOUTON FLOTTANT WHATSAPP -->
+  <a href="https://wa.me/212776183941?text=Salam%20NOUR%E2%80%A2IA%2C%20bghit%20n3ref%20ktar%203la%20les%20produits%20dyalkom%20%F0%9F%8C%B9" target="_blank" class="fixed bottom-5 right-5 z-40 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-full shadow-xl flex items-center gap-2 text-sm font-semibold transition">
+    <span>💬 WhatsApp</span>
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "212776183941";
+
+    // 3 PACKS EXCLUSIFS CREES POUR NOUR-IA
+    const packs = [
+      {
+        id: "pack-1",
+        name: "Coffret Éclat Kelaat M'gouna",
+        arabic: "باك إشراقة قلعة مكونة",
+        badge: "Best-Seller • -25%",
+        items: "Eau de Rose 1ère Distillation 250ml + Huile Figue de Barbarie + Crème Vitamine E & Rose + Balm Lips Aker Fassi",
+        oldPrice: 220,
+        price: 165,
+        image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        id: "pack-2",
+        name: "Rituel Hammam Royal & Aker Fassi",
+        arabic: "باك الحمام الملكي والعكر الفاسي",
+        badge: "Éclat Corps • -22%",
+        items: "Tabrima Rose & Herbes + Ghassoul Aker Fassi + Duo Aker Fassi & Nila Sahraoui + Savon Lait d'Ânesse + Crème Pieds Aker Fassi",
+        oldPrice: 180,
+        price: 139,
+        image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        id: "pack-3",
+        name: "Coffret Cheveux Forts & Musc Oriental",
+        arabic: "باك العناية بالشعر والمسك الشرقي",
+        badge: "Soin Complet • -20%",
+        items: "Shampoing Antichute Rose 200ml + Mélange 10 Huiles aux Plantes + Huile de Sidr 100ml + Makhmariya Amira Al Arab",
+        oldPrice: 199,
+        price: 159,
+        image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=80"
+      }
+    ];
+
+    // PRODUITS DU CATALOGUE BEAUTY ROSE COOPERATIVE (PRIX DE VENTE DETAIL)
+    const products = [
+      // HUILES & EAUX FLORALES
+      { id: 1, cat: "huiles", name: "Eau de Rose 1ère Distillation Bio (250ml)", ar: "ماء الورد التقطير الأول بيو", price: 65, desc: "Antirides, apaise les yeux, pureté Kelaat M'gouna.", img: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=600&q=80" },
+      { id: 2, cat: "huiles", name: "Eau de Rose Distillée Spray (200ml)", ar: "ماء الورد المقطر رشاش", price: 35, desc: "Tonique visage naturel 100%, fraîcheur et éclat.", img: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=600&q=80" },
+      { id: 3, cat: "huiles", name: "Huile de Pépins de Figue de Barbarie", ar: "زيت التين الشوكي", price: 45, desc: "Anti-âge puissant, régénère les cellules du visage.", img: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=600&q=80" },
+      { id: 4, cat: "huiles", name: "Huile d'Amande Douce Pure (100ml)", ar: "زيت اللوز العذب", price: 69, desc: "Pressée à froid, douceur et éclat peau & cheveux.", img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80" },
+      { id: 5, cat: "huiles", name: "Huile de Sidr / Jujubier (100ml)", ar: "زيت السدر الطبيعي", price: 49, desc: "Fortifie les racines et purifie le cuir chevelu.", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" },
+      { id: 6, cat: "huiles", name: "Huile de Réglisse Éclaircissante", ar: "زيت عرق السوس", price: 35, desc: "Unifie le teint et atténue les taches pigmentaires.", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=600&q=80" },
+      { id: 7, cat: "huiles", name: "Mélange 10 Huiles aux Plantes", ar: "خلطة 10 زيوت بالأعشاب", price: 39, desc: "Soin capillaire fortifiant antichute aux herbes.", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=600&q=80" },
+
+      // CREMES & BEURRES
+      { id: 8, cat: "cremes", name: "Crème Anti-Cernes Huile de Ricin (50ml)", ar: "كريم مزيل للهالات السوداء", price: 65, desc: "Hydrate le contour des yeux et réduit les cernes.", img: "https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?auto=format&fit=crop&w=600&q=80" },
+      { id: 9, cat: "cremes", name: "Beurre de Karité Pur (150g)", ar: "زبدة الشيا الطبيعية", price: 55, desc: "Nutrition intense visage, corps et pointes sèches.", img: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80" },
+      { id: 10, cat: "cremes", name: "Beurre de Fenugrec Nature Luxe (150g)", ar: "زبدة الحلبة الطبيعية", price: 55, desc: "Soin raffermissant et galbant naturel.", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80" },
+      { id: 11, cat: "cremes", name: "Crème Vitamine E & Huile de Rose (30g)", ar: "كريم فيتامين E وزيت الورد", price: 39, desc: "Hydratation quotidienne tous types de peaux.", img: "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?auto=format&fit=crop&w=600&q=80" },
+      { id: 12, cat: "cremes", name: "Crème à l'Aker Fassi Pieds & Corps (100g)", ar: "كريم العكر الفاسي", price: 29, desc: "Effet rosé naturel et douceur intense des pieds.", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80" },
+      { id: 13, cat: "cremes", name: "Crème à l'Encens Masculin / Oliban (100g)", ar: "كريم اللبان الذكر", price: 29, desc: "Raffermissant visage et mains, anti-rides naturel.", img: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=600&q=80" },
+      { id: 14, cat: "cremes", name: "Balm Lips — Teinte Joues & Lèvres", ar: "مورد الخدود والشفاه", price: 45, desc: "100% naturel, couleur rosée longue tenue.", img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80" },
+
+      // SOINS CAPILLAIRES
+      { id: 15, cat: "cheveux", name: "Shampoing Antichute à la Rose (200ml)", ar: "شامبو معالج بالورد", price: 39, desc: "Hydrate le cuir chevelu et apporte brillance.", img: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=600&q=80" },
+      { id: 16, cat: "cheveux", name: "Shampoing Hydratant à l'Argan (200ml)", ar: "شامبو بزيت الأركان", price: 39, desc: "Nourrit la fibre capillaire, 100% origine naturelle.", img: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80" },
+      { id: 17, cat: "cheveux", name: "Crème Coiffante Substitut d'Huile", ar: "كريم بديل الزيت", price: 45, desc: "Discipline et hydrate les cheveux secs sans graisser.", img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" },
+      { id: 18, cat: "cheveux", name: "Poudre d'Indigo Naturel Pur (150g)", ar: "الأنديكو الخالص", price: 55, desc: "Coloration végétale noire/brune couvrant les cheveux blancs.", img: "https://images.unsplash.com/photo-1607602132700-068258431c6c?auto=format&fit=crop&w=600&q=80" },
+
+      // HAMMAM & CORPS
+      { id: 19, cat: "hammam", name: "Tabrima à la Rose et aux Herbes", ar: "تبريمة بالورد والأعشاب", price: 39, desc: "Gommage marocain hammam pour un teint unifié.", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" },
+      { id: 20, cat: "hammam", name: "Ghassoul à l'Aker Fassi (100ml)", ar: "غاسول العكر الفاسي", price: 39, desc: "Soin purifiant hammam et éclat rosé du corps.", img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=600&q=80" },
+      { id: 21, cat: "hammam", name: "Duo Aker Fassi & Nila Sahraoui", ar: "العكر الفاسي والنيلة الصحراوية", price: 35, desc: "Poudre authentique éclaircissante et adoucissante.", img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80" },
+      { id: 22, cat: "hammam", name: "Savon Solide au Lait d'Ânesse (80g)", ar: "صابون حليب الأتان", price: 25, desc: "Nettoyage doux régénérant visage et corps.", img: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=600&q=80" },
+      { id: 23, cat: "hammam", name: "Gel Douche Doucha Pêche & Rose (400ml)", ar: "جيل دوش بالخوخ والورد", price: 45, desc: "Grand format 400ml, douceur et parfum floral.", img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=600&q=80" },
+      { id: 24, cat: "hammam", name: "Mascara Fortifiant Cils & Sourcils (10ml)", ar: "مسكرة مكثف الرموش", price: 49, desc: "Formule naturelle densifiante.", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80" },
+
+      // PARFUMS & MAKHMARIYA
+      { id: 25, cat: "parfums", name: "Makhmariya Yaqout Corps & Cheveux", ar: "مخمرية ياقوت", price: 65, desc: "Parfum oriental raffiné et longue tenue.", img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80" },
+      { id: 26, cat: "parfums", name: "Makhmariya Amira Al Arab (50g)", ar: "مخمرية أميرة العرب", price: 55, desc: "Texture fondante hydratante et parfumante.", img: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" },
+      { id: 27, cat: "parfums", name: "Eau de Parfum Rayan (30ml)", ar: "عطر ريان", price: 49, desc: "Fragrance orientale élégante, flacon 30ml.", img: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=600&q=80" },
+      { id: 28, cat: "parfums", name: "Musc Noir / Musc Tahara Roll-on (6ml)", ar: "مسك الطهارة الأسود", price: 35, desc: "Huile parfumée concentrée sans alcool.", img: "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=600&q=80" }
+    ];
+
+    let cart = [];
+    let currentCategory = "all";
+
+    function renderPacks() {
+      const container = document.getElementById("packs-grid");
+      container.innerHTML = packs.map(p => `
+        <div class="bg-white rounded-3xl overflow-hidden border border-roseSoft shadow-md card-hover flex flex-col">
+          <div class="relative h-56">
+            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" />
+            <span class="absolute top-3 left-3 bg-akerFassi text-white text-xs font-bold px-3 py-1 rounded-full shadow">${p.badge}</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="font-arabic text-xs text-akerFassi font-bold">${p.arabic}</p>
+              <h3 class="font-serif text-2xl font-bold text-bordeaux mt-0.5">${p.name}</h3>
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">${p.items}</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-roseSoft flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 line-through">${p.oldPrice} DH</span>
+                <p class="text-xl font-bold text-akerFassi">${p.price} DH</p>
+              </div>
+              <button onclick="addToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.price})" class="bg-bordeaux hover:bg-akerFassi text-white text-sm font-semibold px-5 py-2.5 rounded-full transition">
+                + Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderProducts() {
+      const query = document.getElementById("search-input").value.toLowerCase();
+      const filtered = products.filter(item => {
+        const matchCat = currentCategory === "all" || item.cat === currentCategory;
+        const matchText = item.name.toLowerCase().includes(query) || item.ar.includes(query) || item.desc.toLowerCase().includes(query);
+        return matchCat && matchText;
+      });
+
+      const grid = document.getElementById("products-grid");
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p class="col-span-full text-center text-gray-500 py-10">Aucun produit trouvé pour cette recherche.</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="bg-rosePoudre/40 rounded-2xl overflow-hidden border border-roseSoft card-hover flex flex-col">
+          <div class="h-44 overflow-hidden bg-white">
+            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="font-arabic text-[11px] text-akerFassi font-bold">${item.ar}</p>
+              <h3 class="font-bold text-bordeaux text-base leading-snug mt-0.5">${item.name}</h3>
+              <p class="text-xs text-gray-600 mt-1.5">${item.desc}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-roseSoft flex items-center justify-between">
+              <span class="font-bold text-lg text-bordeaux">${item.price} DH</span>
+              <button onclick="addToCart(${item.id}, '${item.name.replace(/'/g, "\\'")}', ${item.price})" class="bg-white hover:bg-bordeaux hover:text-white text-bordeaux border border-bordeaux/20 text-xs font-semibold px-3.5 py-2 rounded-full transition">
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll(".cat-btn").forEach(btn => {
+        btn.classList.remove("bg-bordeaux", "text-white");
+        btn.classList.add("bg-rosePoudre", "text-bordeaux");
+      });
+      event.target.classList.remove("bg-rosePoudre", "text-bordeaux");
+      event.target.classList.add("bg-bordeaux", "text-white");
+      renderProducts();
+    }
+
+    function addToCart(id, name, price) {
+      const existing = cart.find(i => i.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, name, price, qty: 1 });
+      }
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById("cart-count").innerText = count;
+
+      const itemsContainer = document.getElementById("cart-items");
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = `<p class="text-center text-gray-500 text-sm py-12">Votre panier est vide. Découvrez nos soins naturels !</p>`;
+        document.getElementById("cart-total").innerText = "0 DH";
+        return;
+      }
+
+      let subtotal = 0;
+      itemsContainer.innerHTML = cart.map(item => {
+        subtotal += item.price * item.qty;
+        return `
+          <div class="flex items-center justify-between bg-rosePoudre/60 p-3 rounded-xl border border-roseSoft">
+            <div class="pr-2">
+              <p class="text-sm font-bold text-bordeaux">${item.name}</p>
+              <p class="text-xs text-akerFassi font-semibold">${item.price} DH x ${item.qty}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="changeQty('${item.id}', -1)" class="w-7 h-7 rounded-full bg-white border border-roseSoft font-bold text-bordeaux">-</button>
+              <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
+              <button onclick="changeQty('${item.id}', 1)" class="w-7 h-7 rounded-full bg-white border border-roseSoft font-bold text-bordeaux">+</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      const shipping = subtotal >= 249 ? 0 : 35;
+      document.getElementById("shipping-cost").innerText = shipping === 0 ? "GRATUITE 🎉" : "35 DH (Gratuite dès 249 DH)";
+      document.getElementById("cart-total").innerText = `${subtotal + shipping} DH`;
+    }
+
+    function toggleCart(forceOpen = null) {
+      const modal = document.getElementById("cart-modal");
+      if (forceOpen === true) modal.classList.remove("hidden");
+      else if (forceOpen === false) modal.classList.add("hidden");
+      else modal.classList.toggle("hidden");
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return alert("Votre panier est vide !");
+      const name = document.getElementById("client-name").value.trim() || "Non précisé";
+      const city = document.getElementById("client-city").value.trim() || "Non précisée";
+
+      let subtotal = 0;
+      let lines = cart.map(i => {
+        subtotal += i.price * i.qty;
+        return `• ${i.name} (x${i.qty}) = ${i.price * i.qty} DH`;
+      }).join("\n");
+
+      const shipping = subtotal >= 249 ? 0 : 35;
+      const total = subtotal + shipping;
+
+      const msg = `Salam NOUR•IA 🌹, bghit n-commandi :\n\n${lines}\n\n📦 Livraison : ${shipping === 0 ? "Gratuite" : shipping + " DH"}\n💰 Total : *${total} DH*\n\n👤 Nom : ${name}\n📍 Ville/Adresse : ${city}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    document.getElementById("search-input").addEventListener("input", renderProducts);
+    renderPacks();
+    renderProducts();
+  </script>
+</body>
+</html>
