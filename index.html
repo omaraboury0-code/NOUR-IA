@@ -1,112 +1,1534 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOUR-IA | Cosmétiques Bio & Naturels de Kelaat M'Gouna</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans & Cairo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // PALETTE STRICTE DE 3 COULEURS BIO
-                        forest: {
-                            DEFAULT: '#1B3B2B',
-                            dark: '#12281D',
-                            light: '#264F3B',
-                        },
-                        sage: {
-                            DEFAULT: '#4A7C59',
-                            soft: '#EBF2EE',
-                            muted: '#D5E3DB',
-                        },
-                        cream: {
-                            DEFAULT: '#FAF8F3',
-                            pure: '#FFFFFF',
-                            dark: '#F0ECE1',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        arabic: ['"Cairo"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FAF8F3;
-            color: #1B3B2B;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .glass-header {
-            background: rgba(250, 248, 243, 0.94);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-        }
-        .botanical-grid-bg {
-            background-image: radial-gradient(#4A7C59 0.85px, transparent 0.85px);
-            background-size: 24px 24px;
-        }
-        .product-card:hover .product-svg {
-            transform: translateY(-4px) scale(1.03);
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FAF8F3;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4A7C59;
-            border-radius: 9999px;
-        }
-    </style>
+<title>NOUR-IA | Beauté Naturelle du Maroc</title>
+
+<meta name="description" content="Découvrez NOUR-IA, votre boutique de beauté naturelle marocaine. Huiles, soins visage, cheveux, hammam et parfums orientaux.">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --green:#315b42;
+    --light-green:#edf3e9;
+    --cream:#faf8f3;
+    --gold:#c7a66a;
+    --dark:#222820;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--white);
+    color:var(--dark);
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    cursor:pointer;
+    font-family:inherit;
+}
+
+/* TOP BAR */
+
+.topbar{
+    background:var(--green);
+    color:white;
+    text-align:center;
+    padding:10px;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+/* HEADER */
+
+header{
+    background:white;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-content{
+    max-width:1400px;
+    margin:auto;
+    padding:18px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+    font-weight:700;
+    color:var(--green);
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+nav{
+    display:flex;
+    gap:25px;
+    font-size:13px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+.header-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.search-input{
+    border:1px solid #ddd;
+    border-radius:30px;
+    padding:10px 15px;
+    outline:none;
+    width:180px;
+}
+
+.cart-btn{
+    background:var(--green);
+    color:white;
+    border:none;
+    padding:11px 17px;
+    border-radius:30px;
+    font-size:13px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:500px;
+    background:
+    linear-gradient(90deg,rgba(20,40,25,.72),rgba(20,40,25,.12)),
+    url('https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1800&q=85');
+
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding:70px 8%;
+}
+
+.hero-content{
+    max-width:600px;
+    color:white;
+}
+
+.hero-small{
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:60px;
+    line-height:1.15;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:15px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-btn{
+    display:inline-block;
+    background:white;
+    color:var(--green);
+    padding:15px 30px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    border-radius:3px;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    background:var(--gold);
+    color:white;
+}
+
+/* SECTIONS */
+
+.section{
+    padding:75px 5%;
+    max-width:1500px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title small{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:11px;
+}
+
+.section-title h2{
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    margin:12px 0;
+    color:var(--green);
+}
+
+.section-title p{
+    color:#777;
+    font-size:13px;
+}
+
+/* CATEGORIES */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.category-card{
+    text-align:center;
+    background:var(--cream);
+    padding:35px 15px;
+    border-radius:5px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.category-card:hover{
+    background:var(--light-green);
+    transform:translateY(-5px);
+}
+
+.category-icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.category-card h3{
+    font-family:'Playfair Display',serif;
+    color:var(--green);
+    font-size:18px;
+}
+
+/* PRODUCTS */
+
+.products-section{
+    background:var(--cream);
+    padding:75px 5%;
+}
+
+.products-container{
+    max-width:1500px;
+    margin:auto;
+}
+
+.filter-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.filter-btn{
+    border:1px solid #ddd;
+    background:white;
+    padding:11px 20px;
+    border-radius:30px;
+    font-size:12px;
+    transition:.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:var(--green);
+    color:white;
+    border-color:var(--green);
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.product-card{
+    background:white;
+    border-radius:5px;
+    overflow:hidden;
+    transition:.3s;
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.product-image{
+    height:270px;
+    background:#f4f1eb;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.05);
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-category{
+    font-size:10px;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:10px;
+}
+
+.product-info h3{
+    font-family:'Playfair Display',serif;
+    font-size:17px;
+    line-height:1.5;
+    margin-bottom:10px;
+    min-height:50px;
+}
+
+.product-description{
+    font-size:11px;
+    color:#777;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.product-price{
+    font-size:16px;
+    color:var(--green);
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.add-cart{
+    width:100%;
+    background:var(--green);
+    color:white;
+    border:none;
+    padding:13px;
+    font-size:11px;
+    letter-spacing:1px;
+    border-radius:3px;
+    transition:.3s;
+}
+
+.add-cart:hover{
+    background:var(--gold);
+}
+
+.no-products{
+    text-align:center;
+    padding:40px;
+    color:#777;
+    grid-column:1/-1;
+}
+
+/* PROMO */
+
+.promo{
+    background:var(--green);
+    color:white;
+    padding:65px 5%;
+    text-align:center;
+}
+
+.promo h2{
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.promo p{
+    font-size:14px;
+    line-height:1.8;
+    max-width:700px;
+    margin:0 auto 25px;
+}
+
+.promo a{
+    display:inline-block;
+    background:white;
+    color:var(--green);
+    padding:14px 28px;
+    font-size:12px;
+    font-weight:700;
+    border-radius:3px;
+}
+
+/* BENEFITS */
+
+.benefits{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    text-align:center;
+}
+
+.benefit{
+    padding:20px;
+}
+
+.benefit-icon{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.benefit h3{
+    font-family:'Playfair Display',serif;
+    font-size:18px;
+    margin-bottom:10px;
+    color:var(--green);
+}
+
+.benefit p{
+    font-size:12px;
+    color:#777;
+    line-height:1.7;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+    background:var(--light-green);
+    padding:60px 5%;
+    text-align:center;
+}
+
+.newsletter h2{
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    color:var(--green);
+    margin-bottom:15px;
+}
+
+.newsletter p{
+    font-size:13px;
+    color:#666;
+    margin-bottom:25px;
+}
+
+.newsletter-form{
+    display:flex;
+    max-width:500px;
+    margin:auto;
+}
+
+.newsletter-form input{
+    flex:1;
+    border:1px solid #ddd;
+    padding:15px;
+    outline:none;
+}
+
+.newsletter-form button{
+    background:var(--green);
+    color:white;
+    border:none;
+    padding:15px 25px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#1f3024;
+    color:white;
+    padding:60px 5% 25px;
+}
+
+.footer-container{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    color:white;
+    margin-bottom:20px;
+}
+
+.footer-column h3{
+    font-size:14px;
+    margin-bottom:20px;
+    color:var(--gold);
+}
+
+.footer-column p,
+.footer-column a{
+    display:block;
+    font-size:12px;
+    color:#ddd;
+    line-height:2.2;
+}
+
+.footer-column a:hover{
+    color:var(--gold);
+}
+
+.footer-bottom{
+    border-top:1px solid #405444;
+    margin-top:40px;
+    padding-top:20px;
+    text-align:center;
+    font-size:11px;
+    color:#bbb;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:55px;
+    height:55px;
+    background:#25d366;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+    z-index:200;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .products-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .categories{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    nav{
+        gap:12px;
+    }
+
+    .search-input{
+        width:130px;
+    }
+}
+
+@media(max-width:700px){
+
+    .header-content{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:15px;
+    }
+
+    nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        font-size:11px;
+    }
+
+    .header-icons{
+        width:100%;
+        justify-content:center;
+    }
+
+    .hero{
+        min-height:400px;
+        padding:50px 7%;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product-image{
+        height:180px;
+    }
+
+    .product-info{
+        padding:12px;
+    }
+
+    .product-info h3{
+        font-size:14px;
+    }
+
+    .product-description{
+        font-size:10px;
+    }
+
+    .benefits{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .promo h2{
+        font-size:30px;
+    }
+}
+</style>
 </head>
-<body class="antialiased selection:bg-sage selection:text-cream-pure">
 
-    <!-- 1. TOP ANNOUNCEMENT BAR (Style byher.ma + WhatsApp 0776183941 + Réseaux NOUR-IA) -->
-    <div class="bg-forest text-cream text-[11px] sm:text-xs py-2.5 px-4 border-b border-sage/30">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center gap-2 font-medium">
-                <span class="inline-block w-2 h-2 rounded-full bg-sage animate-pulse"></span>
-                <span>Livraison gratuite dès <strong>300 DH</strong> partout au Maroc • 100 % Bio Kelaat M'Gouna • Code : <span class="underline font-bold">NOUR10</span></span>
-            </div>
-            <div class="flex items-center gap-3 sm:gap-4 font-semibold">
-                <a href="https://wa.me/212776183941" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-cream-pure hover:text-sage-muted transition">
-                    <i class="fa-brands fa-whatsapp text-sm text-sage-muted"></i>
-                    <span>0776183941</span>
-                </a>
-                <span class="text-cream/30">|</span>
-                <a href="https://facebook.com/NOUR-IA" target="_blank" rel="noopener" aria-label="Facebook NOUR-IA" class="hover:text-sage-muted transition flex items-center gap-1">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <span class="hidden md:inline">NOUR-IA</span>
-                </a>
-                <a href="https://instagram.com/nour.ia" target="_blank" rel="noopener" aria-label="Instagram @NOUR-IA" class="hover:text-sage-muted transition flex items-center gap-1">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span class="hidden md:inline">@NOUR-IA</span>
-                </a>
-            </div>
+<body>
+
+<div class="topbar">
+    BEAUTÉ NATURELLE DU MAROC • NOUR-IA
+</div>
+
+<header>
+    <div class="header-content">
+
+        <a href="#" class="logo">
+            NOUR<span>-IA</span>
+        </a>
+
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#categories">Catégories</a>
+            <a href="#produits">Produits</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Rechercher..."
+            >
+
+            <button class="cart-btn" onclick="showCart()">
+                Panier (<span id="cartCount">0</span>)
+            </button>
+
         </div>
     </div>
+</header>
 
-    <!-- 2. STICKY NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 glass-header border-b border-sage-muted transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 gap-3">
-                <!-- Brand Emblem -->
-                <a href="#" class="flex items-center gap-3 group shrink-0">
-                    <div class="w-11 h-11 rounded-2xl bg-forest flex items-center justify-center text-cream shadow-md group-hover:bg-sage transition-colors">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                            <path d="M12 2C7.5
+<!-- HERO -->
+
+<section class="hero" id="accueil">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            L'ESSENCE DE LA BEAUTÉ MAROCAINE
+        </div>
+
+        <h1>
+            Révélez votre<br>
+            beauté naturelle
+        </h1>
+
+        <p>
+            Découvrez une sélection de soins inspirés
+            des traditions marocaines, des huiles végétales
+            aux parfums orientaux.
+        </p>
+
+        <a href="#produits" class="hero-btn">
+            DÉCOUVRIR NOS PRODUITS
+        </a>
+
+    </div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+    <div class="section-title">
+
+        <small>Nos univers</small>
+
+        <h2>Explorez nos catégories</h2>
+
+        <p>
+            Des soins naturels pour votre beauté quotidienne.
+        </p>
+
+    </div>
+
+    <div class="categories">
+
+        <div class="category-card" onclick="filterProducts('Huiles')">
+            <div class="category-icon">🌿</div>
+            <h3>Huiles végétales</h3>
+        </div>
+
+        <div class="category-card" onclick="filterProducts('Crèmes')">
+            <div class="category-icon">🧴</div>
+            <h3>Crèmes & soins</h3>
+        </div>
+
+        <div class="category-card" onclick="filterProducts('Cheveux')">
+            <div class="category-icon">💆</div>
+            <h3>Soins capillaires</h3>
+        </div>
+
+        <div class="category-card" onclick="filterProducts('Hammam')">
+            <div class="category-icon">🛁</div>
+            <h3>Hammam & bain</h3>
+        </div>
+
+        <div class="category-card" onclick="filterProducts('Parfums')">
+            <div class="category-icon">🌸</div>
+            <h3>Parfums</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products-section" id="produits">
+
+    <div class="products-container">
+
+        <div class="section-title">
+
+            <small>Notre collection</small>
+
+            <h2>Nos produits beauté</h2>
+
+            <p>
+                Découvrez les produits Beauty Rose Coopérative.
+            </p>
+
+        </div>
+
+        <div class="filter-buttons">
+
+            <button class="filter-btn active"
+                onclick="filterProducts('Tous',this)">
+                Tous les produits
+            </button>
+
+            <button class="filter-btn"
+                onclick="filterProducts('Huiles',this)">
+                Huiles
+            </button>
+
+            <button class="filter-btn"
+                onclick="filterProducts('Crèmes',this)">
+                Crèmes
+            </button>
+
+            <button class="filter-btn"
+                onclick="filterProducts('Cheveux',this)">
+                Cheveux
+            </button>
+
+            <button class="filter-btn"
+                onclick="filterProducts('Hammam',this)">
+                Hammam
+            </button>
+
+            <button class="filter-btn"
+                onclick="filterProducts('Parfums',this)">
+                Parfums
+            </button>
+
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+
+    </div>
+
+</section>
+
+<!-- PROMO -->
+
+<section class="promo">
+
+    <h2>La beauté au naturel</h2>
+
+    <p>
+        Des produits inspirés du savoir-faire marocain,
+        de Kelaat M'gouna à votre routine beauté.
+        Prenez soin de vous avec NOUR-IA.
+    </p>
+
+    <a href="#produits">
+        DÉCOUVRIR LA COLLECTION
+    </a>
+
+</section>
+
+<!-- BENEFITS -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <small>NOUR-IA</small>
+
+        <h2>Une expérience beauté</h2>
+
+    </div>
+
+    <div class="benefits">
+
+        <div class="benefit">
+            <div class="benefit-icon">🌿</div>
+            <h3>Beauté naturelle</h3>
+            <p>
+                Une sélection inspirée des traditions marocaines.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">✨</div>
+            <h3>Soins quotidiens</h3>
+            <p>
+                Des produits pour votre routine visage et corps.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">🌹</div>
+            <h3>Tradition marocaine</h3>
+            <p>
+                Rose, argan, henné et soins du hammam.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">💚</div>
+            <h3>Votre beauté</h3>
+            <p>
+                Prenez le temps de vous offrir un moment de soin.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <h2>Rejoignez NOUR-IA</h2>
+
+    <p>
+        Découvrez nos nouveautés et nos conseils beauté.
+    </p>
+
+    <form class="newsletter-form" onsubmit="newsletter(event)">
+
+        <input
+            type="email"
+            placeholder="Votre adresse e-mail"
+            required
+        >
+
+        <button type="submit">
+            S'INSCRIRE
+        </button>
+
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <div class="footer-container">
+
+        <div class="footer-column">
+
+            <div class="footer-logo">
+                NOUR-IA
+            </div>
+
+            <p>
+                Votre univers de beauté naturelle,
+                inspiré des traditions marocaines.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Navigation</h3>
+
+            <a href="#accueil">Accueil</a>
+            <a href="#categories">Catégories</a>
+            <a href="#produits">Produits</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Nos catégories</h3>
+
+            <a href="#produits">Huiles végétales</a>
+            <a href="#produits">Soins visage</a>
+            <a href="#produits">Soins cheveux</a>
+            <a href="#produits">Hammam</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>Maroc 🇲🇦</p>
+            <p>WhatsApp : À compléter</p>
+            <p>Email : À compléter</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 NOUR-IA — Tous droits réservés.
+
+    </div>
+
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/212600000000"
+   target="_blank"
+   title="Contact WhatsApp">
+
+    ☎
+
+</a>
+
+<script>
+
+/* =========================
+   PRODUITS DU CATALOGUE
+   53 PRODUITS
+========================= */
+
+const products = [
+
+{
+name:"Huile d'Amande Douce",
+category:"Huiles",
+description:"Huile d'amande douce, soin cheveux et douceur naturelle.",
+size:"100 ml"
+},
+
+{
+name:"Eau de Rose Distillée",
+category:"Huiles",
+description:"Eau de rose distillée pour votre routine visage.",
+size:"200 ml"
+},
+
+{
+name:"Eau de Rose Première Distillation Bio",
+category:"Huiles",
+description:"Eau de rose première distillation, soin beauté.",
+size:"250 ml"
+},
+
+{
+name:"Mélange 10 Huiles aux Plantes",
+category:"Huiles",
+description:"Mélange d'huiles aux plantes pour le soin capillaire."
+},
+
+{
+name:"Huile de Lavande",
+category:"Huiles",
+description:"Huile de lavande naturelle pour peau et cheveux."
+},
+
+{
+name:"Huile d'Amande Bio",
+category:"Huiles",
+description:"Huile d'amande bio pour peau et cheveux."
+},
+
+{
+name:"Huile de Figues de Barbarie",
+category:"Huiles",
+description:"Huile de pépins de figue de barbarie."
+},
+
+{
+name:"Huile de Sésame",
+category:"Huiles",
+description:"Huile de sésame naturelle pour peau et cheveux."
+},
+
+{
+name:"Huile de Sidr",
+category:"Huiles",
+description:"Huile de jujubier pour peau et cheveux.",
+size:"100 ml"
+},
+
+{
+name:"Huile de Réglisse",
+category:"Huiles",
+description:"Huile de réglisse pour votre routine beauté."
+},
+
+{
+name:"Crème Anti-Cernes à l'Huile de Ricin",
+category:"Crèmes",
+description:"Crème contour des yeux à base d'huile de ricin.",
+size:"50 ml"
+},
+
+{
+name:"Crème Vitamine E & Huile de Rose",
+category:"Crèmes",
+description:"Crème hydratante et nourrissante pour le visage.",
+size:"30 g"
+},
+
+{
+name:"Beurre de Karité",
+category:"Crèmes",
+description:"Beurre de karité pour visage, corps et cheveux.",
+size:"150 g"
+},
+
+{
+name:"Crème à l'Encens Masculin",
+category:"Crèmes",
+description:"Crème hydratante à l'oliban.",
+size:"100 g"
+},
+
+{
+name:"Crème Antirides à l'Huile d'Amande",
+category:"Crèmes",
+description:"Crème hydratante à l'huile d'amande.",
+size:"100 g"
+},
+
+{
+name:"Crème à l'Aker Fassi",
+category:"Crèmes",
+description:"Crème hydratante pour pieds, visage et corps.",
+size:"100 g"
+},
+
+{
+name:"Crème à l'Huile d'Argan",
+category:"Crèmes",
+description:"Crème nourrissante à l'huile d'argan.",
+size:"100 g"
+},
+
+{
+name:"Crème à l'Huile de Réglisse",
+category:"Crèmes",
+description:"Crème hydratante à l'huile de réglisse.",
+size:"100 g"
+},
+
+{
+name:"Crème Glycérine Originale",
+category:"Crèmes",
+description:"Crème à la glycérine pour peau sèche.",
+size:"100 g"
+},
+
+{
+name:"Beurre de Fenugrec",
+category:"Crèmes",
+description:"Beurre de fenugrec naturel.",
+size:"150 g"
+},
+
+{
+name:"Crème Massage Dromadaire & Huiles Essentielles",
+category:"Crèmes",
+description:"Crème de massage aux huiles essentielles.",
+size:"100 g"
+},
+
+{
+name:"Balm Lips",
+category:"Crèmes",
+description:"Baume naturel pour lèvres et joues."
+},
+
+{
+name:"Shampoing Antichute à la Rose",
+category:"Cheveux",
+description:"Shampoing à la rose pour votre routine capillaire.",
+size:"200 ml"
+},
+
+{
+name:"Shampoing au Cade",
+category:"Cheveux",
+description:"Shampoing au cade pour le soin du cuir chevelu.",
+size:"200 ml"
+},
+
+{
+name:"Shampoing Antipelliculaire au Romarin",
+category:"Cheveux",
+description:"Shampoing au romarin.",
+size:"200 ml"
+},
+
+{
+name:"Shampoing Hydratant à l'Argan",
+category:"Cheveux",
+description:"Shampoing à l'huile d'argan.",
+size:"200 ml"
+},
+
+{
+name:"Shampoing Hydratant au Coco",
+category:"Cheveux",
+description:"Shampoing à la noix de coco.",
+size:"200 ml"
+},
+
+{
+name:"Shampoing au Chanvre",
+category:"Cheveux",
+description:"Shampoing à l'huile de chanvre.",
+size:"200 ml"
+},
+
+{
+name:"Crème Coiffante Hydratante",
+category:"Cheveux",
+description:"Crème coiffante pour cheveux secs."
+},
+
+{
+name:"Poudre d'Indigo Naturel",
+category:"Cheveux",
+description:"Indigo naturel pour coloration végétale.",
+size:"150 g"
+},
+
+{
+name:"Indigo Naturel — Guide d'Utilisation",
+category:"Cheveux",
+description:"Fiche mode d'emploi et résultats de l'indigo.",
+size:"150 g"
+},
+
+{
+name:"Henné Cheveux aux Herbes Naturelles",
+category:"Cheveux",
+description:"Henné cheveux et mélange d'herbes naturelles.",
+size:"150 g"
+},
+
+{
+name:"Gel Douche Pêche & Rose",
+category:"Hammam",
+description:"Gel douche hydratant pêche et rose.",
+size:"400 ml"
+},
+
+{
+name:"Gel Douche Fruits",
+category:"Hammam",
+description:"Gel douche aux fruits.",
+size:"200 ml"
+},
+
+{
+name:"Gel Douche Fraise",
+category:"Hammam",
+description:"Gel douche à la fraise.",
+size:"200 ml"
+},
+
+{
+name:"Gel Douche Fresh Menthe",
+category:"Hammam",
+description:"Gel douche frais à la menthe.",
+size:"200 ml"
+},
+
+{
+name:"Gel Douche Rose",
+category:"Hammam",
+description:"Gel douche à la rose.",
+size:"200 ml"
+},
+
+{
+name:"Gel Douche Aloe Vera",
+category:"Hammam",
+description:"Gel douche à l'aloe vera.",
+size:"200 ml"
+},
+
+{
+name:"Savon au Lait d'Ânesse",
+category:"Hammam",
+description:"Savon doux pour visage et corps.",
+size:"80 g"
+},
+
+{
+name:"Tabrima à la Rose et aux Herbes",
+category:"Hammam",
+description:"Tabrima marocaine pour le rituel hammam."
+},
+
+{
+name:"Ghassoul Aker Fassi",
+category:"Hammam",
+description:"Ghassoul à l'aker fassi.",
+size:"100 ml"
+},
+
+{
+name:"Duo Aker Fassi & Nila Sahraoui",
+category:"Hammam",
+description:"Poudre d'aker fassi et nila sahraoui."
+},
+
+{
+name:"Gel Nettoyant Moussant pour Pieds",
+category:"Hammam",
+description:"Mousse nettoyante pour les pieds.",
+size:"150 ml"
+},
+
+{
+name:"Lait Déodorant Yara-Ngh",
+category:"Hammam",
+description:"Lait déodorant protection 48h.",
+size:"75 ml"
+},
+
+{
+name:"Crème de Rasage à la Caféine",
+category:"Hammam",
+description:"Crème de rasage douce.",
+size:"400 ml"
+},
+
+{
+name:"Khôl Naturel aux Noyaux de Dattes",
+category:"Hammam",
+description:"Khôl traditionnel marocain.",
+size:"7 g"
+},
+
+{
+name:"Souak Naturel",
+category:"Hammam",
+description:"Souak marocain traditionnel."
+},
+
+{
+name:"Mascara Fortifiant Cils et Sourcils",
+category:"Hammam",
+description:"Mascara soin pour cils et sourcils.",
+size:"10 ml"
+},
+
+{
+name:"Eau de Parfum Rayan",
+category:"Parfums",
+description:"Parfum oriental raffiné.",
+size:"30 ml"
+},
+
+{
+name:"Musc Noir Roll-on",
+category:"Parfums",
+description:"Musc noir parfumé.",
+size:"6 ml"
+},
+
+{
+name:"Parfum Roll-on Mille Roses",
+category:"Parfums",
+description:"Parfum floral à la rose."
+},
+
+{
+name:"Makhmariya Yaqout",
+category:"Parfums",
+description:"Makhmariya parfumée pour corps et cheveux."
+},
+
+{
+name:"Makhmariya Amira Al Arab",
+category:"Parfums",
+description:"Makhmariya hydratante et parfumante.",
+size:"50 g"
+}
+
+];
+
+/* =========================
+   AFFICHAGE PRODUITS
+========================= */
+
+const grid = document.getElementById("productsGrid");
+
+let currentCategory = "Tous";
+
+function displayProducts(list){
+
+    grid.innerHTML = "";
+
+    if(list.length === 0){
+
+        grid.innerHTML = `
+            <div class="no-products">
+                Aucun produit trouvé.
+            </div>
+        `;
+
+        return;
+    }
+
+    list.forEach((product,index)=>{
+
+        const card = document.createElement("div");
+
+        card.className = "product-card";
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80"
+                    alt="${product.name}"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${product.category}
+                </div>
+
+                <h3>${product.name}</h3>
+
+                <p class="product-description">
+                    ${product.description}
+                    ${product.size ? " — "+product.size : ""}
+                </p>
+
+                <div class="product-price">
+                    Prix sur demande
+                </div>
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart('${product.name}')"
+                >
+                    AJOUTER AU PANIER
+                </button>
+
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+/* =========================
+   FILTRE
+========================= */
+
+function filterProducts(category,button){
+
+    currentCategory = category;
+
+    document.querySelectorAll(".filter-btn")
+    .forEach(btn=>btn.classList.remove("active"));
+
+    if(button){
+        button.classList.add("active");
+    }
+
+    const filtered = products.filter(product=>{
+
+        return category === "Tous"
+        || product.category === category;
+
+    });
+
+    displayProducts(filtered);
+
+}
+
+/* =========================
+   RECHERCHE
+========================= */
+
+document.getElementById("searchInput")
+.addEventListener("input",function(){
+
+    const search = this.value.toLowerCase();
+
+    const filtered = products.filter(product=>{
+
+        const matchesSearch =
+        product.name.toLowerCase().includes(search)
+        || product.description.toLowerCase().includes(search);
+
+        const matchesCategory =
+        currentCategory === "Tous"
+        || product.category === currentCategory;
+
+        return matchesSearch && matchesCategory;
+
+    });
+
+    displayProducts(filtered);
+
+});
+
+/* =========================
+   PANIER
+========================= */
+
+let cart = [];
+
+function addToCart(name){
+
+    cart.push(name);
+
+    document.getElementById("cartCount")
+    .textContent = cart.length;
+
+    alert("Produit ajouté au panier : "+name);
+
+}
+
+function showCart(){
+
+    if(cart.length === 0){
+
+        alert("Votre panier est vide.");
+
+        return;
+
+    }
+
+    let message = "Votre panier :\n\n";
+
+    cart.forEach((product,index)=>{
+
+        message += (index+1)+". "+product+"\n";
+
+    });
+
+    alert(message);
+
+}
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+function newsletter(event){
+
+    event.preventDefault();
+
+    alert("Merci pour votre inscription à NOUR-IA !");
+
+}
+
+/* =========================
+   INITIALISATION
+========================= */
+
+displayProducts(products);
+
+</script>
+
+</body>
+</html>
