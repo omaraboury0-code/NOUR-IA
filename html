@@ -1,231 +1,44 @@
-<section id="produits" class="catalogue-section">
-  <h2>Nos Produits NOUR IA</h2>
-
-  <!-- Barre de recherche et filtres -->
-  <div class="controles-catalogue">
-    <input
-      type="text"
-      id="recherche-produit"
-      placeholder="Rechercher chez NOUR IA (ex: Assistant, Web, Design, ذكاء)..."
-      aria-label="Rechercher un produit NOUR IA"
-    />
-    <div id="filtres-categories" class="filtres-categories"></div>
+<div class="special-offer-box">
+  <div class="offer-header">
+    <h3>💰 Offre Spéciale - Économisez Plus!</h3>
+    <p>Choisissez votre forfait préféré</p>
   </div>
 
-  <!-- Grille des produits -->
-  <div id="grille-produits" class="grille-produits"></div>
-</section>
-
-<style>
-  .catalogue-section {
-    padding: 30px 15px;
-    max-width: 1200px;
-    margin: auto;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .catalogue-section h2 {
-    text-align: center;
-    color: #222;
-    margin-bottom: 20px;
-  }
-  .controles-catalogue {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 25px;
-  }
-  #recherche-produit {
-    width: 100%;
-    max-width: 450px;
-    margin: auto;
-    padding: 12px 16px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  #recherche-produit:focus {
-    border-color: #b5175d;
-  }
-  .filtres-categories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-  .btn-filtre {
-    padding: 7px 14px;
-    border: 1px solid #e0e0e0;
-    background: #f9f9f9;
-    color: #333;
-    border-radius: 20px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-filtre:hover,
-  .btn-filtre.actif {
-    background: #b5175d;
-    color: #fff;
-    border-color: #b5175d;
-  }
-  .grille-produits {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 20px;
-  }
-  .carte-produit {
-    border: 1px solid #eaeaea;
-    border-radius: 12px;
-    padding: 14px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .carte-produit:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  }
-  .carte-produit img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    background-color: #f4f4f4;
-  }
-  .categorie-produit {
-    font-size: 11px;
-    color: #b5175d;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .titre-produit {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 5px 0;
-    color: #222;
-    line-height: 1.3;
-  }
-  .sous-titre-produit {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 12px;
-  }
-  .prix-produit {
-    font-size: 15px;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 10px;
-  }
-  .btn-commander {
-    display: block;
-    text-align: center;
-    padding: 10px 12px;
-    background: #111;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-  .btn-commander:hover {
-    background: #25D366;
-  }
-  .aucun-resultat {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    color: #777;
-  }
-</style>
-
-<script>
-  // Remplacez par votre vrai numéro WhatsApp (format international sans +)
-  const numeroWhatsApp = "212600000000";
-
-  const produitsNourIA = [
-    { id: 1, nom: "Agent WhatsApp Intelligent (مساعد ذكي)", format: "Pack Mensuel", categorie: "IA & Automatisation", image: "images/nour-ia-agent-wa.jpg", prix: "0 DH" },
-    { id: 2, nom: "Automatisation Commandes & CRM", format: "Sur mesure", categorie: "IA & Automatisation", image: "images/nour-ia-automatisation.jpg", prix: "0 DH" },
-    { id: 3, nom: "Site Vitrine & Catalogue IA", format: "Clé en main", categorie: "Développement", image: "images/nour-ia-site-web.jpg", prix: "0 DH" },
-    { id: 4, nom: "Générateur de Contenu & Visuels", format: "Pack Pro", categorie: "Design & Média", image: "images/nour-ia-contenu-visuel.jpg", prix: "0 DH" },
-    { id: 5, nom: "Chatbot Support Client 24/7", format: "Web & Mobile", categorie: "IA & Automatisation", image: "images/nour-ia-chatbot.jpg", prix: "0 DH" },
-    { id: 6, nom: "Audit & Intégration IA Entreprise", format: "Session + Plan", categorie: "Conseil", image: "images/nour-ia-audit.jpg", prix: "0 DH" }
-  ];
-
-  const conteneur = document.getElementById("grille-produits");
-  const conteneurFiltres = document.getElementById("filtres-categories");
-  const inputRecherche = document.getElementById("recherche-produit");
-
-  let categorieActive = "Tout";
-  let texteRecherche = "";
-
-  // 1. Générer les boutons de catégories automatiquement
-  const categories = ["Tout", ...new Set(produitsNourIA.map(p => p.categorie))];
-
-  categories.forEach(cat => {
-    const btn = document.createElement("button");
-    btn.className = "btn-filtre" + (cat === "Tout" ? " actif" : "");
-    btn.textContent = cat;
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".btn-filtre").forEach(b => b.classList.remove("actif"));
-      btn.classList.add("actif");
-      categorieActive = cat;
-      afficherProduits();
-    });
-    conteneurFiltres.appendChild(btn);
-  });
-
-  // 2. Afficher les produits filtrés
-  function afficherProduits() {
-    conteneur.innerHTML = "";
-
-    const produitsFiltres = produitsNourIA.filter(p => {
-      const correspondCategorie = categorieActive === "Tout" || p.categorie === categorieActive;
-      const correspondRecherche = p.nom.toLowerCase().includes(texteRecherche.toLowerCase());
-      return correspondCategorie && correspondRecherche;
-    });
-
-    if (produitsFiltres.length === 0) {
-      conteneur.innerHTML = `<div class="aucun-resultat">Aucun produit ne correspond à votre recherche chez NOUR IA.</div>`;
-      return;
-    }
-
-    produitsFiltres.forEach((p) => {
-      const affichagePrix = p.prix === "0 DH" ? "Prix sur demande" : p.prix;
-      const messageWA = encodeURIComponent(`Bonjour NOUR IA, je souhaite commander : ${p.nom} (${p.format}).`);
-      const lienWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${messageWA}`;
-
-      const carte = document.createElement("div");
-      carte.className = "carte-produit";
-      carte.innerHTML = `
-        <div>
-          <img src="${p.image}" alt="${p.nom}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=NOUR+IA'" />
-          <div class="categorie-produit">${p.categorie}</div>
-          <div class="titre-produit">${p.nom}</div>
-          <div class="sous-titre-produit">${p.format}</div>
+  <div class="offer-options">
+    <!-- Option 1 : Offre Essentielle (Sélectionnée par défaut) -->
+    <label class="offer-card selected">
+      <input type="radio" name="forfait" value="1_support" checked>
+      <div class="offer-content">
+        <img src="votre-image-1-support.jpg" alt="1 support" class="offer-thumb">
+        <div class="offer-details">
+          <div class="offer-title">✨ Offre Essentielle — 1 support</div>
+          <div class="offer-price">15 000 FCFA</div>
         </div>
-        <div>
-          <div class="prix-produit">${affichagePrix}</div>
-          <a href="${lienWhatsApp}" target="_blank" rel="noopener" class="btn-commander">Commander sur WhatsApp</a>
+      </div>
+    </label>
+
+    <!-- Option 2 : Offre Duo -->
+    <label class="offer-card">
+      <input type="radio" name="forfait" value="2_supports">
+      <div class="offer-content">
+        <img src="votre-image-2-supports.jpg" alt="2 supports" class="offer-thumb">
+        <div class="offer-details">
+          <div class="offer-title">🔥 Offre Duo — 2 supports <span class="badge-promo">-20%</span></div>
+          <div class="offer-price">24 000 FCFA <span class="old-price">30 000 FCFA</span></div>
         </div>
-      `;
-      conteneur.appendChild(carte);
-    });
-  }
+      </div>
+    </label>
 
-  // 3. Écouter la barre de recherche
-  inputRecherche.addEventListener("input", (e) => {
-    texteRecherche = e.target.value;
-    afficherProduits();
-  });
-
-  // Affichage initial
-  afficherProduits();
-</script>
+    <!-- Option 3 : Offre Famille -->
+    <label class="offer-card">
+      <input type="radio" name="forfait" value="3_supports">
+      <div class="offer-content">
+        <img src="votre-image-3-supports.jpg" alt="3 supports" class="offer-thumb">
+        <div class="offer-details">
+          <div class="offer-title">👑 Offre Famille — 3 supports <span class="badge-promo">Meilleur choix</span></div>
+          <div class="offer-price">33 000 FCFA <span class="old-price">45 000 FCFA</span></div>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
