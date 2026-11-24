@@ -1,0 +1,159 @@
+<section id="produits" class="catalogue-section">
+  <h2>Nos Produits Beauty Rose</h2>
+  <div id="grille-produits" class="grille-produits"></div>
+</section>
+
+<style>
+  .catalogue-section {
+    padding: 30px 15px;
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  .grille-produits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .carte-produit {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 14px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  .carte-produit img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .categorie-produit {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+  }
+  .titre-produit {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 0;
+    color: #222;
+  }
+  .sous-titre-produit {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  .prix-produit {
+    font-size: 15px;
+    font-weight: bold;
+    color: #b5175d;
+    margin-bottom: 10px;
+  }
+  .btn-commander {
+    display: inline-block;
+    text-align: center;
+    padding: 9px 12px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .btn-commander:hover {
+    background: #b5175d;
+  }
+</style>
+
+<script>
+  const produitsBeautyRose = [
+    // Page 1 : Huiles & Eaux florales
+    { id: 1, nom: "Pure Almond Oil (زيت اللوز العذب)", format: "100 ml", categorie: "Huiles", image: "images/pure-almond-oil.jpg", prix: "0 DH" },
+    { id: 2, nom: "Eau de Rose Distillée 100% (ماء الورد)", format: "250 ml", categorie: "Eaux Florales", image: "images/eau-de-rose-100.jpg", prix: "0 DH" },
+    { id: 3, nom: "Eau de Rose Kelaat M'gouna", format: "250 ml", categorie: "Eaux Florales", image: "images/eau-de-rose-mgouna.jpg", prix: "0 DH" },
+    { id: 4, nom: "10 Huiles aux Plantes (10 زيوت بالأعشاب)", format: "Kelaat M'gouna", categorie: "Huiles", image: "images/10-huiles-plantes.jpg", prix: "0 DH" },
+    { id: 5, nom: "Huile de Lavande (زيت الخزامة)", format: "Kelaat M'gouna", categorie: "Huiles", image: "images/huile-lavande.jpg", prix: "0 DH" },
+    { id: 6, nom: "Huile d'Amande (زيت اللوز)", format: "Kelaat M'gouna", categorie: "Huiles", image: "images/huile-amande.jpg", prix: "0 DH" },
+    { id: 7, nom: "Huile de Figues de Barbarie (زيت التين الشوكي)", format: "Kelaat M'gouna", categorie: "Huiles", image: "images/huile-figues-barbarie.jpg", prix: "0 DH" },
+    { id: 8, nom: "Huile de Sésame (زيت السمسم)", format: "Kelaat M'gouna", categorie: "Huiles", image: "images/huile-sesame.jpg", prix: "0 DH" },
+    { id: 9, nom: "Sidr Oil (زيت السدر)", format: "100 ml", categorie: "Huiles", image: "images/sidr-oil.jpg", prix: "0 DH" },
+
+    // Page 2 : Huile & Crèmes visage / corps / pieds
+    { id: 10, nom: "Huile à Licorice (زيت عرق السوس)", format: "Kelaat M'gouna", categorie: "Huiles", image: "images/huile-licorice.jpg", prix: "0 DH" },
+    { id: 11, nom: "Crème Anti-Cernes Huile de Ricin", format: "50 ml", categorie: "Crèmes", image: "images/creme-anti-cernes.jpg", prix: "0 DH" },
+    { id: 12, nom: "Crème Hydratante Vitamine E & Huile de Rose", format: "30 g", categorie: "Crèmes", image: "images/creme-vitamine-e-rose.jpg", prix: "0 DH" },
+    { id: 13, nom: "Beurre de Karité - Shea Butter (زبدة الشيا)", format: "150 g", categorie: "Beurres", image: "images/beurre-karite.jpg", prix: "0 DH" },
+    { id: 14, nom: "Crème Hydratante Encens Masculin (كريم اللبان الذكر)", format: "100 g", categorie: "Crèmes", image: "images/creme-encens.jpg", prix: "0 DH" },
+    { id: 15, nom: "Crème Hydratante Antirides Huile d'Amande", format: "100 g", categorie: "Crèmes", image: "images/creme-antirides-amande.jpg", prix: "0 DH" },
+    { id: 16, nom: "Crème Revitalisante Pieds Aker Fassi (عكر فاسي)", format: "100 g", categorie: "Crèmes", image: "images/creme-pieds-aker-fassi.jpg", prix: "0 DH" },
+    { id: 17, nom: "Crème Hydratante Huile d'Argan (زيت الأركان)", format: "100 g", categorie: "Crèmes", image: "images/creme-argan.jpg", prix: "0 DH" },
+    { id: 18, nom: "Crème Hydratante Crequs Sous (عرق سوس)", format: "100 g", categorie: "Crèmes", image: "images/creme-crequs-sous.jpg", prix: "0 DH" },
+
+    // Page 3 : Crèmes, Beurre, Baume & Shampoings
+    { id: 19, nom: "Glycerin Cream (كريم الجلسرين الأصلي)", format: "100 g", categorie: "Crèmes", image: "images/glycerin-cream.jpg", prix: "0 DH" },
+    { id: 20, nom: "Beurre de Fenugrec (زبدة الحلبة)", format: "350 g", categorie: "Beurres", image: "images/beurre-fenugrec.jpg", prix: "0 DH" },
+    { id: 21, nom: "Crème Massage Graisse Romadaire & Huiles Essentielles", format: "100 g", categorie: "Crèmes", image: "images/creme-massage.jpg", prix: "0 DH" },
+    { id: 22, nom: "Balm Lips (مورد الخدود والشفاه)", format: "Flacon", categorie: "Soins Lèvres & Joues", image: "images/balm-lips.jpg", prix: "0 DH" },
+    { id: 23, nom: "Shampoing à la Rose (شامبون بالورد)", format: "200 ml", categorie: "Shampoings", image: "images/shampoing-rose.jpg", prix: "0 DH" },
+    { id: 24, nom: "Shampoing au Cade (شامبون القطران/العذر)", format: "200 ml", categorie: "Shampoings", image: "images/shampoing-cade.jpg", prix: "0 DH" },
+    { id: 25, nom: "Shampoing au Romarin (شامبون الخزامة/إكليل الجبل)", format: "200 ml", categorie: "Shampoings", image: "images/shampoing-romarin.jpg", prix: "0 DH" },
+    { id: 26, nom: "Shampoing à l'Argan (شامبون الأركان)", format: "200 ml", categorie: "Shampoings", image: "images/shampoing-argan.jpg", prix: "0 DH" },
+    { id: 27, nom: "Shampoing au Coco (شامبون جوز الهند)", format: "200 ml", categorie: "Shampoings", image: "images/shampoing-coco.jpg", prix: "0 DH" },
+
+    // Page 4 : Indigo, Coiffage, Shampoing, Body Wash, Henné & Gels Douche
+    { id: 28, nom: "Indigo Naturel (الأنديكو الخالص)", format: "150 g", categorie: "Coloration Naturelle", image: "images/indigo-naturel.jpg", prix: "0 DH" },
+    { id: 29, nom: "Hair Styling Cream (كريم بديل الزيت للشعر)", format: "Cheveux secs", categorie: "Soins Cheveux", image: "images/hair-styling-cream.jpg", prix: "0 DH" },
+    { id: 30, nom: "Shampoing au Chanvre (شامبون معالج)", format: "200 ml", categorie: "Shampoings", image: "images/shampoing-chanvre.jpg", prix: "0 DH" },
+    { id: 31, nom: "Doucha Body Wash Pêche & Rose", format: "400 ml", categorie: "Douche & Bain", image: "images/doucha-peche-rose.jpg", prix: "0 DH" },
+    { id: 32, nom: "Henné Cheveux (حناء الشعر السحرية)", format: "150 g", categorie: "Coloration Naturelle", image: "images/henne-cheveux.jpg", prix: "0 DH" },
+    { id: 33, nom: "Indigo Naturel - Guide & Résultat (الأنديكو)", format: "150 g", categorie: "Coloration Naturelle", image: "images/indigo-guide.jpg", prix: "0 DH" },
+    { id: 34, nom: "Gel Douche Fresh (جيل دوش بالنعناع)", format: "200 ml", categorie: "Gels Douche", image: "images/gel-douche-fresh.jpg", prix: "0 DH" },
+    { id: 35, nom: "Gel Douche Fraise (جيل دوش بالفراولة)", format: "200 ml", categorie: "Gels Douche", image: "images/gel-douche-fraise.jpg", prix: "0 DH" },
+    { id: 36, nom: "Gel Douche Fruits (جيل دوش بالفواكه)", format: "200 ml", categorie: "Gels Douche", image: "images/gel-douche-fruits.jpg", prix: "0 DH" },
+
+    // Page 5 : Gels Douche, Savon, Tbima, Ghassoul, Déodorant, Pieds & Rasage
+    { id: 37, nom: "Gel Douche Rose (جيل دوش بالورد)", format: "200 ml", categorie: "Gels Douche", image: "images/gel-douche-rose.jpg", prix: "0 DH" },
+    { id: 38, nom: "Gel Douche Aloe Vera (جيل دوش بالصبار)", format: "200 ml", categorie: "Gels Douche", image: "images/gel-douche-aloe-vera.jpg", prix: "0 DH" },
+    { id: 39, nom: "Savon Solide (صابون حليب الأتان)", format: "80 g", categorie: "Savons", image: "images/savon-solide.jpg", prix: "0 DH" },
+    { id: 40, nom: "Tbima à la Rose et des Herbes (تبريمة بالورد والأعشاب)", format: "Pot", categorie: "Hammam", image: "images/tbima-rose-herbes.jpg", prix: "0 DH" },
+    { id: 41, nom: "Ghassoul Aker Fassi (غسول العكر الفاسي)", format: "100 ml", categorie: "Hammam", image: "images/ghassoul-aker-fassi.jpg", prix: "0 DH" },
+    { id: 42, nom: "Lait Déodorant Yara-Ngh (48h)", format: "75 ml", categorie: "Hygiène", image: "images/lait-deodorant-yara.jpg", prix: "0 DH" },
+    { id: 43, nom: "Gel Nettoyant pour Pieds", format: "150 ml", categorie: "Soins Pieds", image: "images/gel-nettoyant-pieds.jpg", prix: "0 DH" },
+    { id: 44, nom: "Shaving Cream (كريم الحلاقة)", format: "400 ml", categorie: "Rasage", image: "images/shaving-cream.jpg", prix: "0 DH" },
+
+    // Page 6 : Mascara, Souak, Khôl, Parfums & Makhamriyas
+    { id: 45, nom: "Mascara pour Cils et Sourcils (ماسكارا)", format: "10 ml", categorie: "Yeux & Sourcils", image: "images/mascara-cils-sourcils.jpg", prix: "0 DH" },
+    { id: 46, nom: "Souak Naturel (سواك)", format: "Lot", categorie: "Hygiène Naturelle", image: "images/souak.jpg", prix: "0 DH" },
+    { id: 47, nom: "Khôl Naturel Noyau de Datte (كحل بلدي)", format: "7 g", categorie: "Yeux & Sourcils", image: "images/khol-naturel.jpg", prix: "0 DH" },
+    { id: 48, nom: "Huile Parfumée Alf Warda (عطر ألف وردة)", format: "Roll-on", categorie: "Parfums", image: "images/parfum-alf-warda.jpg", prix: "0 DH" },
+    { id: 49, nom: "Musc Noir (مسك أسود)", format: "Roll-on", categorie: "Parfums", image: "images/musc-noir.jpg", prix: "0 DH" },
+    { id: 50, nom: "Parfum Rayan - Eau de Parfum (عطر ريان)", format: "30 ml", categorie: "Parfums", image: "images/parfum-rayan.jpg", prix: "0 DH" },
+    { id: 51, nom: "Makhamriya Amira Al Arab (مخمرية أميرة العرب)", format: "50 g", categorie: "Makhamriya", image: "images/makhamriya-amira.jpg", prix: "0 DH" },
+    { id: 52, nom: "Makhamriya Yaqout (مخمرية ياقوت)", format: "Pot", categorie: "Makhamriya", image: "images/makhamriya-yaqout.jpg", prix: "0 DH" }
+  ];
+
+  const conteneur = document.getElementById("grille-produits");
+
+  produitsBeautyRose.forEach((p) => {
+    const carte = document.createElement("div");
+    carte.className = "carte-produit";
+    carte.innerHTML = `
+      <div>
+        <img src="${p.image}" alt="${p.nom}" loading="lazy" />
+        <div class="categorie-produit">${p.categorie}</div>
+        <div class="titre-produit">${p.nom}</div>
+        <div class="sous-titre-produit">${p.format}</div>
+      </div>
+      <div>
+        <div class="prix-produit">${p.prix}</div>
+        <a href="#commander-${p.id}" class="btn-commander">Commander</a>
+      </div>
+    `;
+    conteneur.appendChild(carte);
+  });
+</script>
