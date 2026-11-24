@@ -1,0 +1,117 @@
+/* Conteneur principal avec bordure bleue arrondie */
+.special-offer-box {
+  border: 2px solid #0056ff;
+  border-radius: 14px;
+  padding: 20px 16px;
+  margin-top: 24px;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* En-tête centré */
+.offer-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.offer-header h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.offer-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Liste des cartes d'offres */
+.offer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.offer-card {
+  display: block;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.offer-card:hover {
+  border-color: #93c5fd;
+}
+
+/* Style quand l'offre est sélectionnée */
+.offer-card:has(input:checked),
+.offer-card.selected {
+  border: 2px solid #0056ff;
+  background-color: #f8faff;
+}
+
+/* Masquer le bouton radio natif ou le garder discret */
+.offer-card input[type="radio"] {
+  display: none;
+}
+
+.offer-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Miniature produit */
+.offer-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.offer-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.offer-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0056ff;
+}
+
+.old-price {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+.badge-promo {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
